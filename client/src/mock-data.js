@@ -23,5 +23,5 @@ export const news = [
   },
 ];
 
-
-export const tags = [];
+export const topics = ['Crypto', 'Blockchain', 'Anime', 'POP Culture', 'Hollywood News', 'Web Designs'];
+export const tags = ['#React', '#Angular', '#CSS', '#HTML'];
