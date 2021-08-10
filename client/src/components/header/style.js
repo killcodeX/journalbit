@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.nav`
 export const LogoWrapper = styled.div`
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  font-size: 27px;
+  font-size: 30px;
 `;
 
 export const InfoWrapper = styled.div`
@@ -23,7 +23,7 @@ export const InfoWrapper = styled.div`
 export const NotificationWrapper = styled.div`
   padding-right: 30px;
   color: #b7eaf4;
-  font-size: 22px;
+  font-size: 25px;
   position: relative;
 `;
 
@@ -48,9 +48,8 @@ export const PulseWrapper = styled.span`
 `;
 
 export const ProfileWrapper = styled.div`
-  //padding-right: 20px;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   border-radius: 50%;
   cursor: pointer;
