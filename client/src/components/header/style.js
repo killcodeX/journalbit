@@ -1,13 +1,62 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const HeaderWrapper = styled.nav`
   background-color: white;
   padding: 20px;
   min-height: 30px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const LogoWrapper = styled.div`
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 27px;
+`;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-right: 50px;
+`;
+
+export const NotificationWrapper = styled.div`
+  padding-right: 30px;
+  color: #b7eaf4;
+  font-size: 22px;
+  position: relative;
+`;
+
+const pulse = keyframes`0% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }`;
+
+export const PulseWrapper = styled.span`
+  position: absolute;
+  top: 3px;
+  left: 13px;
+  z-index: 1;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: red;
+  animation: ${pulse} 1.75s ease-out infinite;
+`;
+
+export const ProfileWrapper = styled.div`
+  //padding-right: 20px;
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
