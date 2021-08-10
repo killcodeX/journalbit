@@ -22,3 +22,6 @@ export const news = [
     desc: "A hearing examiner for the National Labor Relations Board said Amazon tainted the election process enough to warrant a do-over.",
   },
 ];
+
+
+export const tags = [];
