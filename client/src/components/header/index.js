@@ -1,10 +1,10 @@
 import React from 'react'
-import { HeaderWrapper } from './style'
+import { HeaderWrapper, LogoWrapper } from './style'
 
 export default function Header() {
     return (
         <HeaderWrapper>
-            Header
+            <LogoWrapper>Journal Bit</LogoWrapper>
         </HeaderWrapper>
     )
 }
