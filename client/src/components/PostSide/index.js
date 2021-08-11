@@ -5,10 +5,12 @@ import {
   InputWrapper,
   InputIconWrapper,
   InputBar,
-  SelectWrapper,
-  SelectBar
+  SelectWrapper, 
+  PostDown,
+  PostButton 
 } from "./style";
 import { Seprator } from "../UI/Typograpghy/style";
+import { Form } from "react-bootstrap";
 import { CardWrapper, CardToolBar } from "../UI/cards/style";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 
@@ -28,17 +30,18 @@ export default function PostSide() {
               <AiOutlineThunderbolt />
             </InputIconWrapper>
             <InputBar type="text" placeholder="Share new journal" />
-            <SelectWrapper>
-              <SelectBar placeholder='Select Topic'>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </SelectBar>
-            </SelectWrapper>
           </InputWrapper>
         </CardToolBar>
         <Seprator />
+        <PostDown>
+          <Form.Select className="post-select" aria-label="Select Topic">
+            <option>Select Topic</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </Form.Select>
+          <PostButton>Post</PostButton>
+        </PostDown>
       </CardWrapper>
     </PostWrapper>
   );

@@ -62,25 +62,25 @@ export const InputBar = styled.input`
   }
 `;
 
-export const SelectWrapper = styled.div`
-  position: absolute;
-  right: 0px;
+// export const SelectBar = styled.select`
+
+// `;
+
+export const PostDown = styled.div`
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-export const SelectBar = styled.select`
-  padding-left: 2.25rem !important;
-  padding-top: 0.55rem;
-  padding-bottom: 0.55rem;
+export const PostButton = styled.button`
+  padding: 0.25rem 1.55rem !important;
+  height: 40px;
+  color: #fff;
+  border-color: #009ef7;
+  background-color: #009ef7;
+  box-shadow: none !important;
   font-size: 0.925rem;
-  border: 1px solid #e4e6ef;
-  background-color: #f5f8fa;
-  border-color: #f5f8fa;
-  border: 1px solid #e4e6ef;
-  border-top-right-radius: 0.475rem;
-  border-bottom-right-radius: 0.475rem;
-  color: #5e6278;
-  height: 50px;
-  &:focus {
-    outline: none;
-  }
+  border-radius: 0.475rem;
 `;
