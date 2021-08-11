@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   PostCardWrapper,
   PostCardToolBar,
@@ -18,14 +18,14 @@ import {
   ArticleDetails,
   PostFooter,
   PostEngagement,
-  EngagButton
+  EngagButton,
 } from "./style";
 import { Seprator } from "../../UI/Typograpghy/style";
 import {
   AiOutlineHeart,
   AiOutlineComment,
   AiOutlineSend,
-  AiFillHeart
+  AiFillHeart,
 } from "react-icons/ai";
 
 export default function Post({ link }) {
@@ -75,7 +75,11 @@ export default function Post({ link }) {
         <Seprator />
         <PostEngagement>
           <EngagButton onClick={() => setLike(!like)}>
-            {like? <AiFillHeart style={{color:'red'}}/>: <AiOutlineHeart/>}
+            {like ? (
+              <AiFillHeart style={{ color: "red" }} />
+            ) : (
+              <AiOutlineHeart />
+            )}
             {` `}Like
           </EngagButton>
           <EngagButton>
