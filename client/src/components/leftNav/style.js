@@ -7,6 +7,4 @@ export const LeftNavWrapper = styled.div`
   width: inherit;
   left: 75px;
   top: 100px;
-  overflow-y:scroll;
-  margin-bottom:100px;
 `;

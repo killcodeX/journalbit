@@ -21,7 +21,7 @@ export default function LeftNav() {
         })}
       </CardWrapper>
 
-      <CardWrapper className="mt-2">
+      {/* <CardWrapper className="mt-2">
         <CardHeader>
           <TitleWrapper>
             <AiFillTags />
@@ -32,7 +32,7 @@ export default function LeftNav() {
         {tags.map((tag) => {
           return <p>{tag}</p>;
         })}
-      </CardWrapper>
+      </CardWrapper> */}
     </LeftNavWrapper>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { BsFillBellFill } from "react-icons/bs";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { AiOutlineUser, AiOutlineArrowRight } from "react-icons/ai";
+import { Menu, Dropdown } from "antd";
 import {
   HeaderWrapper,
   LogoWrapper,
@@ -19,13 +20,25 @@ export default function Header() {
           <BsFillBellFill />
           <PulseWrapper />
         </NotificationWrapper>
-        <ProfileWrapper>
-              <img
-                src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
-                alt="profile"
-              />
-            </ProfileWrapper>
+        <Dropdown overlay={menu}>
+          <ProfileWrapper>
+            <img
+              src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
+              alt="profile"
+            />
+          </ProfileWrapper>
+        </Dropdown>
       </InfoWrapper>
     </HeaderWrapper>
   );
 }
+
+const menu = (
+  <Menu>
+    <Menu.Item icon={<AiOutlineUser />}>
+      Profile
+    </Menu.Item>
+    <Menu.Divider />
+    <Menu.Item icon={<AiOutlineArrowRight />} danger>LogOut</Menu.Item>
+  </Menu>
+);
