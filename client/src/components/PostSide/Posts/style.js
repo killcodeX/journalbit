@@ -18,12 +18,12 @@ export const PostCardToolBar = styled.div`
 `;
 
 export const ProfileWrapper = styled.div`
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
   overflow: hidden;
   border-radius: 50%;
   cursor: pointer;
-  margin-right: 30px;
+  margin-right: 15px;
   img {
     width: 100%;
     height: 100%;
@@ -84,4 +84,18 @@ export const PostImage = styled.img`
   object-fit: cover;
   background-position: 50%;
   background-size: cover;
+`;
+
+export const ArticleDescContainer = styled.div`
+  padding: 8px 12px;
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+  transition: background-color 0.6s ease-in-out, border 0.6s ease-in-out;
+`;
+
+export const ArticleDesc = styled.div`
+display: flex!important;
+
 `;

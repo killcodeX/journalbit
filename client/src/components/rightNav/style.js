@@ -5,7 +5,7 @@ export const RightNavWrapper = styled.div`
   position: fixed;
   height: 100%;
   width: inherit;
-  right: 27px;
+  right: 50px;
   top: 100px;
 `;
 

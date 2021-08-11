@@ -5,7 +5,7 @@ import PostSide from "../../components/PostSide";
 
 export default function Home() {
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-sm-2 position-relative">
           <LeftNav />

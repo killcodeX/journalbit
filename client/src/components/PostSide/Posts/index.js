@@ -10,7 +10,9 @@ import {
   PostImage,
   PostContainer,
   ArticleLink,
-  ArticleImageContainer
+  ArticleImageContainer, 
+  ArticleDescContainer,
+  ArticleDesc
 } from "./style";
 
 export default function Post({ link }) {
@@ -34,6 +36,11 @@ export default function Post({ link }) {
             <ArticleImageContainer>
               <PostImage src={link.image} alt={link.title} />
             </ArticleImageContainer>
+            <ArticleDescContainer>
+                <ArticleDesc>
+                    <p>{link.title}</p>
+                </ArticleDesc>
+            </ArticleDescContainer>
           </ArticleLink>
         </PostContainer>
       </PostBody>

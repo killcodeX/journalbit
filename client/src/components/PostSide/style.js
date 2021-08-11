@@ -34,7 +34,7 @@ export const InputWrapper = styled.div`
   align-items: center;
   position: relative;
   margin: 0.25rem 0;
-  width: 85%;
+  width: 80%;
 `;
 
 export const InputIconWrapper = styled.div`
