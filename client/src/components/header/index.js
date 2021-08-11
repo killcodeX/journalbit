@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFillBellFill } from "react-icons/bs";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 import {
   HeaderWrapper,
   LogoWrapper,
@@ -19,11 +20,11 @@ export default function Header() {
           <PulseWrapper />
         </NotificationWrapper>
         <ProfileWrapper>
-          <img
-            src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
-            alt="profile"
-          />
-        </ProfileWrapper>
+              <img
+                src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
+                alt="profile"
+              />
+            </ProfileWrapper>
       </InfoWrapper>
     </HeaderWrapper>
   );
