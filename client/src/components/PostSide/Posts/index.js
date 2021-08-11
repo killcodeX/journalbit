@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   PostCardWrapper,
   PostCardToolBar,
@@ -17,9 +17,19 @@ import {
   ArticeExcerpt,
   ArticleDetails,
   PostFooter,
+  PostEngagement,
+  EngagButton
 } from "./style";
+import { Seprator } from "../../UI/Typograpghy/style";
+import {
+  AiOutlineHeart,
+  AiOutlineComment,
+  AiOutlineSend,
+  AiFillHeart
+} from "react-icons/ai";
 
 export default function Post({ link }) {
+  const [like, setLike] = useState(false);
   return (
     <PostCardWrapper className="mt-4">
       <PostCardToolBar>
@@ -46,14 +56,38 @@ export default function Post({ link }) {
               <ArticleTitle>{link.title}</ArticleTitle>
               <ArticeExcerpt>{link.description}</ArticeExcerpt>
               <ArticleDetails>
-                <span>Author: {link.author}</span>
-                <span>Publisher: {link.publisher}</span>
+                <span>
+                  <strong>Category:</strong> Technology
+                </span>
+                <span>
+                  <strong>Author:</strong> {link.author}
+                </span>
+                <span>
+                  <strong>Publisher:</strong> {link.publisher}
+                </span>
               </ArticleDetails>
             </ArticleDesc>
           </ArticleDescContainer>
         </PostContainer>
       </PostBody>
-      <PostFooter>hi</PostFooter>
+      <PostFooter>
+        1 likes
+        <Seprator />
+        <PostEngagement>
+          <EngagButton onClick={() => setLike(!like)}>
+            {like? <AiFillHeart style={{color:'red'}}/>: <AiOutlineHeart/>}
+            {` `}Like
+          </EngagButton>
+          <EngagButton>
+            <AiOutlineComment />
+            {` `}Comment
+          </EngagButton>
+          <EngagButton>
+            <AiOutlineSend />
+            {` `}Share
+          </EngagButton>
+        </PostEngagement>
+      </PostFooter>
     </PostCardWrapper>
   );
 }

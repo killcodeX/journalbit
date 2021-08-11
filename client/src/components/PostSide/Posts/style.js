@@ -99,9 +99,25 @@ export const ArticleDetails = styled.div`
   justify-content: space-between;
   color: #181c32;
   font-size: 14px;
-  font-weight: bold;
 `;
 
 export const PostFooter = styled.div`
   padding: 20px;
 `;
+
+export const PostEngagement = styled.div`
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:5px;
+`;
+
+export const EngagButton = styled.button`
+  background:transparent;
+  border:none;
+  padding:10px 15px;
+  font-size:17px;
+  &:hover{
+    background-color:#EEF0F6;
+  }
+`
