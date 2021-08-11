@@ -11,6 +11,7 @@ export const PostWrapper = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 130px;
+  margin-bottom:100px;
   margin: 0 auto;
 `;
 

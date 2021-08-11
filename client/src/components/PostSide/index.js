@@ -45,7 +45,7 @@ export default function PostSide() {
         </PostDown>
       </CardWrapper>
       {links.map((link) => {
-        return <Posts url={link.url} />;
+        return <Posts link={link} />;
       })}
     </PostWrapper>
   );

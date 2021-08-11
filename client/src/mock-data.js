@@ -34,10 +34,45 @@ export const topics = [
 export const tags = ["#React", "#Angular", "#CSS", "#HTML"];
 
 export const links = [
-  { url: "https://www.devcript.com/apple-smartwatch/" },
-  { url: "https://www.devcript.com/apple-smartwatch/" },
-  { url: "https://www.devcript.com/apple-smartwatch/" },
-  { url: "https://www.devcript.com/apple-smartwatch/" },
-  { url: "https://www.devcript.com/apple-smartwatch/" },
-  { url: "https://www.devcript.com/apple-smartwatch/" },
-];
+  {
+    id: 1,
+    author: "Better Coding Academy",
+    date: "2021-08-10T13:42:35.000Z",
+    description:
+      "About Me: I’ve been a professional web developer for just over 10 years now. I’m currently the lead...",
+    image:
+      "https://res.cloudinary.com/practicaldev/image/fetch/s--aBKhUzQ3--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/eo8kliag152zbcn9yaeg.jpg",
+    logo: "https://res.cloudinary.com/practicaldev/image/fetch/s--t7tVouP9--/c_limit,f_png,fl_progressive,q_80,w_192/https://practicaldev-herokuapp-com.freetls.fastly.net/assets/devlogo-pwa-512.png",
+    publisher: "DEV Community",
+    title:
+      "⚛️ Senior React Coding Interview, By A Professional React Developer 👨‍💻",
+    url: "https://dev.to/bettercodingacademy/senior-react-coding-interview-by-a-professional-react-developer-2o6",
+  },
+  {
+    id: 2,
+    author: "Ali Hashir",
+    date: "2021-08-08T13:18:04.000Z",
+    description:
+      "Are you looking to buy an Apple smartwatch for yourself or your loved one but don’t know which fits your personality? Here are the best 5 apple watches for you.",
+    image:
+      "https://www.devcript.com/wp-content/uploads/2021/08/Devcript-blogs-2-1.jpg",
+    logo: null,
+    publisher: "Devcript",
+    title: "Ultimate Guide: Which Apple Smartwatch is best for you? | DevCript",
+    url: "https://www.devcript.com/apple-smartwatch/",
+  },
+  {
+    id: 3,
+    author: "Aaquib Ahmed",
+    date: "2021-07-31T13:03:09.000Z",
+    description:
+      "Are you a little confused about how sorting algorithms work? Here, I tried to explain selection, bubble, and insertion sort in a very simple way with animations",
+    image:
+      "https://www.devcript.com/wp-content/uploads/2021/06/Devcript-blogs-1-1.jpg",
+    logo: null,
+    publisher: "Devcript",
+    title:
+      "Simple Explanation on Sorting Algorithms with JavaScript | Part 1 | DevCript",
+    url: "https://www.devcript.com/simple-explanation-on-sorting-algorithms-with-javascript-part-1/",
+  },
+]

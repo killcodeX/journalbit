@@ -1,17 +1,42 @@
 import React from "react";
-import Microlink from "@microlink/react";
-import { CardWrapper, CardToolBar } from "../../UI/cards/style";
-import styled from 'styled-components'
+import {
+  PostCardWrapper,
+  PostCardToolBar,
+  ProfileWrapper,
+  PostAuthor,
+  PostDetail,
+  PostTime,
+  PostBody,
+  PostImage,
+  PostContainer,
+  ArticleLink,
+  ArticleImageContainer
+} from "./style";
 
-const MyCustomCard = styled(Microlink)`
-  width: 10%;
-  height:700px !important;
-  `
-
-export default function Post({url}) {
+export default function Post({ link }) {
   return (
-    <CardWrapper className="mt-4">
-      <MyCustomCard url={url} />
-    </CardWrapper>
+    <PostCardWrapper className="mt-4">
+      <PostCardToolBar>
+        <ProfileWrapper>
+          <img
+            src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
+            alt="profile"
+          />
+        </ProfileWrapper>
+        <PostDetail>
+          <PostAuthor>The Humorists</PostAuthor>
+          <PostTime>Just a regular teacher who likes to code</PostTime>
+        </PostDetail>
+      </PostCardToolBar>
+      <PostBody>
+        <PostContainer>
+          <ArticleLink href={link.url}>
+            <ArticleImageContainer>
+              <PostImage src={link.image} alt={link.title} />
+            </ArticleImageContainer>
+          </ArticleLink>
+        </PostContainer>
+      </PostBody>
+    </PostCardWrapper>
   );
 }
