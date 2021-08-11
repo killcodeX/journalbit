@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
 export const PostWrapper = styled.div`
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  z-index: 0;
   height: 100%;
   width: 95%;
-  padding: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 130px;
   margin: 0 auto;
 `;
 

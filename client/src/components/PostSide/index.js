@@ -5,14 +5,15 @@ import {
   InputWrapper,
   InputIconWrapper,
   InputBar,
-  SelectWrapper, 
   PostDown,
-  PostButton 
+  PostButton,
 } from "./style";
 import { Seprator } from "../UI/Typograpghy/style";
 import { Form } from "react-bootstrap";
 import { CardWrapper, CardToolBar } from "../UI/cards/style";
 import { AiOutlineThunderbolt } from "react-icons/ai";
+import Posts from "./Posts";
+import { links } from "../../mock-data";
 
 export default function PostSide() {
   return (
@@ -43,6 +44,9 @@ export default function PostSide() {
           <PostButton>Post</PostButton>
         </PostDown>
       </CardWrapper>
+      {links.map((link) => {
+        return <Posts url={link.url} />;
+      })}
     </PostWrapper>
   );
 }

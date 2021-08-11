@@ -7,6 +7,7 @@ export const CardWrapper = styled.div`
   border: 1px solid #eff2f5;
   border-radius: 0.475rem;
   box-shadow: 0 0 20px 0 rgb(76 87 125 / 2%);
+  height:auto;
 `;
 
 export const CardHeader = styled.div`

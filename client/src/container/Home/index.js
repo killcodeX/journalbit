@@ -10,7 +10,7 @@ export default function Home() {
         <div className="col-sm-2 position-relative">
           <LeftNav />
         </div>
-        <div className="col-sm-7">
+        <div className="col-sm-7 position-relative">
           <PostSide />
         </div>
         <div className="col-sm-3 position-relative">

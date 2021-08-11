@@ -6,6 +6,10 @@ export const HeaderWrapper = styled.nav`
   min-height: 30px;
   display: flex;
   justify-content: space-between;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1;
 `;
 
 export const LogoWrapper = styled.div`
