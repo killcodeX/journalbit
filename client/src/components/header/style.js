@@ -22,7 +22,7 @@ export const InfoWrapper = styled.div`
 
 export const NotificationWrapper = styled.div`
   padding-right: 30px;
-  color: #b7eaf4;
+  color: #1778F2;
   font-size: 25px;
   position: relative;
 `;
