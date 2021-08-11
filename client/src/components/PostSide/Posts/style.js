@@ -14,7 +14,7 @@ export const PostCardToolBar = styled.div`
   align-items: center;
   margin: 0.5rem 0;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 10px 20px;
 `;
 
 export const ProfileWrapper = styled.div`
@@ -47,26 +47,12 @@ export const PostTime = styled.div`
 `;
 
 export const PostBody = styled.div`
-  overflow: hidden;
-  margin: 0;
   background-color: #eef3f8;
 `;
 
-export const PostContainer = styled.div`
-  height: 0;
-  padding-top: 52.3%;
-  width: 50%;
-  position: relative;
-  flex-shrink: 0;
-`;
+export const PostContainer = styled.div``;
 
 export const ArticleLink = styled.a`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  outline-offset: -1px;
   text-decoration: none;
   cursor: pointer;
 `;
@@ -77,9 +63,7 @@ export const ArticleImageContainer = styled.div`
   display: flex;
 `;
 export const PostImage = styled.img`
-  position: static;
-  top: auto;
-  left: auto;
+  width: 589px;
   object-position: center;
   object-fit: cover;
   background-position: 50%;
@@ -89,13 +73,35 @@ export const PostImage = styled.img`
 export const ArticleDescContainer = styled.div`
   padding: 8px 12px;
   display: flex;
-  flex-grow: 1;
   align-items: flex-start;
-  justify-content: space-between;
   transition: background-color 0.6s ease-in-out, border 0.6s ease-in-out;
 `;
 
 export const ArticleDesc = styled.div`
-display: flex!important;
+  display: flex !important;
+  flex-direction: column;
+`;
 
+export const ArticleTitle = styled.div`
+  color: #181c32;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+export const ArticeExcerpt = styled.div`
+  font-size: 14px;
+  color: #b5b5c3;
+`;
+
+export const ArticleDetails = styled.div`
+  display: flex;
+  aling-items: center;
+  justify-content: space-between;
+  color: #181c32;
+  font-size: 14px;
+  font-weight: bold;
+`;
+
+export const PostFooter = styled.div`
+  padding: 20px;
 `;

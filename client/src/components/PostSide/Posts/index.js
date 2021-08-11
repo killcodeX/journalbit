@@ -10,9 +10,13 @@ import {
   PostImage,
   PostContainer,
   ArticleLink,
-  ArticleImageContainer, 
+  ArticleImageContainer,
   ArticleDescContainer,
-  ArticleDesc
+  ArticleDesc,
+  ArticleTitle,
+  ArticeExcerpt,
+  ArticleDetails,
+  PostFooter,
 } from "./style";
 
 export default function Post({ link }) {
@@ -36,14 +40,20 @@ export default function Post({ link }) {
             <ArticleImageContainer>
               <PostImage src={link.image} alt={link.title} />
             </ArticleImageContainer>
-            <ArticleDescContainer>
-                <ArticleDesc>
-                    <p>{link.title}</p>
-                </ArticleDesc>
-            </ArticleDescContainer>
           </ArticleLink>
+          <ArticleDescContainer>
+            <ArticleDesc>
+              <ArticleTitle>{link.title}</ArticleTitle>
+              <ArticeExcerpt>{link.description}</ArticeExcerpt>
+              <ArticleDetails>
+                <span>Author: {link.author}</span>
+                <span>Publisher: {link.publisher}</span>
+              </ArticleDetails>
+            </ArticleDesc>
+          </ArticleDescContainer>
         </PostContainer>
       </PostBody>
+      <PostFooter>hi</PostFooter>
     </PostCardWrapper>
   );
 }
