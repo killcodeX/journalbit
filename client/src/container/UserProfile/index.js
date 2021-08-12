@@ -1,5 +1,5 @@
 import React from "react";
-import { Seprator } from "../../components/UI/Typograpghy/style";
+import { Seprator, HeadingWrapper } from "../../components/UI/Typograpghy/style";
 import ProfilePost from "./profileDetails";
 import {
   ProfileWrapper,
@@ -11,6 +11,7 @@ import {
   UserName,
   UserDescription,
   SocialMedia,
+  Followers
 } from "./style";
 
 export default function Profile() {
@@ -46,7 +47,20 @@ export default function Profile() {
                 investment if given a chance.
               </UserDescription>
             </UserDetails>
-            <SocialMedia>hi</SocialMedia>
+            <SocialMedia>
+              <Followers>
+                <HeadingWrapper>0</HeadingWrapper>
+                <HeadingWrapper>Post</HeadingWrapper>
+              </Followers>
+              <Followers>
+                <HeadingWrapper>0</HeadingWrapper>
+                <HeadingWrapper>Followers</HeadingWrapper>
+              </Followers>
+              <Followers>
+                <HeadingWrapper>0</HeadingWrapper>
+                <HeadingWrapper>Following</HeadingWrapper>
+              </Followers>
+            </SocialMedia>
           </ProfileDetails>
           <ProfilePost />
         </ProfileWrapper>

@@ -75,7 +75,14 @@ export const UserDescription = styled.div`
 
 export const SocialMedia = styled.div`
   width: 200px;
-  margin: 0 auto;
+  margin: 10px auto;
   display:flex;
   justify-content:space-between;
+`;
+
+export const Followers = styled.div`
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 `;
