@@ -20,3 +20,10 @@
 .post-select:focus{
     outline: none;
 }
+
+.section-auth{
+  background-color: #E9ECF8; 
+  height: 100vh;
+}
+
+/* //#0293ef */
