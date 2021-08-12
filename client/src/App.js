@@ -5,6 +5,7 @@ import Home from "./container/Home";
 import Header from './components/header';
 import Login from './container/Auth/login';
 import Register from './container/Auth/register';
+import Profile from './container/Profile' 
 
 function App() {
   const location = useLocation();
@@ -12,9 +13,10 @@ function App() {
     <>
       {location.pathname !== "/login" && location.pathname !== "/register"? <Header />:null}
       <Switch>
-        <Route exact path="/" exact component={Home} />
-        <Route exact path="/login" exact component={Login} />
-        <Route exact path="/register" exact component={Register} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
       </Switch>
     </>
   )

@@ -6,16 +6,17 @@ export const HeaderWrapper = styled.nav`
   min-height: 30px;
   display: flex;
   justify-content: space-between;
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:1;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
 `;
 
 export const LogoWrapper = styled.div`
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 30px;
+  color:#181C32;
 `;
 
 export const InfoWrapper = styled.div`
@@ -26,7 +27,7 @@ export const InfoWrapper = styled.div`
 
 export const NotificationWrapper = styled.div`
   padding-right: 30px;
-  color: #1778F2;
+  color: #1778f2;
   font-size: 25px;
   position: relative;
 `;
