@@ -20,7 +20,7 @@ import {
   PostEngagement,
   EngagButton,
 } from "./style";
-import { Seprator } from "../../UI/Typograpghy/style";
+import { Seprator } from "../UI/Typograpghy/style";
 import {
   AiOutlineHeart,
   AiOutlineComment,
@@ -31,7 +31,7 @@ import {
 export default function Post({ link }) {
   const [like, setLike] = useState(false);
   return (
-    <PostCardWrapper className="mt-4">
+    <PostCardWrapper>
       <PostCardToolBar>
         <ProfileWrapper>
           <img

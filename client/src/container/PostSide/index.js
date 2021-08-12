@@ -8,11 +8,11 @@ import {
   PostDown,
   PostButton,
 } from "./style";
-import { Seprator } from "../UI/Typograpghy/style";
+import { Seprator } from "../../components/UI/Typograpghy/style";
 import { Form } from "react-bootstrap";
-import { CardWrapper, CardToolBar } from "../UI/cards/style";
+import { CardWrapper, CardToolBar } from "../../components/UI/cards/style";
 import { AiOutlineThunderbolt } from "react-icons/ai";
-import Posts from "./Posts";
+import Posts from "../../components/Posts";
 import { links } from "../../mock-data";
 
 export default function PostSide() {
@@ -44,9 +44,11 @@ export default function PostSide() {
           <PostButton>Post</PostButton>
         </PostDown>
       </CardWrapper>
-      {links.map((link) => {
-        return <Posts link={link} />;
-      })}
+      <div className="mt-4">
+        {links.map((link) => {
+          return <Posts link={link} />;
+        })}
+      </div>
     </PostWrapper>
   );
 }

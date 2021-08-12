@@ -1,7 +1,7 @@
 import React from "react";
 import LeftNav from "../../components/leftNav";
 import RightNav from "../../components/rightNav";
-import PostSide from "../../components/PostSide";
+import PostSide from "../PostSide";
 
 export default function Home() {
   return (

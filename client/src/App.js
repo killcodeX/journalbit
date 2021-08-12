@@ -5,7 +5,7 @@ import Home from "./container/Home";
 import Header from './components/header';
 import Login from './container/Auth/login';
 import Register from './container/Auth/register';
-import Profile from './container/Profile' 
+import Profile from './container/UserProfile' 
 
 function App() {
   const location = useLocation();
