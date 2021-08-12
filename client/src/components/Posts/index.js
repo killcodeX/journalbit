@@ -86,7 +86,7 @@ export default function Post({ link }) {
             <AiOutlineComment />
             {` `}Comment
           </EngagButton>
-          <EngagButton>
+          <EngagButton disabled>
             <AiOutlineSend />
             {` `}Share
           </EngagButton>

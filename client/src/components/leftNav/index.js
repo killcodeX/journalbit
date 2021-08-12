@@ -2,8 +2,8 @@ import React from "react";
 import { TitleWrapper } from "../UI/Typograpghy/style";
 import { CardHeader, CardWrapper } from "../UI/cards/style";
 import { LeftNavWrapper } from "./style";
-import { AiFillProject, AiFillTags } from "react-icons/ai";
-import { topics, tags } from "../../mock-data";
+import { AiFillProject } from "react-icons/ai";
+import { topics } from "../../mock-data";
 
 export default function LeftNav() {
   return (

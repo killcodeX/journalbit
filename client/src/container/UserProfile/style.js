@@ -47,7 +47,7 @@ export const AvatarWrapper = styled.div`
 
 export const ProfileDetails = styled.div`
   padding: 90px 30px 20px 30px;
-  background:#fff;
+  background: #fff;
 `;
 
 export const UserDetails = styled.div`
@@ -74,15 +74,31 @@ export const UserDescription = styled.div`
 `;
 
 export const SocialMedia = styled.div`
-  width: 200px;
-  margin: 10px auto;
-  display:flex;
-  justify-content:space-between;
+  width: 300px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const Followers = styled.div`
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const UserIntro = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-family:poppins;
+`;
+
+export const SocialMediaProfiles = styled.div`
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+  color: #A1B8DD;
+  cursor:pointer;
 `;
