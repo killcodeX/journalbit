@@ -12,11 +12,11 @@ import { CardWrapper } from "../../../components/UI/cards/style";
 import Form from "./form";
 import { Link } from "react-router-dom";
 
-export default function register() {
+export default function Register() {
   return (
     <div className="section-auth position-relative">
       <div className="container">
-        <div className="row pt-5">
+        <div className="row pt-4">
           <div className="col-sm-7 d-flex flex-column justify-content-center align-items-center">
             <LogoWrapper>Journal Bit</LogoWrapper>
 
@@ -31,7 +31,7 @@ export default function register() {
             </MotoWrapper>
           </div>
           <div className="col-sm-5">
-            <CardWrapper>
+            <CardWrapper className='shadow-lg'>
               <Title>Create a new account</Title>
               <SubTitle>
                 Join Journal Bit and share your journals, fav blogs or ideas to
