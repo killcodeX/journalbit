@@ -5,7 +5,6 @@ import {
   SubTitle,
   AuthFooter,
   AuthPrivacy,
-  InfoWrapper,
   InfoVector,
   MotoWrapper,
 } from "../style";
@@ -20,15 +19,13 @@ export default function login() {
         <div className="row pt-5">
           <div className="col-sm-7 d-flex flex-column justify-content-center align-items-center">
             <LogoWrapper>Journal Bit</LogoWrapper>
-
             <InfoVector
               src={process.env.PUBLIC_URL + "/assets/auth.png"}
               alt="journal"
             />
-
             <MotoWrapper>
-              Journal bit a place to find community and share your journals or
-              Ideas to the world
+            Journal bit is a place to find different communities and topic to share your Journals,
+              articles, or intersting blogs.
             </MotoWrapper>
           </div>
           <div className="col-sm-5">
