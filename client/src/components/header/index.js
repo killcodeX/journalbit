@@ -39,7 +39,7 @@ export default function Header() {
 const menu = (
   <Menu>
     <Menu.Item icon={<AiOutlineUser />}>
-      <Link to="/profile">Profile</Link>
+      <Link to="/profile">View Profile</Link>
     </Menu.Item>
     <Menu.Divider />
     <Menu.Item icon={<AiOutlineArrowRight />} danger>

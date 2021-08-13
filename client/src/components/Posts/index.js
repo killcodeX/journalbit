@@ -31,7 +31,7 @@ import {
 export default function Post({ link }) {
   const [like, setLike] = useState(false);
   return (
-    <PostCardWrapper>
+    <PostCardWrapper className='mb-3'>
       <PostCardToolBar>
         <ProfileWrapper>
           <img
