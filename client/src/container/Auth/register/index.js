@@ -44,7 +44,7 @@ export default function Register() {
                   <a href="#">Terms, Data Policy</a> and Cookie Policy.
                 </AuthPrivacy>
                 <span>
-                  Already An account? Go to <Link to="/login">Login</Link>
+                  Already have an account? Go to <Link to="/login">Login</Link>
                 </span>
               </AuthFooter>
             </CardWrapper>

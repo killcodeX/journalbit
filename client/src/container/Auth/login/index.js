@@ -29,7 +29,7 @@ export default function login() {
             </MotoWrapper>
           </div>
           <div className="col-sm-5">
-            <CardWrapper>
+            <CardWrapper className='shadow-lg'>
               <Title>Login to your account</Title>
               <SubTitle>
                 Join Journal Bit and share your journals, fav blogs or ideas to

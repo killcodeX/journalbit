@@ -15,6 +15,13 @@ export const RegistrationSchema = Yup.object().shape({
     .min(6, "Password is too short - should be 6 chars minimum"),
 });
 
+export const LoginSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string()
+    .required("Password is required")
+    .min(6, "Password is too short - should be 6 chars minimum"),
+});
+
 //profession: Yup.string().required('Choose one'),
 //confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
 //address:Yup.string().required('Required'),
