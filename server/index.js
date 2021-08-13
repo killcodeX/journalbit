@@ -2,9 +2,12 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors';
+import dotenv from 'dotenv';
+
 //import postRoutes from './routes/post.js'
 
 const app = express()
+dotenv.config()
 
 app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
@@ -16,8 +19,8 @@ app.use(cors())
 app.use('/', (req, res) => res.send('hello world'))
 
 // for database
-
-const connectionUrl = "mongodb+srv://Aaquib5076:Aaquib5076@cluster0.j1tn0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+console.log('pro',process.env.DB_PASSWORD)
+const connectionUrl = `mongodb+srv://Aaquib5076:${process.env.DB_PASSWORD}@cluster0.j1tn0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 const PORT = process.env.PORT || 5000;
 
