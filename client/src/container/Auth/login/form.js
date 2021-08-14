@@ -3,8 +3,13 @@ import { FormWrapper, FormButton } from "../style";
 import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import { LoginSchema } from "../schema";
+import { useDispatch } from 'react-redux'
+import { receiveLogin } from '../../../redux/actions/useractions';
 
 export default function Loginform() {
+
+  const dispatch = useDispatch()
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -12,7 +17,7 @@ export default function Loginform() {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(receiveLogin(values))
     },
   });
 

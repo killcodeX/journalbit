@@ -13,7 +13,7 @@ import {
   VERIFY_LOCAL_STORAGE,
 } from "./actionconstant";
 
-import { userRegister } from "../../api/index";
+import { userRegister, userLogin } from "../../api/index";
 
 // for login
 export const verifyStorage = () => {
@@ -22,17 +22,13 @@ export const verifyStorage = () => {
   };
 };
 
-const requestLogin = () => {
-  return {
-    type: LOGIN_REQUEST,
-  };
-};
-
-const receiveLogin = (user) => {
-  return {
-    type: LOGIN_SUCCESS,
-    user,
-  };
+export const receiveLogin = (user) => async (dispatch) => {
+  const result = await userLogin(user);
+  console.log(result)
+  // dispatch({
+  //   type: LOGIN_SUCCESS,
+  //   user,
+  // })
 };
 
 const loginError = (message) => {
