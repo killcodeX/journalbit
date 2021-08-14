@@ -3,8 +3,13 @@ import { FormWrapper, FormButton } from "../style";
 import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import { RegistrationSchema } from "../schema";
+import { useDispatch } from 'react-redux'
+import { receiveSignUp } from '../../../redux/actions/useractions'
 
 export default function RegisterForm() {
+
+  const dispatch = useDispatch()
+
   const formik = useFormik({
     initialValues: {
       fname: "",
@@ -14,7 +19,7 @@ export default function RegisterForm() {
     },
     validationSchema: RegistrationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(receiveSignUp(values))
     },
   });
 

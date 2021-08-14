@@ -1,101 +1,93 @@
 import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    LOGOUT_REQUEST,
-    LOGOUT_SUCCESS,
-    LOGOUT_FAILURE,
-    SIGNUP_REQUEST,
-    SIGNUP_SUCCESS,
-    SIGNUP_FAILURE,
-    VERIFY_REQUEST,
-    VERIFY_SUCCESS,
-    VERIFY_LOCAL_STORAGE
-  } from "./actionConstant";
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE,
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
+  VERIFY_REQUEST,
+  VERIFY_SUCCESS,
+  VERIFY_LOCAL_STORAGE,
+} from "./actionconstant";
 
+import { userRegister } from "../../api/index";
 
 // for login
-
 export const verifyStorage = () => {
-    return {
-      type: VERIFY_LOCAL_STORAGE,
-    };
+  return {
+    type: VERIFY_LOCAL_STORAGE,
   };
-  
-  const requestLogin = () => {
-    return {
-      type: LOGIN_REQUEST,
-    };
+};
+
+const requestLogin = () => {
+  return {
+    type: LOGIN_REQUEST,
   };
-  
-  const receiveLogin = (user) => {
-    return {
-      type: LOGIN_SUCCESS,
-      user,
-    };
+};
+
+const receiveLogin = (user) => {
+  return {
+    type: LOGIN_SUCCESS,
+    user,
   };
-  
-  const loginError = (message) => {
-    return {
-      type: LOGIN_FAILURE,
-      message
-    };
+};
+
+const loginError = (message) => {
+  return {
+    type: LOGIN_FAILURE,
+    message,
   };
-  
-  // for sign up
-  
-  const requestSignUp = () => {
-    return {
-      type: SIGNUP_REQUEST,
-    };
+};
+
+export const receiveSignUp = (user) => async (dispatch) => {
+  const result = await userRegister(user);
+  console.log(result)
+  // dispatch({
+  //   type: SIGNUP_SUCCESS,
+  //   result,
+  // });
+};
+
+const signUpError = (message) => {
+  return {
+    type: SIGNUP_FAILURE,
+    message,
   };
-  
-  const receiveSignUp = (user) => {
-    return {
-      type: SIGNUP_SUCCESS,
-      user,
-    };
+};
+
+//  for log out
+const requestLogout = () => {
+  return {
+    type: LOGOUT_REQUEST,
   };
-  
-  const signUpError = (message) => {
-    return {
-      type: SIGNUP_FAILURE,
-      message
-    };
+};
+
+const receiveLogout = () => {
+  return {
+    type: LOGOUT_SUCCESS,
   };
-  
-  //  for log out
-  
-  const requestLogout = () => {
-    return {
-      type: LOGOUT_REQUEST,
-    };
+};
+
+const logoutError = (message) => {
+  return {
+    type: LOGOUT_FAILURE,
+    message,
   };
-  
-  const receiveLogout = () => {
-    return {
-      type: LOGOUT_SUCCESS,
-    };
+};
+
+// for verify
+
+const verifyRequest = () => {
+  return {
+    type: VERIFY_REQUEST,
   };
-  
-  const logoutError = (message) => {
-    return {
-      type: LOGOUT_FAILURE,
-      message
-    };
+};
+
+const verifySuccess = () => {
+  return {
+    type: VERIFY_SUCCESS,
   };
-  
-  // for verify
-  
-  const verifyRequest = () => {
-    return {
-      type: VERIFY_REQUEST,
-    };
-  };
-  
-  const verifySuccess = () => {
-    return {
-      type: VERIFY_SUCCESS,
-    };
-  };
-  
+};

@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 export const createUser = async (req, res) => {
   const body = req.body;
-  
+  console.log(body)
   try {
     res.status(201).json('working');
   } catch (error) {

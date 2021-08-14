@@ -56,12 +56,6 @@ const AuthReducer = (state = initialState, action) => {
         errorMessage: action.message,
       };
 
-    case SIGNUP_REQUEST:
-      return {
-        ...state,
-        isSignUp: true,
-        SignUpError: false,
-      };
     case SIGNUP_SUCCESS:
       saveState("firebaseLoggedIn", true);
       saveState("firebaseUser", action.user);
