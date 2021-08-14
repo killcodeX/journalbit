@@ -5,7 +5,7 @@ import { getPost } from "../controllers/getController.js"
 const router = express.Router();
 
 // User Routes
-router.post('/create-user',createUser)
+router.post('/signup',createUser)
 
 
 // Post Routes
