@@ -16,8 +16,8 @@ export default function LeftNav() {
           </TitleWrapper>
         </CardHeader>
 
-        {topics.map((topic) => {
-          return <p>{topic}</p>;
+        {topics.map((topic, index) => {
+          return <p key={index}>{topic}</p>;
         })}
       </CardWrapper>
 

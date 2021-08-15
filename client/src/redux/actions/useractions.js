@@ -1,89 +1,48 @@
 import {
-  LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  LOGOUT_REQUEST,
-  LOGOUT_SUCCESS,
-  LOGOUT_FAILURE,
-  SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
-  VERIFY_REQUEST,
+  LOGOUT_SUCCESS,
   VERIFY_SUCCESS,
   VERIFY_LOCAL_STORAGE,
 } from "./actionconstant";
 
 import { userRegister, userLogin } from "../../api/index";
 
-// for login
-export const verifyStorage = () => {
-  return {
-    type: VERIFY_LOCAL_STORAGE,
-  };
-};
-
-export const receiveLogin = (user) => async (dispatch) => {
+export const receiveLogin = (user, history) => async (dispatch) => {
   const result = await userLogin(user);
-  console.log(result)
-  // dispatch({
-  //   type: LOGIN_SUCCESS,
-  //   user,
-  // })
-};
-
-const loginError = (message) => {
-  return {
-    type: LOGIN_FAILURE,
-    message,
-  };
+  try {
+    dispatch({
+      type: LOGIN_SUCCESS,
+      user: result.result,
+      token: result.token,
+    });
+    history.push("/");
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const receiveSignUp = (user) => async (dispatch) => {
   const result = await userRegister(user);
-  console.log(result)
-  // dispatch({
-  //   type: SIGNUP_SUCCESS,
-  //   result,
-  // });
+  try {
+    dispatch({
+      type: SIGNUP_SUCCESS,
+      user: result.result,
+      token: result.token,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-const signUpError = (message) => {
-  return {
-    type: SIGNUP_FAILURE,
-    message,
-  };
-};
-
-//  for log out
-const requestLogout = () => {
-  return {
-    type: LOGOUT_REQUEST,
-  };
-};
-
-const receiveLogout = () => {
+export const receiveLogout = () => {
   return {
     type: LOGOUT_SUCCESS,
   };
 };
 
-const logoutError = (message) => {
+export const verifyStorage = () => {
   return {
-    type: LOGOUT_FAILURE,
-    message,
-  };
-};
-
-// for verify
-
-const verifyRequest = () => {
-  return {
-    type: VERIFY_REQUEST,
-  };
-};
-
-const verifySuccess = () => {
-  return {
-    type: VERIFY_SUCCESS,
+    type: VERIFY_LOCAL_STORAGE,
   };
 };

@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
 
-export default function ProtectedRoutes({ component: Component }) {
+export default function ProtectedRoutes({ auth, component, ...rest}) {
     
-  let auth = false;
   if (auth == true) {
-    return <Component />;
+    return <Route {...rest} component={component}/>;
   } else {
     return <Redirect to="/login" />;
   }
