@@ -5,7 +5,12 @@ const postSchema = mongoose.Schema({
   lname: String,
   image: String,
   email: String,
-  password:String,
+  password: String,
+  // bio: { type: String, default: "Hey! I am new to this Universe!" },
+  // posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+  // followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  // following: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  // notifications: [{ type: Schema.Types.ObjectId, ref: "Notification" }],
   createdAt: {
     type: Date,
     default: new Date(),

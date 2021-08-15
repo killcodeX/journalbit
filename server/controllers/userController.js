@@ -39,10 +39,26 @@ export const createUser = async (req, res) => {
 
 // for login
 export const loginUser = async (req, res) => {
-  const body = req.body;
-  console.log(body);
+  const { email, password } = req.body;
+  console.log(email, password);
   try {
-    res.status(201).json("login working");
+    const existingUser = await UserMessage.findOne({ email });
+    if (!existingUser)
+      return res.status(404).json({ message: "User doesn't exist" });
+
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      existingUser.password
+    );
+    if (!isPasswordCorrect)
+      return res.status(400).json({ message: "Your username and/or password do not match" });
+
+    const token = jwt.sign(
+      { email: existingUser.email, id: existingUser._id },
+      process.env.JWT_SECRET_KEY,
+    );
+
+    res.status(200).json({ result: existingUser, token });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
