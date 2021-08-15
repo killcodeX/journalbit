@@ -13,7 +13,7 @@ app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 app.use(cors())
 
-// sholud be called after initializing cors to avoid cors origin issue
+// should be called after initializing cors to avoid cors origin issue
 app.use('/journalbit', Routes)
 
 // for database
