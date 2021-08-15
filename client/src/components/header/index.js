@@ -1,7 +1,7 @@
 import React from "react";
 import { BsFillBellFill } from "react-icons/bs";
-import { AiOutlineUser, AiOutlineArrowRight } from "react-icons/ai";
-import { Menu, Dropdown, message } from "antd";
+import { AiOutlineUser, AiOutlineArrowRight, AiFillSetting } from "react-icons/ai";
+import { Menu, Dropdown } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import { receiveLogout } from "../../redux/actions/useractions";
 import { useDispatch } from "react-redux";
@@ -19,7 +19,7 @@ export default function Header() {
   const history = useHistory();
 
   const handlelogout = ({ key }) => {
-    if (key == 2) {
+    if (key == 3) {
       dispatch(receiveLogout())
       history.push('/login')
     }
@@ -30,8 +30,11 @@ export default function Header() {
       <Menu.Item key="1" icon={<AiOutlineUser />}>
         <Link to="/profile">View Profile</Link>
       </Menu.Item>
+      <Menu.Item key="2" icon={<AiFillSetting />}>
+        <Link to="/account-setting">Account Setting</Link>
+      </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="2" icon={<AiOutlineArrowRight />} danger>
+      <Menu.Item key="3" icon={<AiOutlineArrowRight />} danger>
         Log Out
       </Menu.Item>
     </Menu>
