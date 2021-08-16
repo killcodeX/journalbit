@@ -77,3 +77,11 @@ export const WarningTitle = styled.div`
   font-family: poppins;
   color: #181c32 !important;
 `;
+
+export const FormLabel = styled.div`
+  line-height: 1.5;
+  color: #3f4254;
+  font-size: 1.075rem !important;
+  font-weight: 500 !important;
+  font-family: poppins;
+`;

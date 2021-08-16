@@ -2,7 +2,6 @@ import {
   LOGIN_SUCCESS,
   SIGNUP_SUCCESS,
   LOGOUT_SUCCESS,
-  VERIFY_SUCCESS,
   VERIFY_LOCAL_STORAGE,
 } from "./actionconstant";
 
