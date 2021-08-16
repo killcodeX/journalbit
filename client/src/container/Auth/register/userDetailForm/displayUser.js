@@ -4,7 +4,7 @@ import { AiOutlineUser, AiFillEnvironment } from "react-icons/ai";
 import { HeadingWrapper } from "../../../../components/UI/Typograpghy/style";
 import { CardWrapper } from "../../../../components/UI/cards/style";
 import { ProfileImageWrapper, OnlineIndicator, UserName } from "./style";
-import { SocialMedia, Followers } from "../../../UserProfile/style";
+import { Followers } from "../../../UserProfile/style";
 import { Progress } from "antd";
 
 export default function DisplayUser() {
@@ -23,7 +23,7 @@ export default function DisplayUser() {
             <div className="d-flex flex-column">
               <div className="d-flex align-items-center mb-2">
                 <UserName>Aaquib Ahmed</UserName>
-                <span className="fs-4">
+                <span style={{marginTop: '-10px'}} className="fs-4">
                   <FcApproval />
                 </span>
               </div>

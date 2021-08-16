@@ -38,8 +38,16 @@ export const OnlineIndicator = styled.div`
 
 export const UserName = styled.div`
   font-size: 1.5rem;
-  color: ##181c32;
-  font-weight:600;
+  color: #181c32;
+  font-weight: 600;
   font-family: "poppins", sans-serif;
-  margin-right: .25rem;
+  margin-right: 0.25rem;
+`;
+
+export const CardTitle = styled.div`
+  font-size: 1.2rem;
+  color: #181c32;
+  font-weight: 500;
+  font-family: "poppins", sans-serif;
+  padding-bottom: 0.5rem;
 `;
