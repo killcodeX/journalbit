@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyStorage } from "./redux/actions/useractions";
 import Home from "./container/Home";
@@ -14,17 +14,21 @@ import "./App.css";
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
+  const history = useHistory();
   const auth = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
     dispatch(verifyStorage());
-  }, []);
+    if (auth) {
+      history.push("/");
+    }
+  }, [auth]);
 
   return (
     <>
       {location.pathname !== "/login" &&
       location.pathname !== "/register" &&
-      location.pathname !== "/account-setting"? (
+      location.pathname !== "/account-setting" ? (
         <Header />
       ) : null}
       <Switch>

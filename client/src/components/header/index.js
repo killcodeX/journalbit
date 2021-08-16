@@ -1,6 +1,7 @@
 import React from "react";
 import { BsFillBellFill } from "react-icons/bs";
-import { AiOutlineUser, AiOutlineArrowRight, AiFillSetting } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineArrowRight } from "react-icons/ai";
+import { FcSettings} from "react-icons/fc";
 import { Menu, Dropdown } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import { receiveLogout } from "../../redux/actions/useractions";
@@ -30,7 +31,7 @@ export default function Header() {
       <Menu.Item key="1" icon={<AiOutlineUser />}>
         <Link to="/profile">View Profile</Link>
       </Menu.Item>
-      <Menu.Item key="2" icon={<AiFillSetting />}>
+      <Menu.Item key="2" icon={<FcSettings />}>
         <Link to="/account-setting">Account Setting</Link>
       </Menu.Item>
       <Menu.Divider />

@@ -1,5 +1,8 @@
 import React from "react";
-import { Seprator, HeadingWrapper } from "../../components/UI/Typograpghy/style";
+import {
+  Seprator,
+  HeadingWrapper,
+} from "../../components/UI/Typograpghy/style";
 import ProfilePost from "./profileDetails";
 import {
   ProfileWrapper,
@@ -11,7 +14,7 @@ import {
   UserName,
   UserDescription,
   SocialMedia,
-  Followers
+  Followers,
 } from "./style";
 
 export default function Profile() {
@@ -44,8 +47,8 @@ export default function Profile() {
             </UserDetails>
             <SocialMedia>
               <Followers>
-                <HeadingWrapper>0</HeadingWrapper>
-                <HeadingWrapper>Post</HeadingWrapper>
+                  <HeadingWrapper>0</HeadingWrapper>
+                  <HeadingWrapper>Post</HeadingWrapper>
               </Followers>
               <Followers>
                 <HeadingWrapper>0</HeadingWrapper>
