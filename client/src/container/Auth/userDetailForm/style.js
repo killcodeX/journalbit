@@ -84,4 +84,12 @@ export const FormLabel = styled.div`
   font-size: 1.075rem !important;
   font-weight: 500 !important;
   font-family: poppins;
+  &:after{
+    content: '${props => props.req? '*' : ''}';
+    position: relative;
+    font-size: inherit;
+    color: #f1416c;
+    padding-left: .25rem;
+    font-weight: 700;
+  }
 `;

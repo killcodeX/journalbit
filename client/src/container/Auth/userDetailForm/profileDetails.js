@@ -28,7 +28,7 @@ export default function ProfileDetails() {
       <div className="py-4 px-2">
         <div className="row mb-3">
           <div className="col-sm-3">
-            <FormLabel>Avatar</FormLabel>
+            <FormLabel req={true}>Avatar</FormLabel>
           </div>
           <div className="col-sm-9">
             <Upload
@@ -55,19 +55,19 @@ export default function ProfileDetails() {
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
-            <FormLabel>Profession</FormLabel>
+            <FormLabel req={true}>Profession</FormLabel>
           </div>
           <div className="col-sm-9">hi</div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
-            <FormLabel>City</FormLabel>
+            <FormLabel req={true} >City</FormLabel>
           </div>
           <div className="col-sm-9">hi</div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
-            <FormLabel>Bio</FormLabel>
+            <FormLabel req={true} >Bio</FormLabel>
           </div>
           <div className="col-sm-9">hi</div>
         </div>
