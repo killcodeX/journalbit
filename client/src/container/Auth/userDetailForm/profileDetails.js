@@ -5,10 +5,13 @@ import { CardWrapper } from "../../../components/UI/cards/style";
 import { CardTitle, FormLabel } from "./style";
 import { Upload } from "antd";
 import { beforeUpload } from "../../../helpers/avatarsetting";
+import { Form } from "react-bootstrap";
 
 export default function ProfileDetails() {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(
+    `${process.env.PUBLIC_URL}/assets/profileImage.jpg`
+  );
 
   const uploadButton = (
     <div>
@@ -51,49 +54,90 @@ export default function ProfileDetails() {
           <div className="col-sm-3">
             <FormLabel>Full Name</FormLabel>
           </div>
-          <div className="col-sm-9">hi</div>
+          <div className="col-sm-9">
+            <div className="row">
+              <div className="col-sm-6">
+                <Form.Group className="mb-3" controlId="fname">
+                  <Form.Control type="text" placeholder="Enter first name" />
+                </Form.Group>
+              </div>
+              <div className="col-sm-6">
+                <Form.Group className="mb-3" controlId="lname">
+                  <Form.Control type="text" placeholder="Enter last name" />
+                </Form.Group>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
-            <FormLabel req={true}>Profession</FormLabel>
+            <FormLabel req={true}>Work</FormLabel>
           </div>
-          <div className="col-sm-9">hi</div>
+          <div className="col-sm-9">
+            <Form.Group className="mb-3" controlId="work">
+              <Form.Control type="text" placeholder="Enter your work" />
+            </Form.Group>
+          </div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
-            <FormLabel req={true} >City</FormLabel>
+            <FormLabel req={true}>City</FormLabel>
           </div>
-          <div className="col-sm-9">hi</div>
+          <div className="col-sm-9">
+            <Form.Group className="mb-3" controlId="city">
+              <Form.Control type="text" placeholder="Enter your city" />
+            </Form.Group>
+          </div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
-            <FormLabel req={true} >Bio</FormLabel>
+            <FormLabel req={true}>Bio</FormLabel>
           </div>
-          <div className="col-sm-9">hi</div>
+          <div className="col-sm-9">
+            <Form.Group className="mb-3" controlId="bio">
+              <Form.Control type="text" placeholder="Enter bio" />
+            </Form.Group>
+          </div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
             <FormLabel>Linkedin</FormLabel>
           </div>
-          <div className="col-sm-9">hi</div>
+          <div className="col-sm-9">
+            <Form.Group className="mb-3" controlId="linkedin">
+              <Form.Control type="text" placeholder="Enter linkedin link" />
+            </Form.Group>
+          </div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
             <FormLabel>Reddit</FormLabel>
           </div>
-          <div className="col-sm-9">hi</div>
+          <div className="col-sm-9">
+            <Form.Group className="mb-3" controlId="reddit">
+              <Form.Control type="text" placeholder="Enter reddit link" />
+            </Form.Group>
+          </div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
             <FormLabel>Github</FormLabel>
           </div>
-          <div className="col-sm-9">hi</div>
+          <div className="col-sm-9">
+            <Form.Group className="mb-3" controlId="github">
+              <Form.Control type="text" placeholder="Enter github link" />
+            </Form.Group>
+          </div>
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
             <FormLabel>Facebook</FormLabel>
           </div>
-          <div className="col-sm-9">hi</div>
+          <div className="col-sm-9">
+            <Form.Group className="mb-3" controlId="facebook">
+              <Form.Control type="text" placeholder="Enter facebook link" />
+            </Form.Group>
+          </div>
         </div>
         <Seprator />
         <div className="d-flex justify-content-end py-2 px-3">
