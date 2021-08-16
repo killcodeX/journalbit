@@ -1,10 +1,10 @@
 import React from "react";
 import { FcApproval } from "react-icons/fc";
 import { AiOutlineUser, AiFillEnvironment } from "react-icons/ai";
-import { HeadingWrapper } from "../../../../components/UI/Typograpghy/style";
-import { CardWrapper } from "../../../../components/UI/cards/style";
+import { HeadingWrapper } from "../../../components/UI/Typograpghy/style";
+import { CardWrapper } from "../../../components/UI/cards/style";
 import { ProfileImageWrapper, OnlineIndicator, UserName } from "./style";
-import { Followers } from "../../../UserProfile/style";
+import { Followers } from "../../UserProfile/style";
 import { Progress } from "antd";
 
 export default function DisplayUser() {

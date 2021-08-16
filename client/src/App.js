@@ -7,7 +7,7 @@ import Header from "./components/header";
 import Login from "./container/Auth/login";
 import Register from "./container/Auth/register";
 import Profile from "./container/UserProfile";
-import UserDetailForm from "./container/Auth/register/userDetailForm";
+import UserDetailForm from "./container/Auth/userDetailForm";
 import ProtectedRoutes from "./protectedRoutes";
 import "./App.css";
 

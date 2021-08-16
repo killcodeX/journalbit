@@ -51,3 +51,29 @@ export const CardTitle = styled.div`
   font-family: "poppins", sans-serif;
   padding-bottom: 0.5rem;
 `;
+
+// account deactivate
+
+export const AccountWarning = styled.div`
+  display: flex;
+  border: 1px dashed #ffc700;
+  border-radius: 0.475rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #fff8dd;
+`;
+
+export const DeactivateSvg = styled.div`
+  color: #ffc700;
+  svg {
+    height: 2.05rem !important;
+    width: 2.05rem !important;
+  }
+`;
+
+export const WarningTitle = styled.div`
+  font-size: 1.15rem;
+  font-family: poppins;
+  color: #181c32 !important;
+`;

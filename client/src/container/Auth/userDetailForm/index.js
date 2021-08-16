@@ -1,5 +1,5 @@
 import React, { Profiler } from "react";
-import { TitleWrapper } from "../../../../components/UI/Typograpghy/style";
+import { TitleWrapper } from "../../../components/UI/Typograpghy/style";
 import { AccountSettingHead } from "./style";
 import UserCard from "./displayUser";
 import ProfileDetails from "./profileDetails";
