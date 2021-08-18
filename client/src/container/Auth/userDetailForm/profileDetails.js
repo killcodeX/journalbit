@@ -121,16 +121,6 @@ export default function ProfileDetails() {
         </div>
         <div className="row mb-3">
           <div className="col-sm-3">
-            <FormLabel>Github</FormLabel>
-          </div>
-          <div className="col-sm-9">
-            <Form.Group className="mb-3" controlId="github">
-              <Form.Control type="text" placeholder="Enter github link" />
-            </Form.Group>
-          </div>
-        </div>
-        <div className="row mb-3">
-          <div className="col-sm-3">
             <FormLabel>Facebook</FormLabel>
           </div>
           <div className="col-sm-9">

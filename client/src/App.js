@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Route, useLocation, useHistory } from "react-router-dom";
+import { Switch, Route, useLocation, useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyStorage } from "./redux/actions/useractions";
 import Home from "./container/Home";
@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     dispatch(verifyStorage());
     if (auth) {
-      history.push("/");
+      history.push('/')
     }
   }, [auth]);
 
