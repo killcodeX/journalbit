@@ -21,7 +21,7 @@ export const receiveLogin = (user, history) => async (dispatch) => {
   }
 };
 
-export const receiveSignUp = (user) => async (dispatch) => {
+export const receiveSignUp = (user, history) => async (dispatch) => {
   const result = await userRegister(user);
   try {
     dispatch({
@@ -29,6 +29,7 @@ export const receiveSignUp = (user) => async (dispatch) => {
       user: result.result,
       token: result.token,
     });
+    history.push("/account-setting");
   } catch (error) {
     console.log(error);
   }

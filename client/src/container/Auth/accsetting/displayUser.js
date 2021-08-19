@@ -7,13 +7,13 @@ import { ProfileImageWrapper, OnlineIndicator, UserName } from "./style";
 import { Followers } from "../../UserProfile/style";
 import { Progress } from "antd";
 
-export default function DisplayUser() {
+export default function DisplayUser({ user }) {
   return (
     <CardWrapper>
       <div className="d-flex flex-wrap flex-sm-nowrap">
         <ProfileImageWrapper>
           <img
-            src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
+            src={user.avatar}
             alt="image"
           />
           <OnlineIndicator />
@@ -22,8 +22,8 @@ export default function DisplayUser() {
           <div className="d-flex justify-content-between align-items-start flex-wrap mb-2">
             <div className="d-flex flex-column">
               <div className="d-flex align-items-center mb-2">
-                <UserName>Aaquib Ahmed</UserName>
-                <span style={{marginTop: '-10px'}} className="fs-4">
+                <UserName>{`${user.fname} ${user.lname}`}</UserName>
+                <span style={{ marginTop: "-10px" }} className="fs-4">
                   <FcApproval />
                 </span>
               </div>
@@ -35,13 +35,13 @@ export default function DisplayUser() {
                   <span className="me-1">
                     <AiOutlineUser />
                   </span>
-                  <span>Developer</span>
+                  <span>{user.work}</span>
                 </div>
                 <div className="d-flex align-items-center me-5 mb-2">
                   <span className="me-1">
                     <AiFillEnvironment />
                   </span>
-                  <span>SF, Bay Area</span>
+                  <span>{user.city}</span>
                 </div>
               </div>
             </div>

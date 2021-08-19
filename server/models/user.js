@@ -1,16 +1,18 @@
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema({
-  fname: String,
-  lname: String,
-  image: String,
-  email: String,
-  password: String,
+  fname: { type: String, required: true },
+  lname: { type: String, required: true },
+  avatar: { type: String, default: "https://res.cloudinary.com/journalbit/image/upload/v1629391409/userAvatar/l5vfhwbqgmynska51c2b.jpg" },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  work: { type: String, default: "Default Work" },
+  city: { type: String, default: "Default City" },
   bio: { type: String, default: "Hey! I am new to this Universe!" },
-  // posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
-  // followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  // following: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  // notifications: [{ type: Schema.Types.ObjectId, ref: "Notification" }],
+  linkedin: { type: String },
+  twitter: { type: String },
+  reddit: { type: String },
+  facebook: { type: String },
   createdAt: {
     type: Date,
     default: new Date(),

@@ -4,11 +4,13 @@ import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import { RegistrationSchema } from "../schema";
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import { receiveSignUp } from '../../../redux/actions/useractions'
 
 export default function RegisterForm() {
 
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const formik = useFormik({
     initialValues: {
@@ -19,7 +21,7 @@ export default function RegisterForm() {
     },
     validationSchema: RegistrationSchema,
     onSubmit: (values) => {
-      dispatch(receiveSignUp(values))
+      dispatch(receiveSignUp(values, history))
     },
   });
 

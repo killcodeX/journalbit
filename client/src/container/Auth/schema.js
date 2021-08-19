@@ -1,5 +1,11 @@
 import * as Yup from "yup";
 
+const url =
+  /^((http|https):\/\/)?(www.)?(?!.*(http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+(\/)?.([\w\?[a-zA-Z-_%\/@?]+)*([^\/\w\?[a-zA-Z0-9_-]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/;
+
+const facebookUrl =
+/(?:https?:\/\/)?(?:www\.)?(mbasic.facebook|m\.facebook|facebook|fb)\.(com|me)\/(?:(?:\w\.)*#!\/)?(?:pages\/)?(?:[\w\-\.]*\/)*([\w\-\.]*)/ig;
+
 export const RegistrationSchema = Yup.object().shape({
   fname: Yup.string()
     .min(2, "Too Short!")
@@ -21,6 +27,19 @@ export const LoginSchema = Yup.object().shape({
     .required("Password is required")
     .min(6, "Password is too short - should be 6 chars minimum"),
 });
+
+export const AccountSchema = Yup.object().shape({
+  fname: Yup.string().min(2, "Too Short!").max(10, "Too Long!").required("Required"),
+  lname: Yup.string().min(2, "Too Short!").max(10, "Too Long!").required("Required"),
+  work: Yup.string().required("Required"),
+  city: Yup.string().required("Required"),
+  bio: Yup.string().required("Required"),
+  linkedin: Yup.string().matches(url, "Enter linkedin correct url!"),
+  twitter: Yup.string().matches(url, "Enter twitter correct url!"),
+  reddit: Yup.string().matches(url, "Enter reddit correct url!"),
+  facebook: Yup.string().matches(facebookUrl, "Enter facebook correct url!"),
+});
+
 
 //profession: Yup.string().required('Choose one'),
 //confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
