@@ -6,8 +6,8 @@ import { AuthenticateToken } from "../middleware/tokenValidate.js";
 const router = express.Router();
 
 // User Routes
-router.post("/signup", AuthenticateToken, createUser);
-router.post("/signin", AuthenticateToken, loginUser); //AuthenticateToken,
+router.post("/signup", createUser);
+router.post("/signin", loginUser); //AuthenticateToken,
 
 // Post Routes
 router.get("/get-post", getPost);
