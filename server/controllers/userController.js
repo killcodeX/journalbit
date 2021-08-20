@@ -63,3 +63,26 @@ export const loginUser = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+
+// for updating user
+export const updateUser = async (req, res) => {
+  const { id, avatar, fname, lname, work, city, bio, linkedin, twitter, reddit, facebook } = req.body;
+  console.log(id, avatar, fname, lname, work, city, bio, linkedin, twitter, reddit, facebook );
+  try {
+    const existingUser = await UserMessage.findByIdAndUpdate({ id });
+    if (!existingUser)
+      return res.status(404).json({ message: "User doesn't exist" });
+    
+    console.log(existingUser)
+
+  //   const token = jwt.sign(
+  //     { email: existingUser.email, id: existingUser._id },
+  //     process.env.JWT_SECRET_KEY,
+  //   );
+
+  //   res.status(200).json({ result: existingUser, token });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

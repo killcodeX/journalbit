@@ -7,12 +7,15 @@ import { Upload } from "antd";
 import { beforeUpload } from "../../../helpers/avatarsetting";
 import { Form } from "react-bootstrap";
 import { ImageUploadAPI } from "../../../api/avatarUpload";
-import { useFormik, validateYupSchema } from "formik";
+import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { AccountSchema } from "../schema";
+import { receiveUpdate } from "../../../redux/actions/useractions";
+import { useHistory } from "react-router-dom";
 
 export default function ProfileDetails({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState(user.avatar);
 
@@ -32,8 +35,11 @@ export default function ProfileDetails({ user }) {
     validationSchema: AccountSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      //dispatch(receiveLogin(values, history));
-      console.log(values);
+      const body = {
+        ...values,
+        id: user._id,
+      };
+      dispatch(receiveUpdate(body, history));
     },
   });
 

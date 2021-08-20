@@ -3,6 +3,7 @@ import {
   LOGOUT_SUCCESS,
   SIGNUP_SUCCESS,
   VERIFY_LOCAL_STORAGE,
+  UPDATE_USER,
 } from "../actions/actionconstant";
 
 import { saveState, loadState } from "../../helpers/localStorage";
@@ -36,6 +37,12 @@ const AuthReducer = (state = initialState, action) => {
         isAuthenticated: true,
         user: action.user,
         token: action.token,
+      };
+    case UPDATE_USER:
+      saveState("journalUser", action.user);
+      return {
+        ...state,
+        user: action.user,
       };
     case LOGOUT_SUCCESS:
       saveState("journalLoggedIn", false);

@@ -3,9 +3,11 @@ import {
   SIGNUP_SUCCESS,
   LOGOUT_SUCCESS,
   VERIFY_LOCAL_STORAGE,
+  UPDATE_USER
 } from "./actionconstant";
 
-import { userRegister, userLogin } from "../../api/index";
+import { userRegister, userLogin, userUpdate } from "../../api/index";
+import ListBody from "antd/lib/transfer/ListBody";
 
 export const receiveLogin = (user, history) => async (dispatch) => {
   const result = await userLogin(user);
@@ -45,4 +47,18 @@ export const verifyStorage = () => {
   return {
     type: VERIFY_LOCAL_STORAGE,
   };
+};
+
+
+export const receiveUpdate = (body) => async (dispatch) => {
+  const result = await userUpdate(body);
+  try {
+    dispatch({
+      type: UPDATE_USER,
+      user: result.result,
+    });
+    //history.push("/account-setting");
+  } catch (error) {
+    console.log(error);
+  }
 };

@@ -8,15 +8,17 @@ const openNotificationWithIcon = (type, title, message) => {
   });
 };
 
-const ApiFunc = axios.create({ baseURL: "http://localhost:5000"})
+const ApiFunc = axios.create({ baseURL: "http://localhost:5000" });
 
 ApiFunc.interceptors.request.use((req) => {
-  console.log('token from Api',localStorage.getItem('journaltoken'))
-  if(localStorage.getItem('journaltoken')){
-    req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem('journaltoken'))}`
+  console.log("token from Api", localStorage.getItem("journaltoken"));
+  if (localStorage.getItem("journaltoken")) {
+    req.headers.authorization = `Bearer ${JSON.parse(
+      localStorage.getItem("journaltoken")
+    )}`;
   }
-  return req
-})
+  return req;
+});
 
 // User Api
 export const userRegister = async (body) => {
@@ -45,6 +47,21 @@ export const userLogin = async (body) => {
       openNotificationWithIcon(
         "error",
         "Login Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
+export const userUpdate = async (body) => {
+  try {
+    const data = await ApiFunc.put(`/journalbit/update-user`, body);
+    console.log(data);
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Updating User Failed",
         error.response.data.message
       );
     }
