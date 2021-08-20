@@ -41,6 +41,12 @@ export const AccountSchema = Yup.object().shape({
 });
 
 
+export const PostSchema = Yup.object().shape({
+  url: Yup.string().matches(url, "Enter only url!"),
+  topic: Yup.string().required("Required"),
+});
+
+
 //profession: Yup.string().required('Choose one'),
 //confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
 //address:Yup.string().required('Required'),

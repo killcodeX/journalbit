@@ -4,7 +4,7 @@ const { ObjectId } = mongoose.Schema.Types;
 
 const postSchema = new mongoose.Schema({
   url: { type: String, required: true },
-  topic: { type: string },
+  topic: { type: String },
   postedBy: { type: ObjectId, ref: "UserMessage" },
   likes: [{ type: ObjectId, ref: "UserMessage" }],
   comments: [

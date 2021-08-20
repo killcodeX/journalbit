@@ -8,7 +8,7 @@ const openNotificationWithIcon = (type, title, message) => {
   });
 };
 
-const ApiFunc = axios.create({ baseURL: "http://localhost:5000" });
+export const ApiFunc = axios.create({ baseURL: "http://localhost:5000" });
 
 ApiFunc.interceptors.request.use((req) => {
   console.log("token from Api", localStorage.getItem("journaltoken"));
@@ -23,7 +23,7 @@ ApiFunc.interceptors.request.use((req) => {
 // User Api
 export const userRegister = async (body) => {
   try {
-    const { data } = await axios.post(`/journalbit/signup`, body);
+    const { data } = await ApiFunc.post(`/journalbit/signup`, body);
     openNotificationWithIcon("success", "Signup Successful", "");
     return data;
   } catch (error) {

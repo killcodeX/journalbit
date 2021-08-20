@@ -2,9 +2,7 @@ import React from "react";
 import {
   PostWrapper,
   ProfileWrapper,
-  InputWrapper,
   InputIconWrapper,
-  InputBar,
   PostDown,
   PostButton,
 } from "./style";
@@ -15,36 +13,105 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 import Posts from "../../components/Posts";
 import { links } from "../../mock-data";
 import { useSelector } from "react-redux";
+import { useFormik } from "formik";
+import styled from "styled-components";
+import { PostSchema } from "../Auth/schema";
+import { newPostPublish } from "../../api/postapi";
+
+export const InputWrapper = styled(Form.Group)`
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  position: relative;
+  margin: 0.25rem 0;
+  width: 80%;
+`;
+
+const InputBar = styled(Form.Control)`
+  background-color: #f5f8fa;
+  border-color: #f5f8fa;
+  color: #5e6278;
+  width: 100%;
+  height: 50px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding-left: 3.25rem !important;
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+  font-size: 0.925rem;
+  border: 1px solid #e4e6ef;
+  appearance: none;
+  border-radius: 0.475rem;
+  display: block;
+  font-weight: 500;
+  line-height: 1.5;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
 
 export default function PostSide() {
-  const User = useSelector(state => state.auth.user)
+  const User = useSelector((state) => state.auth.user);
+
+  const formik = useFormik({
+    initialValues: {
+      url: "",
+      topic: "",
+    },
+    validationSchema: PostSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   return (
     <PostWrapper>
       <CardWrapper>
-        <CardToolBar>
-          <ProfileWrapper>
-            <img
-              src={User.avatar}
-              alt="profile"
-            />
-          </ProfileWrapper>
-          <InputWrapper>
-            <InputIconWrapper>
-              <AiOutlineThunderbolt />
-            </InputIconWrapper>
-            <InputBar type="text" placeholder="Share new journal" />
-          </InputWrapper>
-        </CardToolBar>
-        <Seprator />
-        <PostDown>
-          <Form.Select className="post-select" aria-label="Select Topic">
-            <option>Select Topic</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </Form.Select>
-          <PostButton>Post</PostButton>
-        </PostDown>
+        <Form onSubmit={formik.handleSubmit}>
+          <CardToolBar>
+            <ProfileWrapper>
+              <img src={User.avatar} alt="profile" />
+            </ProfileWrapper>
+            <InputWrapper controlId="url">
+              <InputIconWrapper>
+                <AiOutlineThunderbolt />
+              </InputIconWrapper>
+              <InputBar
+                type="text"
+                placeholder="Enter Journal link"
+                value={formik.values.url}
+                onChange={formik.handleChange}
+                isInvalid={formik.errors.url}
+              />
+              <Form.Control.Feedback type="invalid">
+                {formik.errors.url}
+              </Form.Control.Feedback>
+            </InputWrapper>
+          </CardToolBar>
+          <Seprator />
+          <PostDown>
+            <Form.Group controlId="topic">
+              <Form.Control
+                as="select"
+                onChange={formik.handleChange}
+                isInvalid={formik.errors.topic}
+              >
+                <option value={null}>Topic</option>
+                <option value="Front End Developer">Front End Developer</option>
+                <option value="Back End Developer">Back End Developer</option>
+                <option value="Native App Developer">
+                  Native App Developer
+                </option>
+                <option value="Data Scientist">Data Scientist</option>
+              </Form.Control>
+              <Form.Control.Feedback type="invalid">
+                {formik.errors.topic}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <PostButton type="submit">Post</PostButton>
+          </PostDown>
+        </Form>
       </CardWrapper>
       <div className="mt-4">
         {links.map((link) => {

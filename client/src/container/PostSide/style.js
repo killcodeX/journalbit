@@ -29,17 +29,18 @@ export const ProfileWrapper = styled.div`
   }
 `;
 
-export const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin: 0.25rem 0;
-  width: 80%;
-`;
+// export const InputWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+//   margin: 0.25rem 0;
+//   width: 80%;
+// `;
 
 export const InputIconWrapper = styled.div`
   position: absolute;
-  left: 8px;
+  top:13px;
+  left: 13px;
   color: red;
   svg {
     width: 25px;
@@ -47,28 +48,28 @@ export const InputIconWrapper = styled.div`
   }
 `;
 
-export const InputBar = styled.input`
-  background-color: #f5f8fa;
-  border-color: #f5f8fa;
-  color: #5e6278;
-  width: 100%;
-  height: 50px;
-  transition: color 0.2s ease, background-color 0.2s ease;
-  padding-left: 3.25rem !important;
-  padding-top: 0.55rem;
-  padding-bottom: 0.55rem;
-  font-size: 0.925rem;
-  border: 1px solid #e4e6ef;
-  appearance: none;
-  border-radius: 0.475rem;
-  display: block;
-  font-weight: 500;
-  line-height: 1.5;
+// export const InputBar = styled.input`
+//   background-color: #f5f8fa;
+//   border-color: #f5f8fa;
+//   color: #5e6278;
+//   width: 100%;
+//   height: 50px;
+//   transition: color 0.2s ease, background-color 0.2s ease;
+//   padding-left: 3.25rem !important;
+//   padding-top: 0.55rem;
+//   padding-bottom: 0.55rem;
+//   font-size: 0.925rem;
+//   border: 1px solid #e4e6ef;
+//   appearance: none;
+//   border-radius: 0.475rem;
+//   display: block;
+//   font-weight: 500;
+//   line-height: 1.5;
 
-  &:focus {
-    outline: none;
-  }
-`;
+//   &:focus {
+//     outline: none;
+//   }
+// `;
 
 // export const SelectBar = styled.select`
 
