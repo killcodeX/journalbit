@@ -18,6 +18,7 @@ import styled from "styled-components";
 import { PostSchema } from "../../helpers/schema";
 import { newPostPublish } from "../../api/postapi";
 import { topics } from "../../mock-data";
+import { message } from "antd";
 
 export const InputWrapper = styled(Form.Group)`
   display: flex;
@@ -63,6 +64,7 @@ export default function PostSide() {
     validationSchema: PostSchema,
     onSubmit: (values) => {
       newPostPublish(values);
+      message.loading("Publishing..", 3)
     },
   });
 
@@ -97,10 +99,13 @@ export default function PostSide() {
                 as="select"
                 onChange={formik.handleChange}
                 isInvalid={formik.errors.topic}
-                value="Select Topic ..."
               >
                 {topics.map((topic) => {
-                  return <option key={topic.id} value={topic.slug}>{topic.name}</option>;
+                  return (
+                    <option key={topic.id} value={topic.slug}>
+                      {topic.name}
+                    </option>
+                  );
                 })}
               </Form.Control>
               <Form.Control.Feedback type="invalid">

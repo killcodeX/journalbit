@@ -3,8 +3,13 @@ import mongoose from "mongoose";
 const { ObjectId } = mongoose.Schema.Types;
 
 const postSchema = new mongoose.Schema({
+  title:{ type: String, required: true },
+  author:{ type: String, required: true },
+  description:{ type: String, required: true },
+  image: { type: String, required: true },
+  publisher: { type: String, required: true },
   url: { type: String, required: true },
-  topic: { type: String },
+  topic: { type: String, required: true },
   postedBy: { type: ObjectId, ref: "UserMessage" },
   likes: [{ type: ObjectId, ref: "UserMessage" }],
   comments: [

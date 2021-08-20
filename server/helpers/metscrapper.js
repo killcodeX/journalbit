@@ -13,7 +13,11 @@ const metascraper = require('metascraper')([
 const got = require('got')
 
 export const getMetData = async (link) => {
-  const { body: html, url } = await got(link)
+  try{
+    const { body: html, url } = await got(link)
   const metadata = await metascraper({ html, url })
   return metadata;
+  } catch(error){
+    console.log(error)
+  }
 }
