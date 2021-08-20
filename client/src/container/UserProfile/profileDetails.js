@@ -14,7 +14,7 @@ import {
 } from "react-icons/ai";
 import { SocialMediaProfiles, UserIntro } from "./style";
 
-export default function ProfileDetails() {
+export default function ProfileDetails({user}) {
   return (
     <div className="pt-4">
       <div className="row">
@@ -29,15 +29,15 @@ export default function ProfileDetails() {
             <UserIntro>
               <p>
                 <strong>
-                  <AiFillEdit />{` `}Works in
+                  <AiFillEdit />{` `}Work as
                 </strong>
-                {` `}Devcript
+                {` `}{user.work}
               </p>
               <span>
                 <strong>
                   <AiFillEnvironment />{` `}Lives in
                 </strong>
-                {` `}Banagalore
+                {` `}{user.city}
               </span>
               <SocialMediaProfiles>
                 <AiFillGithub />

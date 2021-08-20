@@ -14,15 +14,17 @@ import { CardWrapper, CardToolBar } from "../../components/UI/cards/style";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import Posts from "../../components/Posts";
 import { links } from "../../mock-data";
+import { useSelector } from "react-redux";
 
 export default function PostSide() {
+  const User = useSelector(state => state.auth.user)
   return (
     <PostWrapper>
       <CardWrapper>
         <CardToolBar>
           <ProfileWrapper>
             <img
-              src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
+              src={User.avatar}
               alt="profile"
             />
           </ProfileWrapper>

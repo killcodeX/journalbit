@@ -5,7 +5,7 @@ import { FcSettings} from "react-icons/fc";
 import { Menu, Dropdown } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import { receiveLogout } from "../../redux/actions/useractions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   HeaderWrapper,
   LogoWrapper,
@@ -17,6 +17,7 @@ import {
 
 export default function Header() {
   const dispatch = useDispatch();
+  const User = useSelector(state => state.auth.user)
   const history = useHistory();
 
   const handlelogout = ({ key }) => {
@@ -56,7 +57,7 @@ export default function Header() {
         <Dropdown overlay={menu} trigger={["click"]}>
           <ProfileWrapper>
             <img
-              src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
+              src={User.avatar}
               alt="profile"
             />
           </ProfileWrapper>

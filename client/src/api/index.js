@@ -55,8 +55,9 @@ export const userLogin = async (body) => {
 
 export const userUpdate = async (body) => {
   try {
-    const data = await ApiFunc.put(`/journalbit/update-user`, body);
-    console.log(data);
+    const { data }  = await ApiFunc.put(`/journalbit/update-user`, body);
+    openNotificationWithIcon("success", "User Update Successful", "");
+    return data;
   } catch (error) {
     if (error.response) {
       openNotificationWithIcon(

@@ -39,6 +39,7 @@ const AuthReducer = (state = initialState, action) => {
         token: action.token,
       };
     case UPDATE_USER:
+      console.log('called')
       saveState("journalUser", action.user);
       return {
         ...state,

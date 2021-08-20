@@ -50,14 +50,14 @@ export const verifyStorage = () => {
 };
 
 
-export const receiveUpdate = (body) => async (dispatch) => {
+export const receiveUpdate = (body, history) => async (dispatch) => {
   const result = await userUpdate(body);
   try {
     dispatch({
       type: UPDATE_USER,
       user: result.result,
     });
-    //history.push("/account-setting");
+    history.push("/");
   } catch (error) {
     console.log(error);
   }

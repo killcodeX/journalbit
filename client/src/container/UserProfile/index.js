@@ -4,6 +4,7 @@ import {
   HeadingWrapper,
 } from "../../components/UI/Typograpghy/style";
 import ProfilePost from "./profileDetails";
+import { useSelector } from "react-redux";
 import {
   ProfileWrapper,
   BannerWrapper,
@@ -18,6 +19,7 @@ import {
 } from "./style";
 
 export default function Profile() {
+  const User = useSelector(state => state.auth.user)
   return (
     <div className="section">
       <div className="container">
@@ -29,7 +31,7 @@ export default function Profile() {
             />
             <AvatarWrapper>
               <img
-                src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
+                src={User.avatar}
                 alt="profile"
               />
             </AvatarWrapper>
@@ -37,12 +39,9 @@ export default function Profile() {
           <ProfileDetails>
             <Seprator />
             <UserDetails>
-              <UserName>Aaquib Ahmed</UserName>
+              <UserName>{`${User.fname} ${User.lname}`}</UserName>
               <UserDescription>
-                Perhaps the most important lesson I have learned during my
-                tenure thus far in life is stepping out of my comfort zone. I
-                wish to broaden my horizons and put in the hard work and
-                dedication it takes to grow in my career.
+                {User.bio}
               </UserDescription>
             </UserDetails>
             <SocialMedia>
@@ -60,7 +59,7 @@ export default function Profile() {
               </Followers>
             </SocialMedia>
           </ProfileDetails>
-          <ProfilePost />
+          <ProfilePost user={User} />
         </ProfileWrapper>
       </div>
     </div>

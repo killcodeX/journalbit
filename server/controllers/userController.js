@@ -51,11 +51,13 @@ export const loginUser = async (req, res) => {
       existingUser.password
     );
     if (!isPasswordCorrect)
-      return res.status(400).json({ message: "Your username and/or password do not match" });
+      return res
+        .status(400)
+        .json({ message: "Your username and/or password do not match" });
 
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
-      process.env.JWT_SECRET_KEY,
+      process.env.JWT_SECRET_KEY
     );
 
     res.status(200).json({ result: existingUser, token });
@@ -64,24 +66,44 @@ export const loginUser = async (req, res) => {
   }
 };
 
-
 // for updating user
 export const updateUser = async (req, res) => {
-  const { id, avatar, fname, lname, work, city, bio, linkedin, twitter, reddit, facebook } = req.body;
-  console.log(id, avatar, fname, lname, work, city, bio, linkedin, twitter, reddit, facebook );
+  const {
+    id,
+    avatar,
+    fname,
+    lname,
+    work,
+    city,
+    bio,
+    linkedin,
+    twitter,
+    reddit,
+    facebook,
+  } = req.body;
+  const data = req.body;
+  console.log({
+    id: id,
+    avatar: avatar,
+    fname: fname,
+    lname: lname,
+    work: work,
+    city: city,
+    bio: bio,
+    linkedin: linkedin,
+    twitter: twitter,
+    reddit: reddit,
+    facebook: facebook,
+  });
   try {
-    const existingUser = await UserMessage.findByIdAndUpdate({ id });
-    if (!existingUser)
-      return res.status(404).json({ message: "User doesn't exist" });
-    
-    console.log(existingUser)
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res.status(404).send("No User with that Id");
 
-  //   const token = jwt.sign(
-  //     { email: existingUser.email, id: existingUser._id },
-  //     process.env.JWT_SECRET_KEY,
-  //   );
+    const updatedUser = await UserMessage.findByIdAndUpdate(id, data, {
+      new: true,
+    });
 
-  //   res.status(200).json({ result: existingUser, token });
+    res.status(200).json({ result: updatedUser });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
