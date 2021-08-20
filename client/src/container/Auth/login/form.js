@@ -3,7 +3,7 @@ import { FormWrapper, FormButton } from "../style";
 import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
-import { LoginSchema } from "../schema";
+import { LoginSchema } from "../../../helpers/schema";
 import { useDispatch } from "react-redux";
 import { receiveLogin } from "../../../redux/actions/useractions";
 

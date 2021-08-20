@@ -9,7 +9,7 @@ import { Form } from "react-bootstrap";
 import { ImageUploadAPI } from "../../../api/avatarUpload";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { AccountSchema } from "../schema";
+import { AccountSchema } from "../../../helpers/schema";
 import { receiveUpdate } from "../../../redux/actions/useractions";
 import { useHistory } from "react-router-dom";
 

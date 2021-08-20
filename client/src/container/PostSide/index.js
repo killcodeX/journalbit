@@ -15,12 +15,13 @@ import { links } from "../../mock-data";
 import { useSelector } from "react-redux";
 import { useFormik } from "formik";
 import styled from "styled-components";
-import { PostSchema } from "../Auth/schema";
+import { PostSchema } from "../../helpers/schema";
 import { newPostPublish } from "../../api/postapi";
+import { topics } from "../../mock-data";
 
 export const InputWrapper = styled(Form.Group)`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   position: relative;
   margin: 0.25rem 0;
@@ -96,14 +97,11 @@ export default function PostSide() {
                 as="select"
                 onChange={formik.handleChange}
                 isInvalid={formik.errors.topic}
+                value="Select Topic ..."
               >
-                <option value={null}>Topic</option>
-                <option value="Front End Developer">Front End Developer</option>
-                <option value="Back End Developer">Back End Developer</option>
-                <option value="Native App Developer">
-                  Native App Developer
-                </option>
-                <option value="Data Scientist">Data Scientist</option>
+                {topics.map((topic) => {
+                  return <option key={topic.id} value={topic.slug}>{topic.name}</option>;
+                })}
               </Form.Control>
               <Form.Control.Feedback type="invalid">
                 {formik.errors.topic}

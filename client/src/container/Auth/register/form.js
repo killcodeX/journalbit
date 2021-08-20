@@ -2,7 +2,7 @@ import React from "react";
 import { FormWrapper, FormButton } from "../style";
 import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
-import { RegistrationSchema } from "../schema";
+import { RegistrationSchema } from "../../../helpers/schema";
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { receiveSignUp } from '../../../redux/actions/useractions'
