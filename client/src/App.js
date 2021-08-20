@@ -35,7 +35,7 @@ function App() {
         <ProtectedRoutes exact path="/" auth={auth} component={Home} />
         <ProtectedRoutes
           exact
-          path="/profile"
+          path="/profile/:id"
           auth={auth}
           component={Profile}
         />

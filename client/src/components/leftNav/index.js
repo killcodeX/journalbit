@@ -1,7 +1,7 @@
 import React from "react";
 import { TitleWrapper } from "../UI/Typograpghy/style";
 import { CardHeader, CardWrapper } from "../UI/cards/style";
-import { LeftNavWrapper } from "./style";
+import { LeftNavWrapper, SelectTopic } from "./style";
 import { AiFillProject } from "react-icons/ai";
 import { topics } from "../../mock-data";
 
@@ -16,8 +16,8 @@ export default function LeftNav() {
           </TitleWrapper>
         </CardHeader>
 
-        {topics.map((topic, index) => {
-          return <p key={index}>{topic}</p>;
+        {topics.map((topic) => {
+          return <SelectTopic key={topic.id}>{topic.name}</SelectTopic>;
         })}
       </CardWrapper>
 

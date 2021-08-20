@@ -6,8 +6,7 @@ import {
   UPDATE_USER
 } from "./actionconstant";
 
-import { userRegister, userLogin, userUpdate } from "../../api/index";
-import ListBody from "antd/lib/transfer/ListBody";
+import { userRegister, userLogin, userUpdate, getUser } from "../../api/index";
 
 export const receiveLogin = (user, history) => async (dispatch) => {
   const result = await userLogin(user);
@@ -58,6 +57,19 @@ export const receiveUpdate = (body, history) => async (dispatch) => {
       user: result.result,
     });
     history.push("/");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const getUserdata = (id) => async (dispatch) => {
+  const result = await getUser(id);
+  try {
+    // dispatch({
+    //   type: UPDATE_USER,
+    //   user: result.result,
+    // });
   } catch (error) {
     console.log(error);
   }

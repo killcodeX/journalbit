@@ -108,3 +108,17 @@ export const updateUser = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const getUser = async (req, res) => {
+  const { id } = req.params;
+  console.log('id received', id);
+  try {
+    const existingUser = await UserMessage.findById(id);
+    if (!existingUser)
+      return res.status(404).json({ message: "User doesn't exist" });
+
+    res.status(200).json({ result: existingUser }); //{ result: existingUser }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

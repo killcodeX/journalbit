@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Seprator,
   HeadingWrapper,
 } from "../../components/UI/Typograpghy/style";
-import ProfilePost from "./profileDetails";
-import { useSelector } from "react-redux";
 import {
   ProfileWrapper,
   BannerWrapper,
@@ -17,9 +15,19 @@ import {
   SocialMedia,
   Followers,
 } from "./style";
+import ProfilePost from "./profileDetails";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getUserdata } from "../../redux/actions/useractions";
 
 export default function Profile() {
-  const User = useSelector(state => state.auth.user)
+  const User = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getUserdata(id));
+  }, []);
   return (
     <div className="section">
       <div className="container">
@@ -30,24 +38,19 @@ export default function Profile() {
               alt="banner"
             />
             <AvatarWrapper>
-              <img
-                src={User.avatar}
-                alt="profile"
-              />
+              <img src={User.avatar} alt="profile" />
             </AvatarWrapper>
           </BannerWrapper>
           <ProfileDetails>
             <Seprator />
             <UserDetails>
               <UserName>{`${User.fname} ${User.lname}`}</UserName>
-              <UserDescription>
-                {User.bio}
-              </UserDescription>
+              <UserDescription>{User.bio}</UserDescription>
             </UserDetails>
             <SocialMedia>
               <Followers>
-                  <HeadingWrapper>0</HeadingWrapper>
-                  <HeadingWrapper>Post</HeadingWrapper>
+                <HeadingWrapper>0</HeadingWrapper>
+                <HeadingWrapper>Post</HeadingWrapper>
               </Followers>
               <Followers>
                 <HeadingWrapper>0</HeadingWrapper>

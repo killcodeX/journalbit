@@ -11,7 +11,6 @@ const openNotificationWithIcon = (type, title, message) => {
 export const ApiFunc = axios.create({ baseURL: "http://localhost:5000" });
 
 ApiFunc.interceptors.request.use((req) => {
-  console.log("token from Api", localStorage.getItem("journaltoken"));
   if (localStorage.getItem("journaltoken")) {
     req.headers.authorization = `Bearer ${JSON.parse(
       localStorage.getItem("journaltoken")
@@ -58,6 +57,21 @@ export const userUpdate = async (body) => {
     const { data }  = await ApiFunc.put(`/journalbit/update-user`, body);
     openNotificationWithIcon("success", "User Update Successful", "");
     return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Updating User Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
+export const getUser = async (id) => {
+  try {
+    const { data }  = await ApiFunc.get(`/journalbit/get-user/${id}`);
+    return data
   } catch (error) {
     if (error.response) {
       openNotificationWithIcon(

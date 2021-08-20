@@ -14,7 +14,7 @@ export default function UserDetailForm() {
     setUser(loadState("journalUser"));
   }, []);
 
-  console.log(user)
+  
   if(user == undefined){
     return <Spin />
   }

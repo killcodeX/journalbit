@@ -61,7 +61,7 @@ export default function PostSide() {
     },
     validationSchema: PostSchema,
     onSubmit: (values) => {
-      console.log(values);
+      newPostPublish(values);
     },
   });
 

@@ -24,12 +24,46 @@ export const news = [
 ];
 
 export const topics = [
-  "Crypto",
-  "Blockchain",
-  "Anime",
-  "POP Culture",
-  "Hollywood News",
-  "Web Designs",
+  {
+    id: 1,
+    name:'Crypto',
+    slug:'crypto'
+  },
+  {
+    id: 2,
+    name:'Business',
+    slug:'business'
+  },
+  {
+    id: 3,
+    name:'Web Development',
+    slug:'web development'
+  },
+  {
+    id: 4,
+    name:'Entertainment',
+    slug:'entertainment'
+  },
+  {
+    id: 5,
+    name:'Technology',
+    slug:'technology'
+  },
+  {
+    id: 6,
+    name:'Software',
+    slug:'software'
+  },
+  {
+    id: 7,
+    name:'Politics',
+    slug:'politics'
+  },
+  {
+    id: 8,
+    name:'Gaming',
+    slug:'gaming'
+  },
 ];
 export const tags = ["#React", "#Angular", "#CSS", "#HTML"];
 
