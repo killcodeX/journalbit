@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Posts from "../../components/Posts";
 import { CardWrapper, CardHeader } from "../../components/UI/cards/style";
 import { TitleWrapper } from "../../components/UI/Typograpghy/style";
-import { links } from "../../mock-data";
 import {
   AiFillContainer,
   AiFillEdit,

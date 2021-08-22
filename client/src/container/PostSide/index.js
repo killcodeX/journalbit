@@ -11,7 +11,6 @@ import { Form } from "react-bootstrap";
 import { CardWrapper, CardToolBar } from "../../components/UI/cards/style";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import Posts from "../../components/Posts";
-import { links } from "../../mock-data";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import styled from "styled-components";
