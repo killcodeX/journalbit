@@ -1,9 +1,7 @@
 import PostMessage from "../models/post.js";
-import mongoose from "mongoose";
 import { getMetData } from "../helpers/metscrapper.js";
 
 // POST Controllers
-
 export const newPost = async (req, res) => {
   const post = req.body;
   const data = await getMetData(post.url);
