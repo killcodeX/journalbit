@@ -2,6 +2,9 @@ import jwt from 'jsonwebtoken';
 
 export const AuthenticateToken = async (req, res, next) => {
     try {
+        if(!req.headers.authorization){
+            return res.status(401).json('You are not authorised')
+        }
         const token = req.headers.authorization.split(' ')[1];
         const isCustomauth = token.length < 500;
 
@@ -17,5 +20,6 @@ export const AuthenticateToken = async (req, res, next) => {
         next();
     } catch (error) {
         console.log(error)
+        return res.status(404).json(error.message)
     }
 }

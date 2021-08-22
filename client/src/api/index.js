@@ -12,7 +12,7 @@ export const ApiFunc = axios.create({ baseURL: "http://localhost:5000" });
 
 ApiFunc.interceptors.request.use((req) => {
   if (localStorage.getItem("journaltoken")) {
-    req.headers.authorization = `Bearer ${JSON.parse(
+    req.headers.Authorization = `Bearer ${JSON.parse(
       localStorage.getItem("journaltoken")
     )}`;
   }

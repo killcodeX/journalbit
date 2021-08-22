@@ -1,14 +1,23 @@
 import PostMessage from "../models/post.js";
 import mongoose from "mongoose";
-import { getMetData } from '../helpers/metscrapper.js';
 
-// POST Controllers
+// Get Controllers
 
-export const getPost = async (req, res) => {
-  const post = req.body;
-  getMetData(post.url)
+export const getAllPost = async (req, res) => {
   try {
-    res.status(200).json('hello world');
+    let data = await PostMessage.find().populate("postedBy", "id fname lname avatar work")
+    //console.log(data)
+    res.status(200).json({result: data});
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getUserPost = async (req, res) => {
+  try {
+    let data = await PostMessage.find({postedBy:req.userId}).populate("postedBy", "id fname lname avatar work")
+    //console.log(data)
+    res.status(200).json({result: data});
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

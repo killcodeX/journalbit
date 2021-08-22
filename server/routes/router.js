@@ -3,9 +3,10 @@ import {
   createUser,
   loginUser,
   updateUser,
-  getUser
+  getUser,
 } from "../controllers/userController.js";
 import { newPost } from "../controllers/postController.js";
+import { getAllPost, getUserPost } from "../controllers/getController.js";
 import { AuthenticateToken } from "../middleware/tokenValidate.js";
 
 const router = express.Router();
@@ -14,9 +15,11 @@ const router = express.Router();
 router.post("/signup", createUser);
 router.post("/signin", loginUser); //AuthenticateToken,
 router.put("/update-user", AuthenticateToken, updateUser);
-router.get("/get-user/:id", AuthenticateToken, getUser)
+router.get("/get-user/:id", AuthenticateToken, getUser);
 
 // Post Routes
 router.post("/new-post", AuthenticateToken, newPost);
+router.get("/allpost", getAllPost); // AuthenticateToken
+router.get("/mypost", AuthenticateToken, getUserPost); // AuthenticateToken
 
 export default router;
