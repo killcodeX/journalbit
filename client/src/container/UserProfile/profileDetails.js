@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Posts from "../../components/Posts";
 import { CardWrapper, CardHeader } from "../../components/UI/cards/style";
 import { TitleWrapper } from "../../components/UI/Typograpghy/style";
@@ -10,11 +10,20 @@ import {
   AiFillGithub,
   AiFillLinkedin,
   AiFillRedditCircle,
-  AiFillFacebook
+  AiFillFacebook,
 } from "react-icons/ai";
 import { SocialMediaProfiles, UserIntro } from "./style";
+import { useDispatch, useSelector } from "react-redux";
+import { getOnlyUserPost } from "../../redux/actions/postactions";
 
-export default function ProfileDetails({user}) {
+export default function ProfileDetails({ user }) {
+  const dispatch = useDispatch();
+  const userPosts = useSelector((state) => state.post.userPost);
+  console.log(userPosts);
+  useEffect(() => {
+    dispatch(getOnlyUserPost());
+  }, []);
+
   return (
     <div className="pt-4">
       <div className="row">
@@ -29,29 +38,35 @@ export default function ProfileDetails({user}) {
             <UserIntro>
               <p>
                 <strong>
-                  <AiFillEdit />{` `}Work as
+                  <AiFillEdit />
+                  {` `}Work as
                 </strong>
-                {` `}{user.work}
+                {` `}
+                {user.work}
               </p>
               <span>
                 <strong>
-                  <AiFillEnvironment />{` `}Lives in
+                  <AiFillEnvironment />
+                  {` `}Lives in
                 </strong>
-                {` `}{user.city}
+                {` `}
+                {user.city}
               </span>
               <SocialMediaProfiles>
                 <AiFillGithub />
-                <AiFillLinkedin/>
-                <AiFillRedditCircle/>
-                <AiFillFacebook/>
+                <AiFillLinkedin />
+                <AiFillRedditCircle />
+                <AiFillFacebook />
               </SocialMediaProfiles>
             </UserIntro>
           </CardWrapper>
         </div>
         <div className="col-sm-8">
-          {links.map((link) => {
-            return <Posts link={link} />;
-          })}
+          {(userPosts && userPosts.length > 0)
+            ? userPosts.map((post) => {
+                return <Posts key={post._id} post={post} />;
+              })
+            : 'loading...'}
         </div>
       </div>
     </div>

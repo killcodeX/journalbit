@@ -28,42 +28,42 @@ import {
   AiFillHeart,
 } from "react-icons/ai";
 
-export default function Post({ link }) {
+export default function Post({ post }) {
   const [like, setLike] = useState(false);
   return (
     <PostCardWrapper className='mb-3'>
       <PostCardToolBar>
         <ProfileWrapper>
           <img
-            src={process.env.PUBLIC_URL + "/assets/profileImage.jpg"}
+            src={post.postedBy.avatar}
             alt="profile"
           />
         </ProfileWrapper>
         <PostDetail>
-          <PostAuthor>The Humorists</PostAuthor>
-          <PostTime>Just a regular teacher who likes to code</PostTime>
+          <PostAuthor>{`${post.postedBy.fname} ${post.postedBy.lname}`}</PostAuthor>
+          <PostTime>{post.postedBy.work}</PostTime>
         </PostDetail>
       </PostCardToolBar>
       <PostBody>
         <PostContainer>
-          <ArticleLink href={link.url}>
+          <ArticleLink href={post.url}>
             <ArticleImageContainer>
-              <PostImage src={link.image} alt={link.title} />
+              <PostImage src={post.image} alt={post.title} />
             </ArticleImageContainer>
           </ArticleLink>
           <ArticleDescContainer>
             <ArticleDesc>
-              <ArticleTitle>{link.title}</ArticleTitle>
-              <ArticeExcerpt>{link.description}</ArticeExcerpt>
+              <ArticleTitle>{post.title}</ArticleTitle>
+              <ArticeExcerpt>{post.description}</ArticeExcerpt>
               <ArticleDetails>
                 <span>
-                  <strong>Category:</strong> Technology
+                  <strong>Topic:</strong> {post.topic}
                 </span>
                 <span>
-                  <strong>Author:</strong> {link.author}
+                  <strong>Author:</strong> {post.author}
                 </span>
                 <span>
-                  <strong>Publisher:</strong> {link.publisher}
+                  <strong>Publisher:</strong> {post.publisher}
                 </span>
               </ArticleDetails>
             </ArticleDesc>

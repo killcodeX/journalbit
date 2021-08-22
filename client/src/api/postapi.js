@@ -1,4 +1,4 @@
-import { ApiFunc } from './index';
+import { ApiFunc } from "./index";
 import { notification } from "antd";
 
 const openNotificationWithIcon = (type, title, message) => {
@@ -12,7 +12,11 @@ const openNotificationWithIcon = (type, title, message) => {
 export const newPostPublish = async (body) => {
   try {
     const { data } = await ApiFunc.post(`/journalbit/new-post`, body);
-    openNotificationWithIcon("success", "Publish Successful", "Post published successfully");
+    openNotificationWithIcon(
+      "success",
+      "Publish Successful",
+      "Post published successfully"
+    );
     return data;
   } catch (error) {
     if (error.response) {
@@ -25,15 +29,30 @@ export const newPostPublish = async (body) => {
   }
 };
 
-export const onlyUserPost = async (body) => {
+export const allPost = async () => {
   try {
-    const { data } = await ApiFunc.post(`/journalbit/mypost`, body);
+    const { data } = await ApiFunc.get(`/journalbit/allpost`);
     return data;
   } catch (error) {
     if (error.response) {
       openNotificationWithIcon(
         "error",
-        "Publish Failed",
+        "Post Fetching Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
+export const onlyUserPost = async () => {
+  try {
+    const { data } = await ApiFunc.get(`/journalbit/mypost`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Post Fetching Failed",
         error.response.data.message
       );
     }

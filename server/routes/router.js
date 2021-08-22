@@ -19,7 +19,7 @@ router.get("/get-user/:id", AuthenticateToken, getUser);
 
 // Post Routes
 router.post("/new-post", AuthenticateToken, newPost);
-router.get("/allpost", getAllPost); // AuthenticateToken
+router.get("/allpost", AuthenticateToken, getAllPost); // AuthenticateToken
 router.get("/mypost", AuthenticateToken, getUserPost); // AuthenticateToken
 
 export default router;

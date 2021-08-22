@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   PostWrapper,
   ProfileWrapper,
@@ -12,13 +12,14 @@ import { CardWrapper, CardToolBar } from "../../components/UI/cards/style";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import Posts from "../../components/Posts";
 import { links } from "../../mock-data";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import styled from "styled-components";
 import { PostSchema } from "../../helpers/schema";
 import { newPostPublish } from "../../api/postapi";
 import { topics } from "../../mock-data";
 import { message } from "antd";
+import { getallPost } from "../../redux/actions/postactions";
 
 export const InputWrapper = styled(Form.Group)`
   display: flex;
@@ -54,7 +55,13 @@ const InputBar = styled(Form.Control)`
 `;
 
 export default function PostSide() {
+  const dispatch = useDispatch();
   const User = useSelector((state) => state.auth.user);
+  const allPosts = useSelector((state) => state.post.allPost);
+  console.log(allPosts);
+  useEffect(() => {
+    dispatch(getallPost());
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -64,13 +71,13 @@ export default function PostSide() {
     validationSchema: PostSchema,
     onSubmit: (values) => {
       newPostPublish(values);
-      message.loading("Publishing..", 3)
+      message.loading("Publishing..", 3);
     },
   });
 
   return (
     <PostWrapper>
-      <CardWrapper>
+      <CardWrapper className='mb-3'>
         <Form onSubmit={formik.handleSubmit}>
           <CardToolBar>
             <ProfileWrapper>
@@ -116,11 +123,11 @@ export default function PostSide() {
           </PostDown>
         </Form>
       </CardWrapper>
-      <div className="mt-4">
-        {links.map((link) => {
-          return <Posts link={link} />;
-        })}
-      </div>
+      {allPosts && allPosts.length > 0
+        ? allPosts.map((post) => {
+            return <Posts key={post._id} post={post} />;
+          })
+        : "loading..."}
     </PostWrapper>
   );
 }
