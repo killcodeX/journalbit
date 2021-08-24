@@ -9,3 +9,4 @@ export const UPDATE_USER = "UPDATE_USER";
 // for posts
 export const GET_ALL_POST = "GET_ALL_POST";
 export const GET_ONLY_USER_POST = "GET_ONLY_USER_POST";
+export const GET_LIKE_UNLIKE_POST = "GET_LIKE_UNLIKE_POST"

@@ -1,8 +1,7 @@
 import axios from "axios";
+import { message } from "antd";
 
 export const ImageUploadAPI = async (req) => {
-
-  console.log('file -->',req)
   var FormData = require("form-data");
   var data = new FormData();
   data.append("file", req.file)
@@ -20,8 +19,10 @@ export const ImageUploadAPI = async (req) => {
 
   try {
     const { data } =  await axios(config)
+    message.success('Avatar Uploaded Successfully');
     return data
     } catch (error) {
     console.log(error)
+    message.error('Avatar uploading failed');
   }
 }

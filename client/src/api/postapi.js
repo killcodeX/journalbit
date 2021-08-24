@@ -58,3 +58,33 @@ export const onlyUserPost = async () => {
     }
   }
 };
+
+export const likePost = async (id) => {
+  try {
+    const { data } = await ApiFunc.put(`/journalbit/likepost`, { postId: id });
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Post like failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
+export const unlikePost = async (id) => {
+  try {
+    const { data } = await ApiFunc.put(`/journalbit/unlikepost`, { postId: id });
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Post unlike failed",
+        error.response.data.message
+      );
+    }
+  }
+};

@@ -27,17 +27,28 @@ import {
   AiOutlineSend,
   AiFillHeart,
 } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { getlikePost, getunlikePost } from "../../redux/actions/postactions";
 
 export default function Post({ post }) {
-  const [like, setLike] = useState(false);
+  const dispatch = useDispatch();
+  const userId = useSelector(state => state.auth.user._id)
+
+  const handleLike = () => {
+    if(post.likes.includes(userId)){
+      dispatch(getunlikePost(post._id))
+      console.log('you unliked this post')
+    } else {
+      dispatch(getlikePost(post._id))
+      console.log('you liked this post')
+    }
+  }
+
   return (
-    <PostCardWrapper className='mb-3'>
+    <PostCardWrapper className="mb-3">
       <PostCardToolBar>
         <ProfileWrapper>
-          <img
-            src={post.postedBy.avatar}
-            alt="profile"
-          />
+          <img src={post.postedBy.avatar} alt="profile" />
         </ProfileWrapper>
         <PostDetail>
           <PostAuthor>{`${post.postedBy.fname} ${post.postedBy.lname}`}</PostAuthor>
@@ -71,11 +82,11 @@ export default function Post({ post }) {
         </PostContainer>
       </PostBody>
       <PostFooter>
-        1 likes
+        {post.likes.length} likes
         <Seprator />
         <PostEngagement>
-          <EngagButton onClick={() => setLike(!like)}>
-            {like ? (
+          <EngagButton onClick={handleLike}>
+            {post.likes.includes(userId) ? (
               <AiFillHeart style={{ color: "red" }} />
             ) : (
               <AiOutlineHeart />
