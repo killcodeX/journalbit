@@ -6,6 +6,8 @@ const url =
 const facebookUrl =
 /(?:https?:\/\/)?(?:www\.)?(mbasic.facebook|m\.facebook|facebook|fb)\.(com|me)\/(?:(?:\w\.)*#!\/)?(?:pages\/)?(?:[\w\-\.]*\/)*([\w\-\.]*)/ig;
 
+const commentReg = /^[a-zA-Z ]+$/
+
 export const RegistrationSchema = Yup.object().shape({
   fname: Yup.string()
     .min(2, "Too Short!")
@@ -44,6 +46,10 @@ export const AccountSchema = Yup.object().shape({
 export const PostSchema = Yup.object().shape({
   url: Yup.string().matches(url, "Enter only url!").required("Required"),
   topic: Yup.string().required("Required"),
+});
+
+export const CommentSchema = Yup.object().shape({
+  topic: Yup.string().matches(commentReg, "please enter valid comment").required("Required"),
 });
 
 

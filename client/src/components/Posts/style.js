@@ -123,7 +123,7 @@ export const EngagButton = styled.button`
 `;
 
 export const CommentWrapper = styled.div`
-  padding-top:12px;
+  padding-top: 12px;
   display: flex;
 `;
 export const CommentAvatar = styled.div`
@@ -140,7 +140,13 @@ export const CommentAvatar = styled.div`
   }
 `;
 
-export const CommentBox = styled.form`
-  width:100%;
-`
-export const CommentInput = styled.input``
+export const CommentButton = styled.button`
+  display: inline-block;
+  margin: 0.45rem 0;
+  padding-left: 1.2rem !important;
+  padding-right: 1.2rem !important;
+  color: white;
+  border:#009EF7;
+  background-color:#009EF7;
+  border-radius:10px;
+`;
