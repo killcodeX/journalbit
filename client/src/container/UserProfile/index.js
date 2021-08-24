@@ -22,6 +22,7 @@ import { getUserdata } from "../../redux/actions/useractions";
 
 export default function Profile() {
   const User = useSelector((state) => state.auth.user);
+  const totalPost = useSelector((state) => state.post.userPost);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -49,7 +50,7 @@ export default function Profile() {
             </UserDetails>
             <SocialMedia>
               <Followers>
-                <HeadingWrapper>0</HeadingWrapper>
+                <HeadingWrapper>{totalPost.length}</HeadingWrapper>
                 <HeadingWrapper>Post</HeadingWrapper>
               </Followers>
               <Followers>

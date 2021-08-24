@@ -106,18 +106,41 @@ export const PostFooter = styled.div`
 `;
 
 export const PostEngagement = styled.div`
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-top:5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5px;
 `;
 
 export const EngagButton = styled.button`
-  background:transparent;
-  border:none;
-  padding:10px 15px;
-  font-size:17px;
-  &:hover{
-    background-color:#EEF0F6;
+  background: transparent;
+  border: none;
+  padding: 10px 15px;
+  font-size: 17px;
+  &:hover {
+    background-color: #eef0f6;
   }
+`;
+
+export const CommentWrapper = styled.div`
+  padding-top:12px;
+  display: flex;
+`;
+export const CommentAvatar = styled.div`
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 15px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const CommentBox = styled.form`
+  width:100%;
 `
+export const CommentInput = styled.input``

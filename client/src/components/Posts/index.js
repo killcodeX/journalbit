@@ -6,43 +6,23 @@ import {
   PostAuthor,
   PostDetail,
   PostTime,
-  PostBody,
-  PostImage,
-  PostContainer,
-  ArticleLink,
-  ArticleImageContainer,
-  ArticleDescContainer,
-  ArticleDesc,
-  ArticleTitle,
-  ArticeExcerpt,
-  ArticleDetails,
   PostFooter,
-  PostEngagement,
-  EngagButton,
+  CommentWrapper,
+  CommentAvatar,
+  CommentBox,
+  CommentInput,
 } from "./style";
 import { Seprator } from "../UI/Typograpghy/style";
-import {
-  AiOutlineHeart,
-  AiOutlineComment,
-  AiOutlineSend,
-  AiFillHeart,
-} from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { getlikePost, getunlikePost } from "../../redux/actions/postactions";
+import Feed from './feed'
+import Engagement from "./engagement";
 
 export default function Post({ post }) {
   const dispatch = useDispatch();
-  const userId = useSelector(state => state.auth.user._id)
+  const userId = useSelector((state) => state.auth.user._id);
+  const userAvatar = useSelector((state) => state.auth.user.avatar);
 
-  const handleLike = () => {
-    if(post.likes.includes(userId)){
-      dispatch(getunlikePost(post._id))
-      console.log('you unliked this post')
-    } else {
-      dispatch(getlikePost(post._id))
-      console.log('you liked this post')
-    }
-  }
+
 
   return (
     <PostCardWrapper className="mb-3">
@@ -55,53 +35,20 @@ export default function Post({ post }) {
           <PostTime>{post.postedBy.work}</PostTime>
         </PostDetail>
       </PostCardToolBar>
-      <PostBody>
-        <PostContainer>
-          <ArticleLink href={post.url}>
-            <ArticleImageContainer>
-              <PostImage src={post.image} alt={post.title} />
-            </ArticleImageContainer>
-          </ArticleLink>
-          <ArticleDescContainer>
-            <ArticleDesc>
-              <ArticleTitle>{post.title}</ArticleTitle>
-              <ArticeExcerpt>{post.description}</ArticeExcerpt>
-              <ArticleDetails>
-                <span>
-                  <strong>Topic:</strong> {post.topic}
-                </span>
-                <span>
-                  <strong>Author:</strong> {post.author}
-                </span>
-                <span>
-                  <strong>Publisher:</strong> {post.publisher}
-                </span>
-              </ArticleDetails>
-            </ArticleDesc>
-          </ArticleDescContainer>
-        </PostContainer>
-      </PostBody>
+      <Feed post={post}/>
       <PostFooter>
         {post.likes.length} likes
         <Seprator />
-        <PostEngagement>
-          <EngagButton onClick={handleLike}>
-            {post.likes.includes(userId) ? (
-              <AiFillHeart style={{ color: "red" }} />
-            ) : (
-              <AiOutlineHeart />
-            )}
-            {` `}Like
-          </EngagButton>
-          <EngagButton>
-            <AiOutlineComment />
-            {` `}Comment
-          </EngagButton>
-          <EngagButton disabled>
-            <AiOutlineSend />
-            {` `}Share
-          </EngagButton>
-        </PostEngagement>
+        <Engagement post={post} userId={userId}/>
+        <Seprator />
+        <CommentWrapper>
+          <CommentAvatar>
+            <img src={userAvatar} alt="profile" />
+          </CommentAvatar>
+          <CommentBox>
+            <CommentInput />
+          </CommentBox>
+        </CommentWrapper>
       </PostFooter>
     </PostCardWrapper>
   );
