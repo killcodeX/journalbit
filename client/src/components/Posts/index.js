@@ -11,22 +11,37 @@ import {
 } from "./style";
 import { Menu, Dropdown } from "antd";
 import { Seprator } from "../UI/Typograpghy/style";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Feed from "./feed";
 import Engagement from "./engagement";
 import Comment from "./comment";
-import { AiOutlineEllipsis, AiFillDelete, AiOutlineSwap, AiFillFlag } from "react-icons/ai";
+import {
+  AiOutlineEllipsis,
+  AiFillDelete,
+  AiOutlineSwap,
+  AiFillFlag,
+} from "react-icons/ai";
+import { getdeletePost } from "../../redux/actions/postactions";
 
 export default function Post({ post }) {
+  const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
   const userId = useSelector((state) => state.auth.user._id);
   const userAvatar = useSelector((state) => state.auth.user.avatar);
 
+  const handleDelete = ({ key }) => {
+    if (key == 1) {
+      dispatch(getdeletePost(post._id));
+    }
+  };
+
   const menu = (
-    <Menu>
-      <Menu.Item key="1" icon={<AiFillDelete />}>
-        Delete
-      </Menu.Item>
+    <Menu onClick={handleDelete}>
+      {post.postedBy._id == userId ? (
+        <Menu.Item key="1" icon={<AiFillDelete />}>
+          Delete
+        </Menu.Item>
+      ) : null}
       <Menu.Item key="2" icon={<AiFillFlag />}>
         Report Post
       </Menu.Item>
@@ -46,7 +61,7 @@ export default function Post({ post }) {
           </PostDetail>
         </PostCardProfile>
         <Dropdown overlay={menu} trigger={["click"]}>
-          <AiOutlineEllipsis style={{fontSize:'25px', cursor:'pointer'}} />
+          <AiOutlineEllipsis style={{ fontSize: "25px", cursor: "pointer" }} />
         </Dropdown>
       </PostCardToolBar>
       <Feed post={post} />

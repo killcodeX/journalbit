@@ -11,6 +11,7 @@ import {
   likePost,
   unlikePost,
   commentPost,
+  deletePost
 } from "../../api/postapi";
 
 export const getallPost = () => async (dispatch) => {
@@ -74,4 +75,17 @@ export const getcommentPost = (body) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+
+export const getdeletePost = (id) => async (dispatch) => {
+  const result = await deletePost(id);
+  // try {
+  //   dispatch({
+  //     type: GET_COMMENT_POST,
+  //     post: result.result,
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  // }
 };

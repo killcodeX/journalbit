@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   CommentWrapper,
   CommentAvatar,
@@ -10,6 +10,7 @@ import {
   CommentAuthor,
   ActuallComment,
 } from "./style";
+import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Form } from "react-bootstrap";
@@ -46,7 +47,13 @@ const CommentInput = styled(Form.Control)`
   }
 `;
 
-export default function Comment({ userAvatar, postId, comments, showComments, setShowComments }) {
+export default function Comment({
+  userAvatar,
+  postId,
+  comments,
+  showComments,
+  setShowComments,
+}) {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -59,7 +66,7 @@ export default function Comment({ userAvatar, postId, comments, showComments, se
       };
       dispatch(getcommentPost(body));
       resetForm({ values: "" });
-      setShowComments(!showComments)
+      setShowComments(!showComments);
     },
   });
 
@@ -99,7 +106,9 @@ export default function Comment({ userAvatar, postId, comments, showComments, se
                   </CommentAvatar>
                   <CommentPost>
                     <CommentAuthor>
-                      {comment.postedBy.fname + " " + comment.postedBy.lname}
+                      <Link to={`/profile/${comment.postedBy._id}`}>
+                        {comment.postedBy.fname + " " + comment.postedBy.lname}
+                      </Link>
                     </CommentAuthor>
                     <ActuallComment>{comment.text}</ActuallComment>
                   </CommentPost>

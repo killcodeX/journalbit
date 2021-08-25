@@ -103,3 +103,19 @@ export const commentPost = async (body) => {
     }
   }
 };
+
+
+export const deletePost = async (id) => {
+  try {
+    const { data } = await ApiFunc.delete(`/journalbit/deletepost/${id}`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Removing Post failed",
+        error.response.data.message
+      );
+    }
+  }
+};

@@ -4,10 +4,12 @@ import {
   loginUser,
   updateUser,
   getUser,
+  getdeleteUser
 } from "../controllers/userController.js";
 import { newPost } from "../controllers/postController.js";
 import { getlikePost, getunlikePost, getcommentPost } from "../controllers/putController.js";
 import { getAllPost, getUserPost } from "../controllers/getController.js";
+import { getdeletePost } from "../controllers/deleteController.js";
 import { AuthenticateToken } from "../middleware/tokenValidate.js";
 
 const router = express.Router();
@@ -17,6 +19,7 @@ router.post("/signup", createUser);
 router.post("/signin", loginUser); //AuthenticateToken,
 router.put("/update-user", AuthenticateToken, updateUser);
 router.get("/get-user/:id", AuthenticateToken, getUser);
+router.delete("/delete-user/:id", AuthenticateToken, getdeleteUser);
 
 // Post Routes
 router.post("/new-post", AuthenticateToken, newPost);
@@ -25,5 +28,6 @@ router.get("/mypost", AuthenticateToken, getUserPost); // AuthenticateToken
 router.put("/likepost", AuthenticateToken, getlikePost); // AuthenticateToken
 router.put("/unlikepost", AuthenticateToken, getunlikePost);
 router.put("/addcomment", AuthenticateToken, getcommentPost);
+router.delete("/deletepost/:id", AuthenticateToken, getdeletePost);
 
 export default router;
