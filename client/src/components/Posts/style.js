@@ -125,7 +125,14 @@ export const EngagButton = styled.button`
 export const CommentWrapper = styled.div`
   padding-top: 12px;
   display: flex;
+  flex-direction: column;
 `;
+
+export const CommentFeed = styled.div`
+  display: flex;
+  padding-bottom: 10px;
+`;
+
 export const CommentAvatar = styled.div`
   width: 30px;
   height: 30px;
@@ -146,7 +153,33 @@ export const CommentButton = styled.button`
   padding-left: 1.2rem !important;
   padding-right: 1.2rem !important;
   color: white;
-  border:#009EF7;
-  background-color:#009EF7;
-  border-radius:10px;
+  border: #009ef7;
+  background-color: #009ef7;
+  border-radius: 10px;
+`;
+
+export const CommentList = styled.div`
+  padding-top: 10px;
+`;
+
+export const CommentItem = styled.div`
+  display: flex;
+  align-items:center;
+  margin-bottom:10px;
+`;
+
+export const CommentPost = styled.div`
+  background: #f2f2f2;
+  padding: 5px 13px;
+  width: 100%;
+`;
+
+export const CommentAuthor = styled.div`
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Roboto;
+`;
+
+export const ActuallComment = styled.div`
+  font-size: 14px;
 `;

@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 export const getAllPost = async (req, res) => {
   try {
-    let data = await PostMessage.find().populate("postedBy", "id fname lname avatar work")
+    let data = await PostMessage.find().populate("postedBy comments.postedBy", "id fname lname avatar work")
     //console.log(data)
     res.status(200).json({result: data});
   } catch (error) {
@@ -15,7 +15,7 @@ export const getAllPost = async (req, res) => {
 
 export const getUserPost = async (req, res) => {
   try {
-    let data = await PostMessage.find({postedBy:req.userId}).populate("postedBy", "id fname lname avatar work")
+    let data = await PostMessage.find({postedBy:req.userId}).populate("postedBy comments.postedBy", "id fname lname avatar work")
     //console.log(data)
     res.status(200).json({result: data});
   } catch (error) {

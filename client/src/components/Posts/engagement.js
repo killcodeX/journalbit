@@ -9,7 +9,7 @@ import {
 import { useDispatch } from "react-redux";
 import { getlikePost, getunlikePost } from "../../redux/actions/postactions";
 
-export default function Engagement({ post, userId }) {
+export default function Engagement({ post, userId, showComments, setShowComments}) {
   const dispatch = useDispatch();
 
   const handleLike = () => {
@@ -32,7 +32,7 @@ export default function Engagement({ post, userId }) {
         )}
         {` `}Like
       </EngagButton>
-      <EngagButton>
+      <EngagButton onClick={() => setShowComments(!showComments)}>
         <AiOutlineComment />
         {` `}Comment
       </EngagButton>

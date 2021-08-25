@@ -37,13 +37,13 @@ const PostReducer = (state = initialState, action) => {
       const postIndexData = newAllPosts.findIndex(
         (post) => post._id == action.post._id
       );
-      newAllPosts[postIndex] = {
+      newAllPosts[postIndexData] = {
         ...newAllPosts[postIndexData],
         likes: action.post.likes,
       };
       return {
         ...state,
-        allPost: newAllPost,
+        allPost: newAllPosts,
       };
     default:
       return state;

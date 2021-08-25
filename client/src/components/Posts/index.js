@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   PostCardWrapper,
   PostCardToolBar,
@@ -13,9 +13,10 @@ import { useSelector } from "react-redux";
 import Feed from "./feed";
 import Engagement from "./engagement";
 import Comment from "./comment";
-import { AiOutlineEllipsis, AiOutlineSwap } from 'react-icons/ai'
+import { AiOutlineEllipsis, AiOutlineSwap } from "react-icons/ai";
 
 export default function Post({ post }) {
+  const [showComments, setShowComments] = useState(false);
   const userId = useSelector((state) => state.auth.user._id);
   const userAvatar = useSelector((state) => state.auth.user.avatar);
 
@@ -29,17 +30,29 @@ export default function Post({ post }) {
           <PostAuthor>{`${post.postedBy.fname} ${post.postedBy.lname}`}</PostAuthor>
           <PostTime>{post.postedBy.work}</PostTime>
         </PostDetail>
-        <AiOutlineEllipsis/>
+        <AiOutlineEllipsis />
       </PostCardToolBar>
       <Feed post={post} />
       <PostFooter>
         <span>{post.likes.length} likes</span>
-        <span className='px-3'><AiOutlineSwap/></span>
+        <span className="px-3">
+          <AiOutlineSwap />
+        </span>
         <span>{post.comments.length} comments</span>
         <Seprator />
-        <Engagement post={post} userId={userId} />
+        <Engagement
+          post={post}
+          userId={userId}
+          showComments={showComments}
+          setShowComments={setShowComments}
+        />
         <Seprator />
-        <Comment userAvatar={userAvatar} postId={post._id} />
+        <Comment
+          userAvatar={userAvatar}
+          postId={post._id}
+          comments={post.comments}
+          showComments={showComments}
+        />
       </PostFooter>
     </PostCardWrapper>
   );

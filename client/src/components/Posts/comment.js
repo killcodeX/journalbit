@@ -1,11 +1,21 @@
-import React from "react";
-import { CommentWrapper, CommentAvatar, CommentButton } from "./style";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import {
+  CommentWrapper,
+  CommentAvatar,
+  CommentButton,
+  CommentFeed,
+  CommentList,
+  CommentPost,
+  CommentItem,
+  CommentAuthor,
+  ActuallComment,
+} from "./style";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
-import { CommentSchema } from "../../helpers/schema";
 import { getcommentPost } from "../../redux/actions/postactions";
+import { Seprator } from "../UI/Typograpghy/style";
 
 export const CommentBox = styled(Form.Group)`
   display: flex;
@@ -36,44 +46,68 @@ const CommentInput = styled(Form.Control)`
   }
 `;
 
-export default function Comment({ userAvatar, postId }) {
+export default function Comment({ userAvatar, postId, comments, showComments }) {
   const dispatch = useDispatch();
-
   const formik = useFormik({
     initialValues: {
       comment: "",
     },
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       const body = {
-        text:values.comment,
-        postId:postId,
-      }
-      dispatch(getcommentPost(body))
+        text: values.comment,
+        postId: postId,
+      };
+      dispatch(getcommentPost(body));
+      resetForm({ values: "" });
     },
   });
 
   return (
     <CommentWrapper>
-      <CommentAvatar>
-        <img src={userAvatar} alt="profile" />
-      </CommentAvatar>
-      <Form style={{width:'100%'}} onSubmit={formik.handleSubmit}>
-        <CommentBox controlId="comment">
-          <CommentInput
-            type="text"
-            placeholder="Add a comment...."
-            value={formik.values.comment}
-            onChange={formik.handleChange}
-            isInvalid={formik.errors.comment}
-          />
-          <Form.Control.Feedback type="invalid">
-            {formik.errors.comment}
-          </Form.Control.Feedback>
-        </CommentBox>
-        {formik.values.comment.length > 0 ? (
-          <CommentButton type="submit">Post</CommentButton>
-        ) : null}
-      </Form>
+      <CommentFeed>
+        <CommentAvatar>
+          <img src={userAvatar} alt="profile" />
+        </CommentAvatar>
+        <Form style={{ width: "100%" }} onSubmit={formik.handleSubmit}>
+          <CommentBox controlId="comment">
+            <CommentInput
+              type="text"
+              placeholder="Add a comment...."
+              value={formik.values.comment}
+              onChange={formik.handleChange}
+              isInvalid={formik.errors.comment}
+            />
+            <Form.Control.Feedback type="invalid">
+              {formik.errors.comment}
+            </Form.Control.Feedback>
+          </CommentBox>
+          {formik.values.comment.length > 0 ? (
+            <CommentButton type="submit">Post</CommentButton>
+          ) : null}
+        </Form>
+      </CommentFeed>
+      {showComments ? (
+        <>
+          <Seprator />
+          <CommentList>
+            {comments.map((comment) => {
+              return (
+                <CommentItem key={comment._id}>
+                  <CommentAvatar>
+                    <img src={comment.postedBy.avatar} alt="profile" />
+                  </CommentAvatar>
+                  <CommentPost>
+                    <CommentAuthor>
+                      {comment.postedBy.fname + " " + comment.postedBy.lname}
+                    </CommentAuthor>
+                    <ActuallComment>{comment.text}</ActuallComment>
+                  </CommentPost>
+                </CommentItem>
+              );
+            })}
+          </CommentList>
+        </>
+      ) : null}
     </CommentWrapper>
   );
 }
