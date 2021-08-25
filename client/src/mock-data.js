@@ -1,4 +1,4 @@
-export const news = [
+export const internalNews = [
   {
     id: 1,
     image:

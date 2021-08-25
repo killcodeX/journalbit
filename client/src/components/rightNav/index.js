@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   TitleWrapper,
   HeadingWrapper,
@@ -13,9 +13,26 @@ import {
   NewsImage,
 } from "./style";
 import { AiFillRead } from "react-icons/ai";
-import { news } from "../../mock-data";
+import { internalNews } from "../../mock-data";
 
 export default function RightNav() {
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    const getNews = async () => {
+      fetch('https://newsapi.org/v2/everything?q=tesla&from=2021-07-25&sortBy=publishedAt&apiKey=42fd351281504e8c905ffdc9063ddfbc')
+      .then(res => res.json())
+      .then(res => {
+        setNews(res.articles)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
+    getNews()
+  }, [])
+
   return (
     <RightNavWrapper>
       <CardWrapper>
@@ -29,14 +46,15 @@ export default function RightNav() {
           </CardToolBar>
         </CardHeader>
         {news.map((item) => {
+          console.log(item)
           return (
-            <NewsWrapper key={item.id}>
+            <NewsWrapper key={item.title} href={item.url}>
               <NewsImageWrapper>
-                <NewsImage src={item.image} alt="news" />
+                <NewsImage src={item.urlToImage} alt="news" />
               </NewsImageWrapper>
               <div className="flex-grow-1">
-                <HeadingWrapper>{item.heading}</HeadingWrapper>
-                <DescWrapper>{item.desc.slice(0, 50) + "...."}</DescWrapper>
+                <HeadingWrapper>{item.title}</HeadingWrapper>
+                {/* <DescWrapper>{item.description.slice(0, 50) + "...."}</DescWrapper> */}
               </div>
             </NewsWrapper>
           );

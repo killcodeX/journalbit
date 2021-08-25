@@ -9,11 +9,15 @@ export const RightNavWrapper = styled.div`
   top: 100px;
 `;
 
-export const NewsWrapper = styled.div`
+export const NewsWrapper = styled.a`
   display: flex;
   align-items: center;
   width: 290px;
   margin: 10px 0;
+  padding:5px;
+  &:hover{
+    background-color:#F2F2F2;
+  }
 `;
 
 export const NewsImageWrapper = styled.div`

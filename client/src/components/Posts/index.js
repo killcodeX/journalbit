@@ -27,7 +27,7 @@ export default function Post({ post }) {
       <Menu.Item key="1" icon={<AiFillDelete />}>
         Delete
       </Menu.Item>
-      <Menu.Item key="1" icon={<AiFillFlag />}>
+      <Menu.Item key="2" icon={<AiFillFlag />}>
         Report Post
       </Menu.Item>
     </Menu>
