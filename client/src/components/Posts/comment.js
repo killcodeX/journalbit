@@ -42,11 +42,11 @@ export default function Comment({ userAvatar }) {
     initialValues: {
       comment: "",
     },
-    validationSchema: CommentSchema,
     onSubmit: (values) => {
-      console.log(values);
+      console.log(values)
     },
   });
+
   return (
     <CommentWrapper>
       <CommentAvatar>

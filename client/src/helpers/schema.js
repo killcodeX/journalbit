@@ -49,7 +49,7 @@ export const PostSchema = Yup.object().shape({
 });
 
 export const CommentSchema = Yup.object().shape({
-  topic: Yup.string().matches(commentReg, "please enter valid comment").required("Required"),
+  topic: Yup.string().required("Required"),
 });
 
 
