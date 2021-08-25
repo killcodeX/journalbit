@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import { CommentSchema } from "../../helpers/schema";
+import { getcommentPost } from "../../redux/actions/postactions";
 
 export const CommentBox = styled(Form.Group)`
   display: flex;
@@ -35,7 +36,7 @@ const CommentInput = styled(Form.Control)`
   }
 `;
 
-export default function Comment({ userAvatar }) {
+export default function Comment({ userAvatar, postId }) {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -43,7 +44,11 @@ export default function Comment({ userAvatar }) {
       comment: "",
     },
     onSubmit: (values) => {
-      console.log(values)
+      const body = {
+        text:values.comment,
+        postId:postId,
+      }
+      dispatch(getcommentPost(body))
     },
   });
 

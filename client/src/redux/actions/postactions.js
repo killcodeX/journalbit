@@ -1,6 +1,17 @@
-import { GET_ALL_POST, GET_ONLY_USER_POST, GET_LIKE_UNLIKE_POST } from "./actionconstant";
+import {
+  GET_ALL_POST,
+  GET_ONLY_USER_POST,
+  GET_LIKE_UNLIKE_POST,
+  GET_COMMENT_POST
+} from "./actionconstant";
 
-import { allPost, onlyUserPost, likePost, unlikePost } from "../../api/postapi";
+import {
+  allPost,
+  onlyUserPost,
+  likePost,
+  unlikePost,
+  commentPost,
+} from "../../api/postapi";
 
 export const getallPost = () => async (dispatch) => {
   const result = await allPost();
@@ -33,7 +44,7 @@ export const getlikePost = (id) => async (dispatch) => {
     dispatch({
       type: GET_LIKE_UNLIKE_POST,
       post: result.result,
-      act:'update'
+      act: "update",
     });
   } catch (error) {
     console.log(error);
@@ -46,6 +57,20 @@ export const getunlikePost = (id) => async (dispatch) => {
   try {
     dispatch({
       type: GET_LIKE_UNLIKE_POST,
+      post: result.result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const getcommentPost = (body) => async (dispatch) => {
+  const result = await commentPost(body);
+  console.log(result);
+  try {
+    dispatch({
+      type: GET_COMMENT_POST,
       post: result.result,
     });
   } catch (error) {

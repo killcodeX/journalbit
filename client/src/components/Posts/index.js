@@ -35,7 +35,7 @@ export default function Post({ post }) {
         <Seprator />
         <Engagement post={post} userId={userId} />
         <Seprator />
-        <Comment userAvatar={userAvatar} />
+        <Comment userAvatar={userAvatar} postId={post._id}/>
       </PostFooter>
     </PostCardWrapper>
   );

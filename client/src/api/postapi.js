@@ -88,3 +88,18 @@ export const unlikePost = async (id) => {
     }
   }
 };
+
+export const commentPost = async (body) => {
+  try {
+    const { data } = await ApiFunc.put(`/journalbit/addcomment`, body);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Comment on Post failed",
+        error.response.data.message
+      );
+    }
+  }
+};
