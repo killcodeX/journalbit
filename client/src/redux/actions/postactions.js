@@ -2,7 +2,8 @@ import {
   GET_ALL_POST,
   GET_ONLY_USER_POST,
   GET_LIKE_UNLIKE_POST,
-  GET_COMMENT_POST
+  GET_COMMENT_POST, 
+  GET_DELETE_POST
 } from "./actionconstant";
 
 import {
@@ -79,13 +80,13 @@ export const getcommentPost = (body) => async (dispatch) => {
 
 
 export const getdeletePost = (id) => async (dispatch) => {
-  const result = await deletePost(id);
-  // try {
-  //   dispatch({
-  //     type: GET_COMMENT_POST,
-  //     post: result.result,
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  await deletePost(id);
+  try {
+    dispatch({
+      type: GET_DELETE_POST,
+      postId: id,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };

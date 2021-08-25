@@ -3,6 +3,7 @@ import {
   GET_ONLY_USER_POST,
   GET_LIKE_UNLIKE_POST,
   GET_COMMENT_POST,
+  GET_DELETE_POST,
 } from "../actions/actionconstant";
 
 const initialState = {
@@ -49,6 +50,12 @@ const PostReducer = (state = initialState, action) => {
       return {
         ...state,
         allPost: newAllPostData,
+      };
+    case GET_DELETE_POST:
+      const updatedData = state.allPost.filter(post => post._id !== action.postId)
+      return {
+        ...state,
+        allPost: updatedData,
       };
     default:
       return state;
