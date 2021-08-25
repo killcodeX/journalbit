@@ -11,10 +11,15 @@ export const PostCardWrapper = styled.div`
 
 export const PostCardToolBar = styled.div`
   display: flex;
-  align-items: center;
+  justify-content:space-between;
   margin: 0.5rem 0;
   flex-wrap: wrap;
   padding: 10px 20px;
+`;
+
+export const PostCardProfile = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const ProfileWrapper = styled.div`
@@ -164,8 +169,8 @@ export const CommentList = styled.div`
 
 export const CommentItem = styled.div`
   display: flex;
-  align-items:center;
-  margin-bottom:10px;
+  align-items: center;
+  margin-bottom: 10px;
 `;
 
 export const CommentPost = styled.div`
