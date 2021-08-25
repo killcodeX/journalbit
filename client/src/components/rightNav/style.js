@@ -34,3 +34,7 @@ export const NewsImage = styled.img`
   border-radius: 10px;
   object-fit: cover;
 `;
+
+export const NewsHeading = styled.h6`
+  font-size:13px;
+`;

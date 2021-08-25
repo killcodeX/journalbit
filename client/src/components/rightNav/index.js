@@ -11,6 +11,7 @@ import {
   NewsWrapper,
   NewsImageWrapper,
   NewsImage,
+  NewsHeading
 } from "./style";
 import { AiFillRead } from "react-icons/ai";
 import { internalNews } from "../../mock-data";
@@ -53,8 +54,8 @@ export default function RightNav() {
                 <NewsImage src={item.urlToImage} alt="news" />
               </NewsImageWrapper>
               <div className="flex-grow-1">
-                <HeadingWrapper>{item.title}</HeadingWrapper>
-                {/* <DescWrapper>{item.description.slice(0, 50) + "...."}</DescWrapper> */}
+                <NewsHeading>{item.title}</NewsHeading>
+                <DescWrapper>{item.description.substring(0, 50) + "...."}</DescWrapper>
               </div>
             </NewsWrapper>
           );
