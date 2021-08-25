@@ -2,6 +2,7 @@ import {
   GET_ALL_POST,
   GET_ONLY_USER_POST,
   GET_LIKE_UNLIKE_POST,
+  GET_COMMENT_POST,
 } from "../actions/actionconstant";
 
 const initialState = {
@@ -31,10 +32,19 @@ const PostReducer = (state = initialState, action) => {
         ...newAllPost[postIndex],
         likes: action.post.likes,
       };
-    return {
-      ...state,
-      allPost: newAllPost,
-    };
+    case GET_COMMENT_POST:
+      const newAllPosts = [...state.allPost];
+      const postIndexData = newAllPosts.findIndex(
+        (post) => post._id == action.post._id
+      );
+      newAllPosts[postIndex] = {
+        ...newAllPosts[postIndexData],
+        likes: action.post.likes,
+      };
+      return {
+        ...state,
+        allPost: newAllPost,
+      };
     default:
       return state;
   }
