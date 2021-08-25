@@ -6,7 +6,7 @@ import {
   getUser,
 } from "../controllers/userController.js";
 import { newPost } from "../controllers/postController.js";
-import { getlikePost, getunlikePost } from "../controllers/putController.js";
+import { getlikePost, getunlikePost, getcommentPost } from "../controllers/putController.js";
 import { getAllPost, getUserPost } from "../controllers/getController.js";
 import { AuthenticateToken } from "../middleware/tokenValidate.js";
 
@@ -24,5 +24,6 @@ router.get("/allpost", AuthenticateToken, getAllPost);
 router.get("/mypost", AuthenticateToken, getUserPost); // AuthenticateToken
 router.put("/likepost", AuthenticateToken, getlikePost); // AuthenticateToken
 router.put("/unlikepost", AuthenticateToken, getunlikePost);
+router.put("/addcomment", AuthenticateToken, getcommentPost);
 
 export default router;

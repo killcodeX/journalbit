@@ -36,3 +36,27 @@ export const getunlikePost = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+
+// PUT Controllers
+export const getcommentPost = async (req, res) => {
+  const { postId } = req.body;
+  console.log("for like -->", postId);
+  console.log(req.userId);
+
+  const commentObj = {
+    text:comment
+  }
+  try {
+    const result = await PostMessage.findByIdAndUpdate(
+      postId,
+      {
+        $push: { likes: req.userId },
+      },
+      { new: true }
+    );
+    res.status(200).json({ result: result });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
