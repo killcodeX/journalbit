@@ -1,5 +1,6 @@
 import {
   GET_ALL_POST,
+  CREATE_NEW_POST,
   GET_ONLY_USER_POST,
   GET_LIKE_UNLIKE_POST,
   GET_COMMENT_POST, 
@@ -8,6 +9,7 @@ import {
 
 import {
   allPost,
+  newPostPublish,
   onlyUserPost,
   likePost,
   unlikePost,
@@ -20,6 +22,18 @@ export const getallPost = () => async (dispatch) => {
   try {
     dispatch({
       type: GET_ALL_POST,
+      post: result.result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getnewPost = (body) => async (dispatch) => {
+  const result = await newPostPublish(body);
+  try {
+    dispatch({
+      type: CREATE_NEW_POST,
       post: result.result,
     });
   } catch (error) {

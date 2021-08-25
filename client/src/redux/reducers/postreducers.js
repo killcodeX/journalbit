@@ -1,5 +1,6 @@
 import {
   GET_ALL_POST,
+  CREATE_NEW_POST,
   GET_ONLY_USER_POST,
   GET_LIKE_UNLIKE_POST,
   GET_COMMENT_POST,
@@ -18,6 +19,11 @@ const PostReducer = (state = initialState, action) => {
       return {
         ...state,
         allPost: [...action.post],
+      };
+    case CREATE_NEW_POST:
+      return {
+        ...state,
+        allPost: [action.post, ...state.allPost],
       };
     case GET_ONLY_USER_POST:
       return {
@@ -52,7 +58,9 @@ const PostReducer = (state = initialState, action) => {
         allPost: newAllPostData,
       };
     case GET_DELETE_POST:
-      const updatedData = state.allPost.filter(post => post._id !== action.postId)
+      const updatedData = state.allPost.filter(
+        (post) => post._id !== action.postId
+      );
       return {
         ...state,
         allPost: updatedData,

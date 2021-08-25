@@ -15,10 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import styled from "styled-components";
 import { PostSchema } from "../../helpers/schema";
-import { newPostPublish } from "../../api/postapi";
 import { topics } from "../../mock-data";
 import { message } from "antd";
-import { getallPost } from "../../redux/actions/postactions";
+import { getallPost, getnewPost } from "../../redux/actions/postactions";
 
 export const InputWrapper = styled(Form.Group)`
   display: flex;
@@ -69,7 +68,7 @@ export default function PostSide() {
     },
     validationSchema: PostSchema,
     onSubmit: (values) => {
-      newPostPublish(values);
+      dispatch(getnewPost(values));
       message.loading("Publishing..", 3);
     },
   });

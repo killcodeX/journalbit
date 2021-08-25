@@ -76,7 +76,9 @@ export const likePost = async (id) => {
 
 export const unlikePost = async (id) => {
   try {
-    const { data } = await ApiFunc.put(`/journalbit/unlikepost`, { postId: id });
+    const { data } = await ApiFunc.put(`/journalbit/unlikepost`, {
+      postId: id,
+    });
     return data;
   } catch (error) {
     if (error.response) {
@@ -104,11 +106,10 @@ export const commentPost = async (body) => {
   }
 };
 
-
 export const deletePost = async (id) => {
   try {
     const { data } = await ApiFunc.delete(`/journalbit/deletepost/${id}`);
-    return data;
+    openNotificationWithIcon("success", data.result);
   } catch (error) {
     if (error.response) {
       openNotificationWithIcon(
