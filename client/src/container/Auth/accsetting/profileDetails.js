@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineLoading3Quarters, AiOutlinePlus } from "react-icons/ai";
 import { Seprator } from "../../../components/UI/Typograpghy/style";
 import { CardWrapper } from "../../../components/UI/cards/style";
-import { CardTitle, FormLabel } from "./style";
+import { CardTitle, FormLabel, DiscardBtn } from "./style";
 import { Upload } from "antd";
 import { beforeUpload } from "../../../helpers/avatarsetting";
 import { Form } from "react-bootstrap";
@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { AccountSchema } from "../../../helpers/schema";
 import { receiveUpdate } from "../../../redux/actions/useractions";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 export default function ProfileDetails({ user }) {
   const dispatch = useDispatch();
@@ -254,6 +254,9 @@ export default function ProfileDetails({ user }) {
           </div>
           <Seprator />
           <div className="d-flex justify-content-end py-2 px-3">
+            <DiscardBtn>
+              <Link to="/">Discard</Link>
+            </DiscardBtn>
             <button type="submit" className="btn btn-primary">
               Save Changes
             </button>

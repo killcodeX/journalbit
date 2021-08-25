@@ -93,3 +93,16 @@ export const FormLabel = styled.div`
     font-weight: 700;
   }
 `;
+
+
+export const DiscardBtn = styled.div`
+  padding: .75rem 1.75rem;
+  color:#7e8299;
+  background-color:#f5f8fa;
+  margin-right:10px;
+  display:flex;
+  align-items:center;
+  font-size:16px;
+  font-weight:500;
+  font-family:poppins;
+`;
