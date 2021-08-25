@@ -46,7 +46,7 @@ const CommentInput = styled(Form.Control)`
   }
 `;
 
-export default function Comment({ userAvatar, postId, comments, showComments }) {
+export default function Comment({ userAvatar, postId, comments, showComments, setShowComments }) {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -59,6 +59,7 @@ export default function Comment({ userAvatar, postId, comments, showComments }) 
       };
       dispatch(getcommentPost(body));
       resetForm({ values: "" });
+      setShowComments(!showComments)
     },
   });
 

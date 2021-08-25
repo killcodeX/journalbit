@@ -52,6 +52,7 @@ export default function Post({ post }) {
           postId={post._id}
           comments={post.comments}
           showComments={showComments}
+          setShowComments={setShowComments}
         />
       </PostFooter>
     </PostCardWrapper>

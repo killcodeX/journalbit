@@ -32,18 +32,23 @@ const PostReducer = (state = initialState, action) => {
         ...newAllPost[postIndex],
         likes: action.post.likes,
       };
+      return {
+        ...state,
+        allPost: newAllPost,
+      };
     case GET_COMMENT_POST:
-      const newAllPosts = [...state.allPost];
-      const postIndexData = newAllPosts.findIndex(
+      console.log("called from reducer -->", action.post);
+      const newAllPostData = [...state.allPost];
+      const postIndexData = newAllPostData.findIndex(
         (post) => post._id == action.post._id
       );
-      newAllPosts[postIndexData] = {
-        ...newAllPosts[postIndexData],
-        likes: action.post.likes,
+      newAllPostData[postIndexData] = {
+        ...newAllPostData[postIndexData],
+        comments: action.post.comments,
       };
       return {
         ...state,
-        allPost: newAllPosts,
+        allPost: newAllPostData,
       };
     default:
       return state;
