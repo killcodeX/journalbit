@@ -21,7 +21,7 @@ import { useParams } from "react-router-dom";
 import { getUserdata } from "../../redux/actions/useractions";
 
 export default function Profile() {
-  const User = useSelector((state) => state.auth.user);
+  const User = useSelector((state) => state.auth.userProfile);
   const totalPost = useSelector((state) => state.post.userPost);
   const dispatch = useDispatch();
   const { id } = useParams();

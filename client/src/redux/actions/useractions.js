@@ -3,7 +3,8 @@ import {
   SIGNUP_SUCCESS,
   LOGOUT_SUCCESS,
   VERIFY_LOCAL_STORAGE,
-  UPDATE_USER
+  UPDATE_USER,
+  GET_USER_PROFILE
 } from "./actionconstant";
 
 import { userRegister, userLogin, userUpdate, getUser } from "../../api/index";
@@ -66,10 +67,10 @@ export const receiveUpdate = (body, history) => async (dispatch) => {
 export const getUserdata = (id) => async (dispatch) => {
   const result = await getUser(id);
   try {
-    // dispatch({
-    //   type: UPDATE_USER,
-    //   user: result.result,
-    // });
+    dispatch({
+      type: GET_USER_PROFILE,
+      user: result.result,
+    });
   } catch (error) {
     console.log(error);
   }
