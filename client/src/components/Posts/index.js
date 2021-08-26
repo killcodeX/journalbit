@@ -22,6 +22,7 @@ import {
   AiFillFlag,
 } from "react-icons/ai";
 import { getdeletePost } from "../../redux/actions/postactions";
+import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
   const dispatch = useDispatch();
@@ -56,7 +57,12 @@ export default function Post({ post }) {
             <img src={post.postedBy.avatar} alt="profile" />
           </ProfileWrapper>
           <PostDetail>
-            <PostAuthor>{`${post.postedBy.fname} ${post.postedBy.lname}`}</PostAuthor>
+            <PostAuthor>
+              <Link
+                style={{ textDecoration: "none", color:'inherit' }}
+                to={`/profile/${post.postedBy._id}`}
+              >{`${post.postedBy.fname} ${post.postedBy.lname}`}</Link>
+            </PostAuthor>
             <PostTime>{post.postedBy.work}</PostTime>
           </PostDetail>
         </PostCardProfile>

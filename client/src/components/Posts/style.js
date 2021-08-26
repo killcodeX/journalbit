@@ -45,6 +45,11 @@ export const PostDetail = styled.div`
 
 export const PostAuthor = styled.div`
   font-size: 1.05rem;
+
+  &:hover{
+    color:#009EF7;
+    text-decoration:underline;
+  }
 `;
 
 export const PostTime = styled.div`
