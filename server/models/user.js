@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+const { ObjectId } = mongoose.Schema.Types;
+
 const postSchema = new mongoose.Schema({
   fname: { type: String, required: true },
   lname: { type: String, required: true },
@@ -13,6 +15,8 @@ const postSchema = new mongoose.Schema({
   twitter: { type: String },
   reddit: { type: String },
   facebook: { type: String },
+  followers:[{ type: ObjectId, ref:"UserMessage"}],
+  following:[{ type: ObjectId, ref:"UserMessage"}],
   createdAt: {
     type: Date,
     default: new Date(),
