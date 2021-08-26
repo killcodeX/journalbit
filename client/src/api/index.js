@@ -82,3 +82,33 @@ export const getUser = async (id) => {
     }
   }
 };
+
+export const getfollowerUser = async (id) => {
+  try {
+    const { data }  = await ApiFunc.put(`/journalbit/get-follower/${id}`);
+    return data
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Following the User Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
+// export const getUser = async (id) => {
+//   try {
+//     const { data }  = await ApiFunc.get(`/journalbit/get-user/${id}`);
+//     return data
+//   } catch (error) {
+//     if (error.response) {
+//       openNotificationWithIcon(
+//         "error",
+//         "Updating User Failed",
+//         error.response.data.message
+//       );
+//     }
+//   }
+// };

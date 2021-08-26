@@ -19,7 +19,7 @@ import {
 import ProfilePost from "./profileDetails";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getUserdata } from "../../redux/actions/useractions";
+import { getUserdata, getUserfollower } from "../../redux/actions/useractions";
 
 export default function Profile() {
   const loggedUser = useSelector((state) => state.auth.user);
@@ -31,6 +31,15 @@ export default function Profile() {
   useEffect(() => {
     dispatch(getUserdata(id));
   }, []);
+
+  const handleFollow = (setting) => {
+    if (setting == "follow") {
+      dispatch(getUserfollower(id));
+    } else{
+      console.log(setting)
+    }
+  };
+
   return (
     <div className="section">
       <div className="container">
@@ -67,9 +76,19 @@ export default function Profile() {
                 </Followers>
               </div>
               {User._id != loggedUser._id ? (
-                <FollowButton>Follow</FollowButton>
+                User.followers.includes(loggedUser._id) ? (
+                  <FollowButton onClick={() => handleFollow("unfollow")}>
+                    Unfollow
+                  </FollowButton>
+                ) : (
+                  <FollowButton onClick={() => handleFollow("follow")}>
+                    Follow
+                  </FollowButton>
+                )
               ) : (
-                <FollowButton><Link to='/account-setting'>Edit Profile</Link></FollowButton>
+                <FollowButton>
+                  <Link to="/account-setting">Edit Profile</Link>
+                </FollowButton>
               )}
             </SocialMedia>
           </ProfileDetails>

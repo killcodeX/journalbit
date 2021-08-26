@@ -6,6 +6,8 @@ export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
 export const VERIFY_LOCAL_STORAGE = "VERIFY_LOCAL_STORAGE";
 export const UPDATE_USER = "UPDATE_USER";
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
+export const GET_USER_FOLLOWER = "GET_USER_FOLLOWER";
+export const GET_USER_UNFOLLOWER = "GET_USER_UNFOLLOWER";
 
 // for posts
 export const GET_ALL_POST = "GET_ALL_POST";

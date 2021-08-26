@@ -4,10 +4,12 @@ import {
   LOGOUT_SUCCESS,
   VERIFY_LOCAL_STORAGE,
   UPDATE_USER,
-  GET_USER_PROFILE
+  GET_USER_PROFILE, 
+  GET_USER_FOLLOWER, 
+  GET_USER_UNFOLLOWER
 } from "./actionconstant";
 
-import { userRegister, userLogin, userUpdate, getUser } from "../../api/index";
+import { userRegister, userLogin, userUpdate, getUser, getfollowerUser } from "../../api/index";
 
 export const receiveLogin = (user, history) => async (dispatch) => {
   const result = await userLogin(user);
@@ -74,4 +76,17 @@ export const getUserdata = (id) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const getUserfollower = (id) => async (dispatch) => {
+  const result = await getfollowerUser(id);
+  console.log(result)
+  // try {
+  //   dispatch({
+  //     type: GET_USER_FOLLOWER,
+  //     user: result.result,
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  // }
 };

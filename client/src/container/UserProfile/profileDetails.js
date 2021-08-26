@@ -18,7 +18,6 @@ import { getOnlyUserPost } from "../../redux/actions/postactions";
 export default function ProfileDetails({ user, id }) {
   const dispatch = useDispatch();
   const userPosts = useSelector((state) => state.post.userPost);
-  console.log(userPosts);
   useEffect(() => {
     dispatch(getOnlyUserPost(id));
   }, []);
