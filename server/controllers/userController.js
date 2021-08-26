@@ -111,7 +111,7 @@ export const updateUser = async (req, res) => {
 
 export const getUser = async (req, res) => {
   const { id } = req.params;
-  console.log('id received', id);
+  console.log("id received", id);
   try {
     const existingUser = await UserMessage.findById(id);
     if (!existingUser)
@@ -123,22 +123,40 @@ export const getUser = async (req, res) => {
   }
 };
 
-// follow Controllers
+// to follow any user Controllers
 export const getfollowerUser = async (req, res) => {
   const { id } = req.params;
-  // try {
-  //   const result = await PostMessage.findByIdAndDelete(postId);
-  //   res.status(200).json({ result: result });
-  // } catch (error) {
-  //   res.status(404).json({ message: error.message });
-  // }
+  try {
+    const result = await UserMessage.findByIdAndUpdate(
+      id,
+      {
+        $push: { followers: req.userId },
+      },
+      { new: true },
+      (err, res) => {
+        if (err) {
+          return res.status(422).json({ message: err });
+        }
+        UserMessage.findByIdAndUpdate(
+          req.userId,
+          {
+            $push: { following: id },
+          },
+          { new: true }
+        );
+      }
+    );
+    res.status(200).json({ result: result });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
 };
 
 // unfollow Controllers
 export const getunfollowerUser = async (req, res) => {
   const { id } = req.params;
   // try {
-  //   const result = await PostMessage.findByIdAndDelete(postId);
+  //   const result = await UserMessage.findByIdAndDelete(postId);
   //   res.status(200).json({ result: result });
   // } catch (error) {
   //   res.status(404).json({ message: error.message });
