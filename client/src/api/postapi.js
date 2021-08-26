@@ -44,9 +44,9 @@ export const allPost = async () => {
   }
 };
 
-export const onlyUserPost = async () => {
+export const onlyUserPost = async (id) => {
   try {
-    const { data } = await ApiFunc.get(`/journalbit/mypost`);
+    const { data } = await ApiFunc.get(`/journalbit/mypost/${id}`);
     return data;
   } catch (error) {
     if (error.response) {

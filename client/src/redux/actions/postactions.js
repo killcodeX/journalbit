@@ -41,8 +41,8 @@ export const getnewPost = (body) => async (dispatch) => {
   }
 };
 
-export const getOnlyUserPost = () => async (dispatch) => {
-  const result = await onlyUserPost();
+export const getOnlyUserPost = (id) => async (dispatch) => {
+  const result = await onlyUserPost(id);
   try {
     dispatch({
       type: GET_ONLY_USER_POST,

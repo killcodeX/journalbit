@@ -63,7 +63,7 @@ export default function Profile() {
               </Followers>
             </SocialMedia>
           </ProfileDetails>
-          <ProfilePost user={User} />
+          <ProfilePost user={User} id={id} />
         </ProfileWrapper>
       </div>
     </div>

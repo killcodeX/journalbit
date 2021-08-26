@@ -28,7 +28,7 @@ router.delete("/delete-user/:id", AuthenticateToken, getdeleteUser);
 // Post Routes
 router.post("/new-post", AuthenticateToken, newPost);
 router.get("/allpost", AuthenticateToken, getAllPost);
-router.get("/mypost", AuthenticateToken, getUserPost); // AuthenticateToken
+router.get("/mypost/:id", AuthenticateToken, getUserPost); // AuthenticateToken
 router.put("/likepost", AuthenticateToken, getlikePost); // AuthenticateToken
 router.put("/unlikepost", AuthenticateToken, getunlikePost);
 router.put("/addcomment", AuthenticateToken, getcommentPost);

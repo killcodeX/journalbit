@@ -111,7 +111,6 @@ export const updateUser = async (req, res) => {
 
 export const getUser = async (req, res) => {
   const { id } = req.params;
-  console.log("id received", id);
   try {
     const existingUser = await UserMessage.findById(id);
     if (!existingUser)

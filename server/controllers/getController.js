@@ -14,8 +14,10 @@ export const getAllPost = async (req, res) => {
 };
 
 export const getUserPost = async (req, res) => {
+  const {id} = req.params;
+  console.log('user post -->',id)
   try {
-    let data = await PostMessage.find({postedBy:req.userId}).populate("postedBy comments.postedBy", "id fname lname avatar work")
+    let data = await PostMessage.find({postedBy:id}).populate("postedBy comments.postedBy", "id fname lname avatar work")
     //console.log(data)
     res.status(200).json({result: data});
   } catch (error) {

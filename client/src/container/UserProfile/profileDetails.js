@@ -15,12 +15,12 @@ import { SocialMediaProfiles, UserIntro } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { getOnlyUserPost } from "../../redux/actions/postactions";
 
-export default function ProfileDetails({ user }) {
+export default function ProfileDetails({ user, id }) {
   const dispatch = useDispatch();
   const userPosts = useSelector((state) => state.post.userPost);
   console.log(userPosts);
   useEffect(() => {
-    dispatch(getOnlyUserPost());
+    dispatch(getOnlyUserPost(id));
   }, []);
 
   return (
