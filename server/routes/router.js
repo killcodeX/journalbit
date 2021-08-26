@@ -4,6 +4,8 @@ import {
   loginUser,
   updateUser,
   getUser,
+  getfollowerUser,
+  getunfollowerUser,
   getdeleteUser
 } from "../controllers/userController.js";
 import { newPost } from "../controllers/postController.js";
@@ -19,6 +21,8 @@ router.post("/signup", createUser);
 router.post("/signin", loginUser); //AuthenticateToken,
 router.put("/update-user", AuthenticateToken, updateUser);
 router.get("/get-user/:id", AuthenticateToken, getUser);
+router.put("/get-follower/:id", AuthenticateToken, getfollowerUser);
+router.put("/get-unfollower/:id", AuthenticateToken, getunfollowerUser);
 router.delete("/delete-user/:id", AuthenticateToken, getdeleteUser);
 
 // Post Routes

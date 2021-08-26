@@ -123,6 +123,27 @@ export const getUser = async (req, res) => {
   }
 };
 
+// follow Controllers
+export const getfollowerUser = async (req, res) => {
+  const { id } = req.params;
+  // try {
+  //   const result = await PostMessage.findByIdAndDelete(postId);
+  //   res.status(200).json({ result: result });
+  // } catch (error) {
+  //   res.status(404).json({ message: error.message });
+  // }
+};
+
+// unfollow Controllers
+export const getunfollowerUser = async (req, res) => {
+  const { id } = req.params;
+  // try {
+  //   const result = await PostMessage.findByIdAndDelete(postId);
+  //   res.status(200).json({ result: result });
+  // } catch (error) {
+  //   res.status(404).json({ message: error.message });
+  // }
+};
 
 // Delete Controllers
 export const getdeleteUser = async (req, res) => {
