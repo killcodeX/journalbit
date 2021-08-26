@@ -34,6 +34,10 @@ export default function RightNav() {
     getNews()
   }, [])
 
+  if(!news || news.length == 0){
+    return <span>Loading...</span>
+  }
+
   return (
     <RightNavWrapper>
       <CardWrapper>
@@ -46,10 +50,9 @@ export default function RightNav() {
           <ButtonWrapper>View More</ButtonWrapper>
           </CardToolBar>
         </CardHeader>
-        {news.map((item) => {
-          console.log(item)
+        {news.map((item, index) => {
           return (
-            <NewsWrapper key={item.title} href={item.url}>
+            <NewsWrapper key={index} href={item.url}>
               <NewsImageWrapper>
                 <NewsImage src={item.urlToImage} alt="news" />
               </NewsImageWrapper>

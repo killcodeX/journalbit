@@ -56,7 +56,6 @@ export default function PostSide() {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.auth.user);
   const allPosts = useSelector((state) => state.post.allPost);
-  console.log(allPosts);
   useEffect(() => {
     dispatch(getallPost());
   }, []);
