@@ -5,6 +5,7 @@ export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
 export const VERIFY_LOCAL_STORAGE = "VERIFY_LOCAL_STORAGE";
 export const UPDATE_USER = "UPDATE_USER";
+export const GET_USER_PROFILE = "GET_USER_PROFILE";
 
 // for posts
 export const GET_ALL_POST = "GET_ALL_POST";
