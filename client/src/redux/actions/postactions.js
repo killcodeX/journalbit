@@ -34,7 +34,7 @@ export const getnewPost = (body) => async (dispatch) => {
   try {
     dispatch({
       type: CREATE_NEW_POST,
-      post: result.result,
+      post: result.result[0],
     });
   } catch (error) {
     console.log(error);

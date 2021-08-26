@@ -83,7 +83,8 @@ export const getUserfollower = (id) => async (dispatch) => {
   try {
     dispatch({
       type: GET_USER_FOLLOWER,
-      user: result.result,
+      followUser: result.followUser,
+      loggedUser: result.loggedUser,
     });
   } catch (error) {
     console.log(error);
@@ -95,7 +96,8 @@ export const getUserunfollower = (id) => async (dispatch) => {
   try {
     dispatch({
       type: GET_USER_UNFOLLOWER,
-      user: result.result,
+      followUser: result.followUser,
+      loggedUser: result.loggedUser,
     });
   } catch (error) {
     console.log(error);

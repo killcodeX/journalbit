@@ -21,7 +21,7 @@ export default function RightNav() {
 
   useEffect(() => {
     const getNews = async () => {
-      fetch('https://newsapi.org/v2/everything?q=tesla&from=2021-07-25&sortBy=publishedAt&apiKey=42fd351281504e8c905ffdc9063ddfbc')
+      fetch('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=42fd351281504e8c905ffdc9063ddfbc')
       .then(res => res.json())
       .then(res => {
         setNews(res.articles)

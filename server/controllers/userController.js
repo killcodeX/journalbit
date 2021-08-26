@@ -125,28 +125,20 @@ export const getUser = async (req, res) => {
 // to follow any user Controllers
 export const getfollowerUser = async (req, res) => {
   const { id } = req.params;
-  console.log(req.userId == id)
+  console.log(req.userId == id);
   try {
-    const result = await UserMessage.findByIdAndUpdate(
+    const followUser = await UserMessage.findByIdAndUpdate(
       id,
-      {
-        $push: { followers: req.userId },
-      },
-      { new: true },
-      (err, res) => {
-        if (err) {
-          return res.status(422).json({ message: err });
-        }
-        UserMessage.findByIdAndUpdate(
-          req.userId,
-          {
-            $push: { following: id },
-          },
-          { new: true }
-        );
-      }
+      { $push: { followers: req.userId } },
+      { new: true }
     );
-    res.status(200).json({ result: result });
+
+    const loggedUser = await UserMessage.findByIdAndUpdate(
+      req.userId,
+      { $push: { following: id } },
+      { new: true }
+    );
+    res.status(200).json({ followUser: followUser, loggedUser: loggedUser });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -155,27 +147,20 @@ export const getfollowerUser = async (req, res) => {
 // unfollow Controllers
 export const getunfollowerUser = async (req, res) => {
   const { id } = req.params;
+  console.log(req.userId == id);
   try {
-    const result = await UserMessage.findByIdAndUpdate(
+    const followUser = await UserMessage.findByIdAndUpdate(
       id,
-      {
-        $pull: { followers: req.userId },
-      },
-      { new: true },
-      (err, res) => {
-        if (err) {
-          return res.status(422).json({ message: err });
-        }
-        UserMessage.findByIdAndUpdate(
-          req.userId,
-          {
-            $pull: { following: id },
-          },
-          { new: true }
-        );
-      }
+      { $pull: { followers: req.userId } },
+      { new: true }
     );
-    res.status(200).json({ result: result });
+
+    const loggedUser = await UserMessage.findByIdAndUpdate(
+      req.userId,
+      { $pull: { following: id } },
+      { new: true }
+    );
+    res.status(200).json({ followUser: followUser, loggedUser: loggedUser });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

@@ -55,16 +55,20 @@ const AuthReducer = (state = initialState, action) => {
         userProfile: action.user,
       };
     case GET_USER_FOLLOWER:
-      saveState("journalUserProfile", action.user);
+      saveState("journalUserProfile", action.followUser);
+      saveState("journalUser", action.loggedUser);
       return {
         ...state,
-        userProfile: action.user,
+        userProfile: action.followUser,
+        user:action.loggedUser
       };
     case GET_USER_UNFOLLOWER:
-      saveState("journalUserProfile", action.user);
+      saveState("journalUserProfile", action.followUser);
+      saveState("journalUser", action.loggedUser);
       return {
         ...state,
-        userProfile: action.user,
+        userProfile: action.followUser,
+        user:action.loggedUser
       };
     case LOGOUT_SUCCESS:
       saveState("journalLoggedIn", false);

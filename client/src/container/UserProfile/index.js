@@ -30,7 +30,7 @@ export default function Profile() {
 
   useEffect(() => {
     dispatch(getUserdata(id));
-  }, []);
+  }, [id]);
 
   const handleFollow = (setting) => {
     if (setting == "follow") {
@@ -39,6 +39,10 @@ export default function Profile() {
       dispatch(getUserunfollower(id))
     }
   };
+
+  if(!User.avatar){
+    return <span>Loading...</span>
+  }
 
   return (
     <div className="section">

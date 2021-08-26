@@ -72,6 +72,7 @@ export default function PostSide() {
     },
   });
 
+  console.log('message')
   return (
     <PostWrapper>
       <CardWrapper className='mb-3'>
