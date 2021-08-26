@@ -19,7 +19,7 @@ import {
 import ProfilePost from "./profileDetails";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getUserdata, getUserfollower } from "../../redux/actions/useractions";
+import { getUserdata, getUserfollower, getUserunfollower } from "../../redux/actions/useractions";
 
 export default function Profile() {
   const loggedUser = useSelector((state) => state.auth.user);
@@ -36,7 +36,7 @@ export default function Profile() {
     if (setting == "follow") {
       dispatch(getUserfollower(id));
     } else{
-      console.log(setting)
+      dispatch(getUserunfollower(id))
     }
   };
 

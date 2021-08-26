@@ -125,6 +125,7 @@ export const getUser = async (req, res) => {
 // to follow any user Controllers
 export const getfollowerUser = async (req, res) => {
   const { id } = req.params;
+  console.log(req.userId == id)
   try {
     const result = await UserMessage.findByIdAndUpdate(
       id,
@@ -154,12 +155,30 @@ export const getfollowerUser = async (req, res) => {
 // unfollow Controllers
 export const getunfollowerUser = async (req, res) => {
   const { id } = req.params;
-  // try {
-  //   const result = await UserMessage.findByIdAndDelete(postId);
-  //   res.status(200).json({ result: result });
-  // } catch (error) {
-  //   res.status(404).json({ message: error.message });
-  // }
+  try {
+    const result = await UserMessage.findByIdAndUpdate(
+      id,
+      {
+        $pull: { followers: req.userId },
+      },
+      { new: true },
+      (err, res) => {
+        if (err) {
+          return res.status(422).json({ message: err });
+        }
+        UserMessage.findByIdAndUpdate(
+          req.userId,
+          {
+            $pull: { following: id },
+          },
+          { new: true }
+        );
+      }
+    );
+    res.status(200).json({ result: result });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
 };
 
 // Delete Controllers

@@ -98,17 +98,17 @@ export const getfollowerUser = async (id) => {
   }
 };
 
-// export const getUser = async (id) => {
-//   try {
-//     const { data }  = await ApiFunc.get(`/journalbit/get-user/${id}`);
-//     return data
-//   } catch (error) {
-//     if (error.response) {
-//       openNotificationWithIcon(
-//         "error",
-//         "Updating User Failed",
-//         error.response.data.message
-//       );
-//     }
-//   }
-// };
+export const getunfollowerUser = async (id) => {
+  try {
+    const { data }  = await ApiFunc.put(`/journalbit/get-unfollower/${id}`);
+    return data
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Unfollowing the User Failed",
+        error.response.data.message
+      );
+    }
+  }
+};

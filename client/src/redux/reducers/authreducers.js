@@ -5,6 +5,8 @@ import {
   VERIFY_LOCAL_STORAGE,
   UPDATE_USER,
   GET_USER_PROFILE,
+  GET_USER_FOLLOWER,
+  GET_USER_UNFOLLOWER,
 } from "../actions/actionconstant";
 
 import { saveState, loadState } from "../../helpers/localStorage";
@@ -47,7 +49,18 @@ const AuthReducer = (state = initialState, action) => {
         user: action.user,
       };
     case GET_USER_PROFILE:
-      console.log("called");
+      saveState("journalUserProfile", action.user);
+      return {
+        ...state,
+        userProfile: action.user,
+      };
+    case GET_USER_FOLLOWER:
+      saveState("journalUserProfile", action.user);
+      return {
+        ...state,
+        userProfile: action.user,
+      };
+    case GET_USER_UNFOLLOWER:
       saveState("journalUserProfile", action.user);
       return {
         ...state,
