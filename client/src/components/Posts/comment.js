@@ -10,7 +10,7 @@ import {
   CommentAuthor,
   ActuallComment,
 } from "./style";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Form } from "react-bootstrap";
@@ -106,7 +106,10 @@ export default function Comment({
                   </CommentAvatar>
                   <CommentPost>
                     <CommentAuthor>
-                      <Link to={`/profile/${comment.postedBy._id}`}>
+                      <Link
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        to={`/profile/${comment.postedBy._id}`}
+                      >
                         {comment.postedBy.fname + " " + comment.postedBy.lname}
                       </Link>
                     </CommentAuthor>

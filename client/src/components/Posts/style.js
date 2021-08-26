@@ -188,6 +188,10 @@ export const CommentAuthor = styled.div`
   font-size: 15px;
   font-weight: bold;
   font-family: Roboto;
+  &:hover{
+    color:#009EF7;
+    text-decoration:underline;
+  }
 `;
 
 export const ActuallComment = styled.div`
