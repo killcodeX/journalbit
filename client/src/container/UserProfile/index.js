@@ -14,13 +14,15 @@ import {
   UserDescription,
   SocialMedia,
   Followers,
+  FollowButton,
 } from "./style";
 import ProfilePost from "./profileDetails";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getUserdata } from "../../redux/actions/useractions";
 
 export default function Profile() {
+  const loggedUser = useSelector((state) => state.auth.user);
   const User = useSelector((state) => state.auth.userProfile);
   const totalPost = useSelector((state) => state.post.userPost);
   const dispatch = useDispatch();
@@ -48,19 +50,27 @@ export default function Profile() {
               <UserName>{`${User.fname} ${User.lname}`}</UserName>
               <UserDescription>{User.bio}</UserDescription>
             </UserDetails>
+            <Seprator />
             <SocialMedia>
-              <Followers>
-                <HeadingWrapper>{totalPost.length}</HeadingWrapper>
-                <HeadingWrapper>Post</HeadingWrapper>
-              </Followers>
-              <Followers>
-                <HeadingWrapper>0</HeadingWrapper>
-                <HeadingWrapper>Followers</HeadingWrapper>
-              </Followers>
-              <Followers>
-                <HeadingWrapper>0</HeadingWrapper>
-                <HeadingWrapper>Following</HeadingWrapper>
-              </Followers>
+              <div className="d-flex flex-row">
+                <Followers>
+                  <HeadingWrapper>{totalPost.length}</HeadingWrapper>
+                  <HeadingWrapper>Post</HeadingWrapper>
+                </Followers>
+                <Followers>
+                  <HeadingWrapper>{User.followers.length}</HeadingWrapper>
+                  <HeadingWrapper>Followers</HeadingWrapper>
+                </Followers>
+                <Followers>
+                  <HeadingWrapper>{User.following.length}</HeadingWrapper>
+                  <HeadingWrapper>Following</HeadingWrapper>
+                </Followers>
+              </div>
+              {User._id != loggedUser._id ? (
+                <FollowButton>Follow</FollowButton>
+              ) : (
+                <FollowButton><Link to='/account-setting'>Edit Profile</Link></FollowButton>
+              )}
             </SocialMedia>
           </ProfileDetails>
           <ProfilePost user={User} id={id} />

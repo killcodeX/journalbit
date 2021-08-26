@@ -51,7 +51,7 @@ export const ProfileDetails = styled.div`
 `;
 
 export const UserDetails = styled.div`
-  padding-top: 30px;
+  padding: 30px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,7 +74,7 @@ export const UserDescription = styled.div`
 `;
 
 export const SocialMedia = styled.div`
-  width: 300px;
+  width: 100%;
   margin: 20px auto;
   display: flex;
   justify-content: space-between;
@@ -85,6 +85,7 @@ export const Followers = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding:0 20px;
 `;
 
 export const UserIntro = styled.div`
@@ -101,4 +102,16 @@ export const SocialMediaProfiles = styled.div`
   font-size: 30px;
   color: #A1B8DD;
   cursor:pointer;
+`;
+
+export const FollowButton = styled.button`
+  // display:block;
+  // margin:10px auto;
+  padding:0.5rem 2.5rem;
+  color:blue;
+  border:none;
+  border-radius:10px;
+  font-weight:500;
+  font-family:poppins;
+  font-size:0.9rem;
 `;
