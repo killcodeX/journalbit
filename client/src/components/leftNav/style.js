@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const LeftNavWrapper = styled.div`
   // background-color: white;
-  position: fixed;
-  height: 100%;
-  width: inherit;
-  left: 75px;
+  // position: fixed;
+  position: absolute;
+  //height: 100%;
+  //width: inherit;
+  width:125%;
+  //left: 75px;
+  left:-40px;
   top: 100px;
 
   @media (max-width: 480px) {

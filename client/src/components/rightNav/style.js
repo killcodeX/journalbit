@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const RightNavWrapper = styled.div`
   // background-color: white;
-  position: fixed;
-  height: 100%;
-  width: inherit;
-  right: 50px;
+  // position: fixed;
+  position: absolute;
+  //height: 100%;
+  //width: inherit;
+  width:125%;
+  right: -70px;
   top: 100px;
-  overflow-y: scroll;
 
   @media(max-width:480px){
     display:none;
