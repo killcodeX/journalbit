@@ -6,10 +6,11 @@ import {
   UPDATE_USER,
   GET_USER_PROFILE, 
   GET_USER_FOLLOWER, 
-  GET_USER_UNFOLLOWER
+  GET_USER_UNFOLLOWER,
+  GET_All_USER
 } from "./actionconstant";
 
-import { userRegister, userLogin, userUpdate, getUser, getfollowerUser, getunfollowerUser } from "../../api/index";
+import { userRegister, userLogin, userUpdate, getUser, getfollowerUser, getunfollowerUser, getAllUser } from "../../api/index";
 
 export const receiveLogin = (user, history) => async (dispatch) => {
   const result = await userLogin(user);
@@ -98,6 +99,18 @@ export const getUserunfollower = (id) => async (dispatch) => {
       type: GET_USER_UNFOLLOWER,
       followUser: result.followUser,
       loggedUser: result.loggedUser,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getJournalUsers = () => async (dispatch) => {
+  const result = await getAllUser();
+  try {
+    dispatch({
+      type:  GET_All_USER,
+      allUser: result.result,
     });
   } catch (error) {
     console.log(error);

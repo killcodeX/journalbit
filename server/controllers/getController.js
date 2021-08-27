@@ -1,5 +1,5 @@
 import PostMessage from "../models/post.js";
-import mongoose from "mongoose";
+import UserMessage from "../models/user.js";
 
 // Get Controllers
 
@@ -33,11 +33,13 @@ export const getUserPost = async (req, res) => {
 
 export const getOnlySubPost = async (req, res) => {
   try {
-    let data = await PostMessage.find({
-      postedBy: { $in: req.userId.following },
-    }).populate("postedBy comments.postedBy", "id fname lname avatar work");
+    let data = await UserMessage.findById(req.userId);
+    let result = await PostMessage.find({
+      postedBy: { $in: [data.following, req.userId ]},
+    }).populate("postedBy comments.postedBy", "id fname lname avatar work")
+    .sort('-createdAt');
     //console.log(data)
-    res.status(200).json({ result: data });
+    res.status(200).json({ result: result });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

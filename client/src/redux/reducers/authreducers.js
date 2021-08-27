@@ -7,6 +7,7 @@ import {
   GET_USER_PROFILE,
   GET_USER_FOLLOWER,
   GET_USER_UNFOLLOWER,
+  GET_All_USER,
 } from "../actions/actionconstant";
 
 import { saveState, loadState } from "../../helpers/localStorage";
@@ -16,6 +17,7 @@ const initialState = {
   token: "",
   user: {},
   userProfile: {},
+  allUser: [],
 };
 
 // Reducers
@@ -60,7 +62,7 @@ const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         userProfile: action.followUser,
-        user:action.loggedUser
+        user: action.loggedUser,
       };
     case GET_USER_UNFOLLOWER:
       saveState("journalUserProfile", action.followUser);
@@ -68,7 +70,12 @@ const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         userProfile: action.followUser,
-        user:action.loggedUser
+        user: action.loggedUser,
+      };
+    case GET_All_USER:
+      return {
+        ...state,
+        allUser: action.allUser,
       };
     case LOGOUT_SUCCESS:
       saveState("journalLoggedIn", false);

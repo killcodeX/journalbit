@@ -83,6 +83,22 @@ export const getUser = async (id) => {
   }
 };
 
+export const getAllUser = async () => {
+  console.log('called for all usr')
+  try {
+    const { data }  = await ApiFunc.get(`/journalbit/get-all-user`);
+    return data
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Getting All Users Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
 export const getfollowerUser = async (id) => {
   try {
     const { data }  = await ApiFunc.put(`/journalbit/get-follower/${id}`);
