@@ -10,7 +10,7 @@ import {
 } from "../controllers/userController.js";
 import { newPost } from "../controllers/postController.js";
 import { getlikePost, getunlikePost, getcommentPost } from "../controllers/putController.js";
-import { getAllPost, getUserPost } from "../controllers/getController.js";
+import { getAllPost, getUserPost, getOnlySubPost } from "../controllers/getController.js";
 import { getdeletePost } from "../controllers/deleteController.js";
 import { AuthenticateToken } from "../middleware/tokenValidate.js";
 
@@ -28,6 +28,7 @@ router.delete("/delete-user/:id", AuthenticateToken, getdeleteUser);
 // Post Routes
 router.post("/new-post", AuthenticateToken, newPost);
 router.get("/allpost", AuthenticateToken, getAllPost);
+router.get("/onlysubpost", AuthenticateToken, getOnlySubPost);
 router.get("/mypost/:id", AuthenticateToken, getUserPost); // AuthenticateToken
 router.put("/likepost", AuthenticateToken, getlikePost); // AuthenticateToken
 router.put("/unlikepost", AuthenticateToken, getunlikePost);
