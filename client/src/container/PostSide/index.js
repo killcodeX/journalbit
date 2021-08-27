@@ -66,8 +66,9 @@ export default function PostSide() {
       topic: "",
     },
     validationSchema: PostSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       dispatch(getnewPost(values));
+      resetForm({ values: "" });
       message.loading("Publishing..", 3);
     },
   });

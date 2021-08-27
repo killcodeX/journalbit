@@ -58,7 +58,11 @@ export default function RightNav() {
               </NewsImageWrapper>
               <div className="flex-grow-1">
                 <NewsHeading>{item.title}</NewsHeading>
-                <DescWrapper>{item.description.substring(0, 50) + "...."}</DescWrapper>
+                {
+                  item.description? (
+                    <DescWrapper>{item.description.substring(0, 50) + "...."}</DescWrapper>
+                  ):null
+                }
               </div>
             </NewsWrapper>
           );

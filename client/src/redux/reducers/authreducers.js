@@ -12,7 +12,7 @@ import {
 import { saveState, loadState } from "../../helpers/localStorage";
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: loadState("journalLoggedIn") || false,
   token: "",
   user: {},
   userProfile: {},

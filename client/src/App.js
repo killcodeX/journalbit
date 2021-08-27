@@ -19,9 +19,9 @@ function App() {
 
   useEffect(() => {
     dispatch(verifyStorage());
-    if (auth) {
-      history.push('/')
-    }
+    // if (auth) {
+    //   history.push('/')
+    // }
   }, [auth]);
 
   return (
