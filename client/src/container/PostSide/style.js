@@ -13,6 +13,11 @@ export const PostWrapper = styled.div`
   padding-bottom: 130px;
   margin-bottom:100px;
   margin: 0 auto;
+
+  @media(max-width:480px){
+    width:100%;
+    left: 0;
+  }
 `;
 
 export const ProfileWrapper = styled.div`
@@ -26,6 +31,12 @@ export const ProfileWrapper = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  @media(max-width:480px){
+    width: 45px;
+    height: 45px;
+    margin-right:10px;
   }
 `;
 

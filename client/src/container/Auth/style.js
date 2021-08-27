@@ -6,6 +6,11 @@ export const LogoWrapper = styled.div`
   font-size: 85px;
   color: balck;
   padding-top: 25px;
+
+  @media(max-width:480px){
+    font-size: 65px;
+    padding-top:0;
+  }
 `;
 
 export const Title = styled.h2`
@@ -59,4 +64,9 @@ export const MotoWrapper = styled.h1`
   width:400px;
   margin:0 auto;
   font-weight:300;
+
+  @media(max-width:480px){
+    width:335px;
+    padding-bottom: 20px;
+  }
 `;

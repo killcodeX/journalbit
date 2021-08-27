@@ -16,7 +16,7 @@ export default function login() {
   return (
     <div className="section-auth position-relative">
       <div className="container">
-        <div className="row pt-5">
+        <div className="row pt-5 pb-5">
           <div className="col-sm-7 d-flex flex-column justify-content-center align-items-center">
             <LogoWrapper>Journal Bit</LogoWrapper>
             <InfoVector

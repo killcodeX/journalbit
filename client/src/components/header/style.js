@@ -23,6 +23,10 @@ export const InfoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-right: 50px;
+
+  @media(max-width:480px){
+    margin-right:0;
+  }
 `;
 
 export const NotificationWrapper = styled.div`

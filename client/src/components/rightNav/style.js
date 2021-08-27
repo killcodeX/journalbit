@@ -8,6 +8,10 @@ export const RightNavWrapper = styled.div`
   right: 50px;
   top: 100px;
   overflow-y: scroll;
+
+  @media(max-width:480px){
+    display:none;
+  }
 `;
 
 export const NewsWrapper = styled.a`

@@ -5,6 +5,10 @@ export const ProfileWrapper = styled.div`
   //background: #fff;
   padding-bottom: 30px;
   width: 80%;
+
+  @media(max-width:480px){
+    width: 100%;
+  }
 `;
 
 export const BannerWrapper = styled.div`
@@ -71,6 +75,10 @@ export const UserDescription = styled.div`
   font-family: "poppins", sans-seris;
   font-size: 15px;
   color: #a1a5b7;
+
+  @media(max-width:480px){
+    width: 260px;
+  }
 `;
 
 export const SocialMedia = styled.div`
@@ -78,6 +86,10 @@ export const SocialMedia = styled.div`
   margin: 20px auto;
   display: flex;
   justify-content: space-between;
+
+  @media(max-width:480px){
+    flex-direction: column;
+  }
 `;
 
 export const Followers = styled.div`
@@ -114,4 +126,8 @@ export const FollowButton = styled.button`
   font-weight:500;
   font-family:poppins;
   font-size:0.9rem;
+
+  @media(max-width:480px){
+    margin-top: 20px;
+  }
 `;

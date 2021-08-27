@@ -78,6 +78,10 @@ export const PostImage = styled.img`
   object-fit: cover;
   background-position: 50%;
   background-size: cover;
+
+  @media(max-width:480px){
+    width:318px;
+  }
 `;
 
 export const ArticleDescContainer = styled.div`

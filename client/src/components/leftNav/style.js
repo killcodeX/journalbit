@@ -7,6 +7,10 @@ export const LeftNavWrapper = styled.div`
   width: inherit;
   left: 75px;
   top: 100px;
+
+  @media(max-width:480px){
+    display:none;
+  }
 `;
 
 export const SelectTopic = styled.div`
