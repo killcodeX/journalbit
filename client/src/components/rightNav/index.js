@@ -50,7 +50,7 @@ export default function RightNav() {
           <ButtonWrapper>View More</ButtonWrapper>
           </CardToolBar>
         </CardHeader>
-        {news.map((item, index) => {
+        {news.slice(0,3).map((item, index) => {
           return (
             <NewsWrapper key={index} href={item.url}>
               <NewsImageWrapper>

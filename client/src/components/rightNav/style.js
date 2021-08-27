@@ -7,6 +7,7 @@ export const RightNavWrapper = styled.div`
   width: inherit;
   right: 50px;
   top: 100px;
+  overflow-y: scroll;
 `;
 
 export const NewsWrapper = styled.a`
