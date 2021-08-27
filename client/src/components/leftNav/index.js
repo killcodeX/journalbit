@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { TitleWrapper } from "../UI/Typograpghy/style";
 import { CardHeader, CardWrapper } from "../UI/cards/style";
 import {
   LeftNavWrapper,
+  FirstWrapper,
+  SecondWrapper,
   SelectTopic,
   PeopleWrapper,
   ProfileWrapper,
@@ -14,48 +16,55 @@ import { getJournalUsers } from "../../redux/actions/useractions";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function LeftNav() {
+  const [positionY, setPositionY] = useState(0);
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.auth.allUser);
   useEffect(() => {
     dispatch(getJournalUsers());
+    window.addEventListener("scroll", () => setPositionY(window.scrollY));
   }, []);
+
 
   return (
     <LeftNavWrapper>
-      <CardWrapper>
-        <CardHeader>
-          <TitleWrapper>
-            <AiFillProject />
-            {` `}Topics
-          </TitleWrapper>
-        </CardHeader>
+      <FirstWrapper>
+        <CardWrapper>
+          <CardHeader>
+            <TitleWrapper>
+              <AiFillProject />
+              {` `}Topics
+            </TitleWrapper>
+          </CardHeader>
 
-        {topics.map((topic) => {
-          return <SelectTopic key={topic.id}>{topic.name}</SelectTopic>;
-        })}
-      </CardWrapper>
+          {topics.map((topic) => {
+            return <SelectTopic key={topic.id}>{topic.name}</SelectTopic>;
+          })}
+        </CardWrapper>
+      </FirstWrapper>
 
-      <CardWrapper className="mt-2">
-        <CardHeader>
-          <TitleWrapper>
-            <AiOutlineTeam />
-            {` `}Peoples
-          </TitleWrapper>
-        </CardHeader>
-        <PeopleWrapper>
-          {allUsers?.length > 0
-            ? allUsers.map((user) => {
-                return (
-                  <Profiles key={user._id}>
-                    <ProfileWrapper>
-                      <img src={user.avatar} alt="profile" />
-                    </ProfileWrapper>
-                  </Profiles>
-                );
-              })
-            : null}
-        </PeopleWrapper>
-      </CardWrapper>
+      <SecondWrapper position={positionY > 400 ? "fixed" : "inherit"}>
+        <CardWrapper className="mt-2">
+          <CardHeader>
+            <TitleWrapper>
+              <AiOutlineTeam />
+              {` `}Peoples
+            </TitleWrapper>
+          </CardHeader>
+          <PeopleWrapper>
+            {allUsers?.length > 0
+              ? allUsers.map((user) => {
+                  return (
+                    <Profiles key={user._id}>
+                      <ProfileWrapper>
+                        <img src={user.avatar} alt="profile" />
+                      </ProfileWrapper>
+                    </Profiles>
+                  );
+                })
+              : null}
+          </PeopleWrapper>
+        </CardWrapper>
+      </SecondWrapper>
     </LeftNavWrapper>
   );
 }

@@ -3,17 +3,38 @@ import styled from "styled-components";
 export const LeftNavWrapper = styled.div`
   // background-color: white;
   // position: fixed;
-  position: absolute;
+  //position: absolute;
   //height: 100%;
   //width: inherit;
-  width:125%;
+  width: 225px;
   //left: 75px;
-  left:-40px;
-  top: 100px;
+  //left: -40px;
+  //top: 100px;
+
+  margin-top: 100px;
+  margin-left: -40px;
 
   @media (max-width: 480px) {
     display: none;
   }
+`;
+
+export const FirstWrapper = styled.div`
+  // background-color: white;
+  // position: fixed;
+  //position: absolute;
+  //height: 100%;
+  //width: inherit;
+  //width: 125%;
+  //left: 75px;
+  //left: -40px;
+  //top: 100px;
+`;
+
+export const SecondWrapper = styled.div`
+  position: ${props => props.position};
+  top: 90px;
+  width: 225px;
 `;
 
 export const SelectTopic = styled.div`
