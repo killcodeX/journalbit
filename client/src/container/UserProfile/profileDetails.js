@@ -25,7 +25,7 @@ export default function ProfileDetails({ user, id }) {
   return (
     <div className="pt-4">
       <div className="row">
-        <div className="col-sm- mb-2">
+        <div className="col-sm-4 mb-2">
           <CardWrapper>
             <CardHeader>
               <TitleWrapper>
