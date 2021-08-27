@@ -36,9 +36,7 @@ export const getOnlySubPost = async (req, res) => {
     let data = await UserMessage.findById(req.userId);
     let result = await PostMessage.find({
       postedBy: { $in: [data.following, req.userId ]},
-    }).populate("postedBy comments.postedBy", "id fname lname avatar work")
-    .sort('-createdAt');
-    //console.log(data)
+    }).populate("postedBy comments.postedBy", "id fname lname avatar work").sort('-createdAt');
     res.status(200).json({ result: result });
   } catch (error) {
     res.status(404).json({ message: error.message });
