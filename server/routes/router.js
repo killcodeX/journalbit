@@ -6,11 +6,20 @@ import {
   getUser,
   getfollowerUser,
   getunfollowerUser,
-  getdeleteUser
+  getAllUser,
+  getdeleteUser,
 } from "../controllers/userController.js";
 import { newPost } from "../controllers/postController.js";
-import { getlikePost, getunlikePost, getcommentPost } from "../controllers/putController.js";
-import { getAllPost, getUserPost, getOnlySubPost } from "../controllers/getController.js";
+import {
+  getlikePost,
+  getunlikePost,
+  getcommentPost,
+} from "../controllers/putController.js";
+import {
+  getAllPost,
+  getUserPost,
+  getOnlySubPost,
+} from "../controllers/getController.js";
 import { getdeletePost } from "../controllers/deleteController.js";
 import { AuthenticateToken } from "../middleware/tokenValidate.js";
 
@@ -23,6 +32,7 @@ router.put("/update-user", AuthenticateToken, updateUser);
 router.get("/get-user/:id", AuthenticateToken, getUser);
 router.put("/get-follower/:id", AuthenticateToken, getfollowerUser);
 router.put("/get-unfollower/:id", AuthenticateToken, getunfollowerUser);
+router.get("/get-all-user", AuthenticateToken, getAllUser);
 router.delete("/delete-user/:id", AuthenticateToken, getdeleteUser);
 
 // Post Routes

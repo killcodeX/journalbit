@@ -10,6 +10,7 @@ import {
 import {
   allPost,
   newPostPublish,
+  getOnlySubPost,
   onlyUserPost,
   likePost,
   unlikePost,
@@ -18,7 +19,7 @@ import {
 } from "../../api/postapi";
 
 export const getallPost = () => async (dispatch) => {
-  const result = await allPost();
+  const result = await getOnlySubPost();
   try {
     dispatch({
       type: GET_ALL_POST,

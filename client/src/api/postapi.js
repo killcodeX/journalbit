@@ -44,6 +44,21 @@ export const allPost = async () => {
   }
 };
 
+export const getOnlySubPost = async () => {
+  try {
+    const { data } = await ApiFunc.get(`/journalbit/onlysubpost`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Post Fetching Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
 export const onlyUserPost = async (id) => {
   try {
     const { data } = await ApiFunc.get(`/journalbit/mypost/${id}`);

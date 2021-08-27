@@ -166,6 +166,16 @@ export const getunfollowerUser = async (req, res) => {
   }
 };
 
+// Get All User Controllers
+export const getAllUser = async (req, res) => {
+  try {
+    const result = await UserMessage.find().populate("id fname lname following");
+    res.status(200).json({ result: result });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 // Delete Controllers
 export const getdeleteUser = async (req, res) => {
   const { id } = req.params;
