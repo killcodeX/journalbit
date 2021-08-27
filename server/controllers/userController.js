@@ -169,7 +169,7 @@ export const getunfollowerUser = async (req, res) => {
 // Get All User Controllers
 export const getAllUser = async (req, res) => {
   try {
-    const result = await UserMessage.find()
+    const result = await UserMessage.find({}, { fname: 1, lname:1, avatar:1, followers:1 })
     res.status(200).json({ result: result });
   } catch (error) {
     res.status(404).json({ message: error.message });
