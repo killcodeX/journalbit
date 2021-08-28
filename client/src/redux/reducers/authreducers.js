@@ -59,18 +59,36 @@ const AuthReducer = (state = initialState, action) => {
     case GET_USER_FOLLOWER:
       saveState("journalUserProfile", action.followUser);
       saveState("journalUser", action.loggedUser);
+      const newAlluser = [...state.allUser];
+      const postIndex = newAlluser.findIndex(
+        (user) => user._id == action.followUser._id
+      );
+      newAlluser[postIndex] = {
+        ...newAlluser[postIndex],
+        followers: action.followUser.followers,
+      };
       return {
         ...state,
         userProfile: action.followUser,
         user: action.loggedUser,
+        allUser: newAlluser,
       };
     case GET_USER_UNFOLLOWER:
       saveState("journalUserProfile", action.followUser);
       saveState("journalUser", action.loggedUser);
+      const allusers = [...state.allUser];
+      const unfollowIndex = allusers.findIndex(
+        (user) => user._id == action.followUser._id
+      );
+      allusers[unfollowIndex] = {
+        ...allusers[unfollowIndex],
+        followers: action.followUser.followers,
+      };
       return {
         ...state,
         userProfile: action.followUser,
         user: action.loggedUser,
+        allUser: allusers,
       };
     case GET_All_USER:
       return {

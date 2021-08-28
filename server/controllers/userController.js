@@ -26,6 +26,7 @@ export const createUser = async (req, res) => {
     });
 
     await UserMessage.findByIdAndUpdate(result._id,{$push: { followers: botId },},{ new: true });
+    await UserMessage.findByIdAndUpdate(botId,{$push: { following: result._id },},{ new: true });
      
     const token = jwt.sign(
       { email: result.email, id: result._id },
