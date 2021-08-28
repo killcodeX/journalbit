@@ -14,8 +14,13 @@ import {
 } from "./style";
 import { AiFillProject, AiOutlineTeam } from "react-icons/ai";
 import { topics } from "../../mock-data";
-import { getJournalUsers } from "../../redux/actions/useractions";
+import {
+  getJournalUsers,
+  getUserfollower,
+  getUserunfollower,
+} from "../../redux/actions/useractions";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function LeftNav() {
   const [positionY, setPositionY] = useState(0);
@@ -26,6 +31,14 @@ export default function LeftNav() {
     dispatch(getJournalUsers());
     window.addEventListener("scroll", () => setPositionY(window.scrollY));
   }, []);
+
+  const handleFollow = (setting) => {
+    if (setting == "follow") {
+      dispatch(getUserfollower(loggedUsers._id));
+    } else {
+      dispatch(getUserunfollower(loggedUsers._id));
+    }
+  };
 
   return (
     <LeftNavWrapper>
@@ -63,12 +76,18 @@ export default function LeftNav() {
                       </ProfileWrapper>
                       <PeopleWrapper>
                         <ProfileName>
-                          {user.fname + " " + user.lname}
+                          <Link to={`profile/${user._id}`}>{user.fname + " " + user.lname}</Link>
                         </ProfileName>
                         {user.followers.includes(loggedUsers._id) ? (
-                          <FollowButton>UnFollow</FollowButton>
+                          <FollowButton
+                            onClick={() => handleFollow("unfollow")}
+                          >
+                            UnFollow
+                          </FollowButton>
                         ) : (
-                          <FollowButton>Follow</FollowButton>
+                          <FollowButton onClick={() => handleFollow("follow")}>
+                            Follow
+                          </FollowButton>
                         )}
                       </PeopleWrapper>
                     </Profiles>
