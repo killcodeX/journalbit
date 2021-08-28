@@ -6,7 +6,7 @@ import {
   PostDown,
   PostButton,
 } from "./style";
-import { Seprator } from "../../components/UI/Typograpghy/style";
+import { Seprator, LoadingText } from "../../components/UI/Typograpghy/style";
 import { Form } from "react-bootstrap";
 import { CardWrapper, CardToolBar } from "../../components/UI/cards/style";
 import { AiOutlineThunderbolt } from "react-icons/ai";
@@ -125,7 +125,7 @@ export default function PostSide() {
         ? allPosts.map((post) => {
             return <Posts key={post._id} post={post} />;
           })
-        : "loading..."}
+        : <LoadingText>Post some journals or follow people to get some feed!</LoadingText>}
     </PostWrapper>
   );
 }

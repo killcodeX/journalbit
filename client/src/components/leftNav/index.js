@@ -76,7 +76,12 @@ export default function LeftNav() {
                       </ProfileWrapper>
                       <PeopleWrapper>
                         <ProfileName>
-                          <Link to={`profile/${user._id}`}>{user.fname + " " + user.lname}</Link>
+                          <Link
+                            style={{ textDecoration: "none", color: "inherit" }}
+                            to={`profile/${user._id}`}
+                          >
+                            {user.fname + " " + user.lname}
+                          </Link>
                         </ProfileName>
                         {user.followers.includes(loggedUsers._id) ? (
                           <FollowButton

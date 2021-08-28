@@ -38,3 +38,13 @@ export const ButtonWrapper = styled.button`
   padding: calc(0.25rem + 1px) calc(0.55rem + 1px);
   border: 0;
 `;
+
+export const LoadingText = styled.div`
+  margin: 50px 0;
+  padding: 0 30px;
+  height: 215px;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 800;
+  color: #c7c7c7;
+`;

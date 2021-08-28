@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Posts from "../../components/Posts";
 import { CardWrapper, CardHeader } from "../../components/UI/cards/style";
-import { TitleWrapper } from "../../components/UI/Typograpghy/style";
+import { TitleWrapper, LoadingText } from "../../components/UI/Typograpghy/style";
 import {
   AiFillContainer,
   AiFillEdit,
@@ -64,7 +64,7 @@ export default function ProfileDetails({ user, id }) {
             ? userPosts.map((post) => {
                 return <Posts key={post._id} post={post} />;
               })
-            : 'loading...'}
+            : <LoadingText>Post some journals or follow people to get some feed!</LoadingText>}
         </div>
       </div>
     </div>
