@@ -32,7 +32,7 @@ export const FirstWrapper = styled.div`
 `;
 
 export const SecondWrapper = styled.div`
-  position: ${props => props.position};
+  position: ${(props) => props.position};
   top: 90px;
   width: 225px;
 `;
@@ -48,13 +48,15 @@ export const SelectTopic = styled.div`
 
 `;
 
-export const PeopleWrapper = styled.div``;
-
-export const Profiles = styled.div``;
+export const Profiles = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 40px;
+`;
 
 export const ProfileWrapper = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   overflow: hidden;
   border-radius: 50%;
   cursor: pointer;
@@ -63,4 +65,26 @@ export const ProfileWrapper = styled.div`
     height: 100%;
     object-fit: cover;
   }
+`;
+
+export const PeopleWrapper = styled.div`
+  padding-left: 12px;
+`;
+
+export const ProfileName = styled.div`
+  font-size:14px;
+  font-family:poppins;
+  padding-bottom:5px;
+`;
+export const FollowButton = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: 0.2rem 0.2rem;
+  color: blue;
+  border-radius: 10px;
+  font-weight: 500;
+  font-family: poppins;
+  font-size: 0.9rem;
+  background-color:#f2f2f5;
 `;
