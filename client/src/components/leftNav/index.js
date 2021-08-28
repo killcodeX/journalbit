@@ -32,11 +32,11 @@ export default function LeftNav() {
     window.addEventListener("scroll", () => setPositionY(window.scrollY));
   }, []);
 
-  const handleFollow = (setting) => {
+  const handleFollow = (setting, id) => {
     if (setting == "follow") {
-      dispatch(getUserfollower(loggedUsers._id));
+      dispatch(getUserfollower(id));
     } else {
-      dispatch(getUserunfollower(loggedUsers._id));
+      dispatch(getUserunfollower(id));
     }
   };
 
@@ -85,12 +85,12 @@ export default function LeftNav() {
                         </ProfileName>
                         {user.followers.includes(loggedUsers._id) ? (
                           <FollowButton
-                            onClick={() => handleFollow("unfollow")}
+                            onClick={() => handleFollow("unfollow", user._id)}
                           >
                             UnFollow
                           </FollowButton>
                         ) : (
-                          <FollowButton onClick={() => handleFollow("follow")}>
+                          <FollowButton onClick={() => handleFollow("follow", user._id)}>
                             Follow
                           </FollowButton>
                         )}

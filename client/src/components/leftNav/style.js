@@ -76,12 +76,13 @@ export const ProfileName = styled.div`
   font-family:poppins;
   padding-bottom:5px;
 `;
-export const FollowButton = styled.div`
+export const FollowButton = styled.button`
   display:flex;
   justify-content:center;
   align-items:center;
-  padding: 0.2rem 0.2rem;
+  padding: .2rem 1.8rem;
   color: blue;
+  border:none;
   border-radius: 10px;
   font-weight: 500;
   font-family: poppins;

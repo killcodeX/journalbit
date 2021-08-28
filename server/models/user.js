@@ -15,8 +15,8 @@ const postSchema = new mongoose.Schema({
   twitter: { type: String },
   reddit: { type: String },
   facebook: { type: String },
-  followers:[{ type: ObjectId, ref:"UserMessage", default: '6128ccbc7abb0e44a0ac22ce'}],
-  following:[{ type: ObjectId, ref:"UserMessage", default: '6128ccbc7abb0e44a0ac22ce'}],
+  followers:[{ type: ObjectId, ref:"UserMessage"}],
+  following:[{ type: ObjectId, ref:"UserMessage"}],
   createdAt: {
     type: Date,
     default: new Date(),

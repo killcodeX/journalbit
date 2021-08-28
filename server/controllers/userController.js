@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+const botId = "6128ccbc7abb0e44a0ac22ce";
+
 // POST Controllers
 
 // for signup
@@ -23,6 +25,8 @@ export const createUser = async (req, res) => {
       lname: lname,
     });
 
+    await UserMessage.findByIdAndUpdate(result._id,{$push: { followers: botId },},{ new: true });
+     
     const token = jwt.sign(
       { email: result.email, id: result._id },
       process.env.JWT_SECRET_KEY,
@@ -169,7 +173,10 @@ export const getunfollowerUser = async (req, res) => {
 // Get All User Controllers
 export const getAllUser = async (req, res) => {
   try {
-    const result = await UserMessage.find({}, { fname: 1, lname:1, avatar:1, followers:1 })
+    const result = await UserMessage.find(
+      {},
+      { fname: 1, lname: 1, avatar: 1, followers: 1 }
+    );
     res.status(200).json({ result: result });
   } catch (error) {
     res.status(404).json({ message: error.message });
