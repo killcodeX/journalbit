@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormWrapper, FormButton } from "../style";
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import { LoginSchema } from "../../../helpers/schema";
@@ -10,6 +10,7 @@ import { receiveLogin } from "../../../redux/actions/useractions";
 export default function Loginform() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [load, setLoad] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -18,7 +19,11 @@ export default function Loginform() {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
+      setLoad(true);
       dispatch(receiveLogin(values, history));
+      setTimeout(() => {
+        setLoad(false);
+      }, 4000);
     },
   });
 
@@ -55,7 +60,15 @@ export default function Loginform() {
             {formik.errors.password}
           </Form.Control.Feedback>
         </Form.Group>
-        <FormButton type="submit">Login</FormButton>
+        {load ? (
+          <div className="pt-3 d-flex flex-column justify-content-center align-items-center">
+            <Spinner animation="border" role="status" variant="primary">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <FormButton type="submit">Login</FormButton>
+        )}
       </Form>
     </FormWrapper>
   );

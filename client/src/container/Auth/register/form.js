@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormWrapper, FormButton } from "../style";
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import { useFormik } from "formik";
 import { RegistrationSchema } from "../../../helpers/schema";
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom';
-import { receiveSignUp } from '../../../redux/actions/useractions'
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { receiveSignUp } from "../../../redux/actions/useractions";
 
 export default function RegisterForm() {
-
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [load, setLoad] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -21,7 +21,11 @@ export default function RegisterForm() {
     },
     validationSchema: RegistrationSchema,
     onSubmit: (values) => {
-      dispatch(receiveSignUp(values, history))
+      setLoad(true);
+      dispatch(receiveSignUp(values, history));
+      setTimeout(() => {
+        setLoad(false);
+      }, 4000);
     },
   });
 
@@ -90,7 +94,15 @@ export default function RegisterForm() {
             {formik.errors.password}
           </Form.Control.Feedback>
         </Form.Group>
-        <FormButton type="submit">Register</FormButton>
+        {load ? (
+          <div className="pt-3 d-flex flex-column justify-content-center align-items-center">
+            <Spinner animation="border" role="status" variant="primary">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <FormButton type="submit">Register</FormButton>
+        )}
       </Form>
     </FormWrapper>
   );
