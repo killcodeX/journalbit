@@ -12,6 +12,8 @@ import {
 
 import { userRegister, userLogin, userUpdate, getUser, getfollowerUser, getunfollowerUser, getAllUser } from "../../api/index";
 
+import { getallPost } from "./postactions";
+
 export const receiveLogin = (user, history) => async (dispatch) => {
   const result = await userLogin(user);
   try {
@@ -81,6 +83,7 @@ export const getUserdata = (id) => async (dispatch) => {
 
 export const getUserfollower = (id) => async (dispatch) => {
   const result = await getfollowerUser(id);
+  await getallPost()
   try {
     dispatch({
       type: GET_USER_FOLLOWER,
@@ -94,6 +97,7 @@ export const getUserfollower = (id) => async (dispatch) => {
 
 export const getUserunfollower = (id) => async (dispatch) => {
   const result = await getunfollowerUser(id);
+  await getallPost()
   try {
     dispatch({
       type: GET_USER_UNFOLLOWER,

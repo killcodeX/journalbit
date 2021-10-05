@@ -55,10 +55,10 @@ export default function Header() {
         </Link>
       </LogoWrapper>
       <InfoWrapper>
-        <NotificationWrapper>
+        {/* <NotificationWrapper>
           <BsFillBellFill />
           <PulseWrapper />
-        </NotificationWrapper>
+        </NotificationWrapper> */}
         <Dropdown overlay={menu} trigger={["click"]}>
           <ProfileWrapper>
             <img src={User.avatar} alt="profile" />

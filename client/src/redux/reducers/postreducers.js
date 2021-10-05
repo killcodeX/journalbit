@@ -31,6 +31,7 @@ const PostReducer = (state = initialState, action) => {
         userPost: action.post,
       };
     case GET_LIKE_UNLIKE_POST:
+      // for all user posts
       const newAllPost = [...state.allPost];
       const postIndex = newAllPost.findIndex(
         (post) => post._id == action.post._id
@@ -39,12 +40,23 @@ const PostReducer = (state = initialState, action) => {
         ...newAllPost[postIndex],
         likes: action.post.likes,
       };
+
+      // for only user posts
+      const newUserAllPost = [...state.userPost];
+      const userPostIndex = newUserAllPost.findIndex(
+        (post) => post._id == action.post._id
+      );
+      newUserAllPost[userPostIndex] = {
+        ...newUserAllPost[userPostIndex],
+        likes: action.post.likes,
+      };
       return {
         ...state,
         allPost: newAllPost,
+        userPost: newUserAllPost
       };
     case GET_COMMENT_POST:
-      console.log("called from reducer -->", action.post);
+      // for all user posts
       const newAllPostData = [...state.allPost];
       const postIndexData = newAllPostData.findIndex(
         (post) => post._id == action.post._id
@@ -53,9 +65,21 @@ const PostReducer = (state = initialState, action) => {
         ...newAllPostData[postIndexData],
         comments: action.post.comments,
       };
+
+      // for only user posts
+
+      const newUserPostData = [...state.userPost];
+      const userpostIndexData = newUserPostData.findIndex(
+        (post) => post._id == action.post._id
+      );
+      newUserPostData[userpostIndexData] = {
+        ...newUserPostData[userpostIndexData],
+        comments: action.post.comments,
+      };
       return {
         ...state,
         allPost: newAllPostData,
+        userPost: newUserPostData
       };
     case GET_DELETE_POST:
       const updatedData = state.allPost.filter(

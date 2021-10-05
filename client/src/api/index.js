@@ -84,7 +84,6 @@ export const getUser = async (id) => {
 };
 
 export const getAllUser = async () => {
-  console.log('called for all usr')
   try {
     const { data }  = await ApiFunc.get(`/journalbit/get-all-user`);
     return data

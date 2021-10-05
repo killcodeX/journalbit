@@ -56,7 +56,6 @@ export const getOnlyUserPost = (id) => async (dispatch) => {
 
 export const getlikePost = (id) => async (dispatch) => {
   const result = await likePost(id);
-  console.log(result);
   try {
     dispatch({
       type: GET_LIKE_UNLIKE_POST,
@@ -69,7 +68,6 @@ export const getlikePost = (id) => async (dispatch) => {
 
 export const getunlikePost = (id) => async (dispatch) => {
   const result = await unlikePost(id);
-  console.log(result);
   try {
     dispatch({
       type: GET_LIKE_UNLIKE_POST,

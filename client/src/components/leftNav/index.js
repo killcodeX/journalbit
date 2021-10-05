@@ -19,6 +19,7 @@ import {
   getUserfollower,
   getUserunfollower,
 } from "../../redux/actions/useractions";
+import { getallPost } from "../../redux/actions/postactions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -38,6 +39,7 @@ export default function LeftNav() {
     } else {
       dispatch(getUserunfollower(id));
     }
+    dispatch(getallPost())
   };
 
   return (
@@ -90,7 +92,9 @@ export default function LeftNav() {
                             UnFollow
                           </FollowButton>
                         ) : (
-                          <FollowButton onClick={() => handleFollow("follow", user._id)}>
+                          <FollowButton
+                            onClick={() => handleFollow("follow", user._id)}
+                          >
                             Follow
                           </FollowButton>
                         )}
