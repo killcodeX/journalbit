@@ -31,23 +31,23 @@ import { Link } from "react-router-dom";
 import { internalNews } from "../../mock-data";
 
 export default function RightNav() {
-  const [news, setNews] = useState([]);
+  const [news, setNews] = useState([...internalNews]);
   const dispatch = useDispatch();
   const loggedUsers = useSelector((state) => state.auth.user);
   const allUsers = useSelector((state) => state.auth.allUser);
 
   useEffect(() => {
     const getNews = async () => {
-      fetch(
-        "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=42fd351281504e8c905ffdc9063ddfbc"
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          setNews(res.articles);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // fetch(
+      //   "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=42fd351281504e8c905ffdc9063ddfbc"
+      // )
+      //   .then((res) => res.json())
+      //   .then((res) => {
+      //     setNews(res.articles);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     };
 
     getNews();

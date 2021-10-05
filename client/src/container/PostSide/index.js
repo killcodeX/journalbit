@@ -105,6 +105,7 @@ export default function PostSide() {
                 onChange={formik.handleChange}
                 isInvalid={formik.errors.topic}
               >
+                <option value="">Select Topic</option>
                 {topics.map((topic) => {
                   return (
                     <option key={topic.id} value={topic.slug}>

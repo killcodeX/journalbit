@@ -45,7 +45,7 @@ export const AccountSchema = Yup.object().shape({
 
 export const PostSchema = Yup.object().shape({
   url: Yup.string().matches(url, "Enter only url!").required("Required"),
-  topic: Yup.string().required("Required"),
+  topic: Yup.string().required("Please Select Topic"),
 });
 
 export const CommentSchema = Yup.object().shape({

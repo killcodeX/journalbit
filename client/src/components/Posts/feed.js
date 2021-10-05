@@ -16,7 +16,7 @@ export default function Feed({post}) {
   return (
     <PostBody>
       <PostContainer>
-        <ArticleLink href={post.url}>
+        <ArticleLink href={post.url} target="_blank" rel="noreferrer">
           <ArticleImageContainer>
             <PostImage src={post.image} alt={post.title} />
           </ArticleImageContainer>
