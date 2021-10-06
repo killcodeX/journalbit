@@ -9,6 +9,7 @@ export const GET_USER_PROFILE = "GET_USER_PROFILE";
 export const GET_USER_FOLLOWER = "GET_USER_FOLLOWER";
 export const GET_USER_UNFOLLOWER = "GET_USER_UNFOLLOWER";
 export const GET_All_USER = "GET_All_USER";
+export const DELETE_USER = "DELETE_USER";
 
 // for posts
 export const GET_ALL_POST = "GET_ALL_POST";

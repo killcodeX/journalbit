@@ -8,6 +8,7 @@ import {
   GET_USER_FOLLOWER,
   GET_USER_UNFOLLOWER,
   GET_All_USER,
+  DELETE_USER,
 } from "../actions/actionconstant";
 
 import { saveState, loadState } from "../../helpers/localStorage";
@@ -96,6 +97,19 @@ const AuthReducer = (state = initialState, action) => {
         allUser: action.allUser,
       };
     case LOGOUT_SUCCESS:
+      saveState("journalLoggedIn", false);
+      saveState("journalUser", {});
+      saveState("journaltoken", "");
+      saveState("journalUserProfile", {});
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {},
+        token: "",
+        userProfile: {},
+      };
+
+    case DELETE_USER:
       saveState("journalLoggedIn", false);
       saveState("journalUser", {});
       saveState("journaltoken", "");

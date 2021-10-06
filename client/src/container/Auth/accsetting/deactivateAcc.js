@@ -8,6 +8,7 @@ import {
   DeactivateSvg,
   WarningTitle,
 } from "./style";
+import { getDeleteUser } from "../../../redux/actions/useractions";
 import { Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,10 +19,11 @@ export default function DeactivateAcc() {
 
   function showPromiseConfirm() {
     confirm({
-      title: 'Are you sure?',
-      content:'Remember, Once you delete your account you will not able to get it back',
+      title: "Are you sure?",
+      content:
+        "Remember, Once you delete your account you will not able to get it back",
       onOk() {
-        //dispatch(getdeletePost(post._id));
+        dispatch(getDeleteUser(userId));
       },
       onCancel() {},
     });
@@ -45,7 +47,9 @@ export default function DeactivateAcc() {
       </AccountWarning>
       <Seprator />
       <div className="d-flex justify-content-end py-2 px-3">
-        <button className="btn btn-danger fw-bold" onClick={showPromiseConfirm}>Deactivate Account</button>
+        <button className="btn btn-danger fw-bold" onClick={showPromiseConfirm}>
+          Deactivate Account
+        </button>
       </div>
     </CardWrapper>
   );

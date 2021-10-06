@@ -127,3 +127,18 @@ export const getunfollowerUser = async (id) => {
     }
   }
 };
+
+export const getdeleteUserApi = async (id) => {
+  try {
+    const { data }  = await ApiFunc.post(`/journalbit/del-user/${id}`);
+    return data
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Deactivating Account Failed",
+        error.response.data.message
+      );
+    }
+  }
+};

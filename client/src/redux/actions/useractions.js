@@ -4,13 +4,23 @@ import {
   LOGOUT_SUCCESS,
   VERIFY_LOCAL_STORAGE,
   UPDATE_USER,
-  GET_USER_PROFILE, 
-  GET_USER_FOLLOWER, 
+  GET_USER_PROFILE,
+  GET_USER_FOLLOWER,
   GET_USER_UNFOLLOWER,
-  GET_All_USER
+  GET_All_USER,
+  DELETE_USER,
 } from "./actionconstant";
 
-import { userRegister, userLogin, userUpdate, getUser, getfollowerUser, getunfollowerUser, getAllUser } from "../../api/index";
+import {
+  userRegister,
+  userLogin,
+  userUpdate,
+  getUser,
+  getfollowerUser,
+  getunfollowerUser,
+  getAllUser,
+  getdeleteUserApi
+} from "../../api/index";
 
 import { getallPost } from "./postactions";
 
@@ -54,7 +64,6 @@ export const verifyStorage = () => {
   };
 };
 
-
 export const receiveUpdate = (body, history) => async (dispatch) => {
   const result = await userUpdate(body);
   try {
@@ -67,7 +76,6 @@ export const receiveUpdate = (body, history) => async (dispatch) => {
     console.log(error);
   }
 };
-
 
 export const getUserdata = (id) => async (dispatch) => {
   const result = await getUser(id);
@@ -83,7 +91,7 @@ export const getUserdata = (id) => async (dispatch) => {
 
 export const getUserfollower = (id) => async (dispatch) => {
   const result = await getfollowerUser(id);
-  await getallPost()
+  await getallPost();
   try {
     dispatch({
       type: GET_USER_FOLLOWER,
@@ -97,7 +105,7 @@ export const getUserfollower = (id) => async (dispatch) => {
 
 export const getUserunfollower = (id) => async (dispatch) => {
   const result = await getunfollowerUser(id);
-  await getallPost()
+  await getallPost();
   try {
     dispatch({
       type: GET_USER_UNFOLLOWER,
@@ -113,8 +121,19 @@ export const getJournalUsers = () => async (dispatch) => {
   const result = await getAllUser();
   try {
     dispatch({
-      type:  GET_All_USER,
+      type: GET_All_USER,
       allUser: result.result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getDeleteUser = (id) => async (dispatch) => {
+  await getdeleteUserApi(id)
+  try {
+    dispatch({
+      type: DELETE_USER,
     });
   } catch (error) {
     console.log(error);
