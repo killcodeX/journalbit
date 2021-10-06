@@ -19,15 +19,17 @@ import {
   getUserfollower,
   getUserunfollower,
 } from "../../redux/actions/useractions";
-import { getallPost } from "../../redux/actions/postactions";
+import { getallPost, getFilterPost } from "../../redux/actions/postactions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function LeftNav() {
   const [positionY, setPositionY] = useState(0);
+  const [activeTopic, setActiveTopic] = useState("All Posts");
   const dispatch = useDispatch();
   const loggedUsers = useSelector((state) => state.auth.user);
   const allUsers = useSelector((state) => state.auth.allUser);
+
   useEffect(() => {
     dispatch(getJournalUsers());
     window.addEventListener("scroll", () => setPositionY(window.scrollY));
@@ -39,7 +41,12 @@ export default function LeftNav() {
     } else {
       dispatch(getUserunfollower(id));
     }
-    dispatch(getallPost())
+    dispatch(getallPost());
+  };
+
+  const handleTopic = (topic) => {
+    dispatch(getFilterPost(topic));
+    setActiveTopic(topic)
   };
 
   return (
@@ -54,7 +61,15 @@ export default function LeftNav() {
           </CardHeader>
 
           {topics.map((topic) => {
-            return <SelectTopic key={topic.id}>{topic.name}</SelectTopic>;
+            return (
+              <SelectTopic
+                key={topic.id}
+                onClick={() => handleTopic(topic.name)}
+                select={topic.name == activeTopic}
+              >
+                {topic.name}
+              </SelectTopic>
+            );
           })}
         </CardWrapper>
       </FirstWrapper>

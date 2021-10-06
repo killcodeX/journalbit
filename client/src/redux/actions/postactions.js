@@ -2,20 +2,22 @@ import {
   GET_ALL_POST,
   CREATE_NEW_POST,
   GET_ONLY_USER_POST,
+  FILTER_POST,
   GET_LIKE_UNLIKE_POST,
-  GET_COMMENT_POST, 
-  GET_DELETE_POST
+  GET_COMMENT_POST,
+  GET_DELETE_POST,
 } from "./actionconstant";
 
 import {
   allPost,
   newPostPublish,
   getOnlySubPost,
+  getFilterPostApi,
   onlyUserPost,
   likePost,
   unlikePost,
   commentPost,
-  deletePost
+  deletePost,
 } from "../../api/postapi";
 
 export const getallPost = () => async (dispatch) => {
@@ -54,6 +56,22 @@ export const getOnlyUserPost = (id) => async (dispatch) => {
   }
 };
 
+export const getFilterPost = (topic) => async (dispatch) => {
+  if (topic == "All Posts") {
+    dispatch(getallPost())
+  } else {
+    const result = await getFilterPostApi({ topic: topic });
+    try {
+      dispatch({
+        type: FILTER_POST,
+        post: result.result,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
 export const getlikePost = (id) => async (dispatch) => {
   const result = await likePost(id);
   try {
@@ -78,7 +96,6 @@ export const getunlikePost = (id) => async (dispatch) => {
   }
 };
 
-
 export const getcommentPost = (body) => async (dispatch) => {
   const result = await commentPost(body);
   try {
@@ -90,7 +107,6 @@ export const getcommentPost = (body) => async (dispatch) => {
     console.log(error);
   }
 };
-
 
 export const getdeletePost = (id) => async (dispatch) => {
   await deletePost(id);

@@ -59,6 +59,21 @@ export const getOnlySubPost = async () => {
   }
 };
 
+export const getFilterPostApi = async (topic) => {
+  try {
+    const { data } = await ApiFunc.post(`/journalbit/filter-post`, topic);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      openNotificationWithIcon(
+        "error",
+        "Post Fetching Failed",
+        error.response.data.message
+      );
+    }
+  }
+};
+
 export const onlyUserPost = async (id) => {
   try {
     const { data } = await ApiFunc.get(`/journalbit/mypost/${id}`);

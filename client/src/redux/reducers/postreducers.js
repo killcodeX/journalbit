@@ -2,6 +2,7 @@ import {
   GET_ALL_POST,
   CREATE_NEW_POST,
   GET_ONLY_USER_POST,
+  FILTER_POST,
   GET_LIKE_UNLIKE_POST,
   GET_COMMENT_POST,
   GET_DELETE_POST,
@@ -30,6 +31,11 @@ const PostReducer = (state = initialState, action) => {
         ...state,
         userPost: action.post,
       };
+    case FILTER_POST:
+      return {
+        ...state,
+        allPost: [...action.post]
+      }
     case GET_LIKE_UNLIKE_POST:
       // for all user posts
       const newAllPost = [...state.allPost];

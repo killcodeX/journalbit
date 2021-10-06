@@ -27,6 +27,11 @@ export const internalNews = [
 
 export const topics = [
   {
+    id: 0,
+    name: "All Posts",
+    slug: "All Posts",
+  },
+  {
     id: 1,
     name: "Crypto",
     slug: "crypto",

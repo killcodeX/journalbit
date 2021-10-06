@@ -9,7 +9,7 @@ import {
   getAllUser,
   getdeleteUser,
 } from "../controllers/userController.js";
-import { newPost } from "../controllers/postController.js";
+import { newPost, filterPost } from "../controllers/postController.js";
 import {
   getlikePost,
   getunlikePost,
@@ -43,6 +43,7 @@ router.get("/mypost/:id", AuthenticateToken, getUserPost); // AuthenticateToken
 router.put("/likepost", AuthenticateToken, getlikePost); // AuthenticateToken
 router.put("/unlikepost", AuthenticateToken, getunlikePost);
 router.put("/addcomment", AuthenticateToken, getcommentPost);
+router.post("/filter-post", AuthenticateToken, filterPost)
 router.delete("/deletepost/:id", AuthenticateToken, getdeletePost);
 
 export default router;

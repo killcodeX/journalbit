@@ -41,6 +41,8 @@ export const SelectTopic = styled.div`
   padding:5px 10px;
   margin:5px; 0;
   cursor:pointer;
+  color:${props => props.select? "white": ""};
+  background-color: ${props => props.select? "#36A3FF":""};
   &:hover{
     color:white;
     background-color:#36A3FF;
