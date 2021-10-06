@@ -9,7 +9,7 @@ import {
   PostTime,
   PostFooter,
 } from "./style";
-import { Menu, Dropdown } from "antd";
+import { Menu, Dropdown, Modal } from "antd";
 import { Seprator } from "../UI/Typograpghy/style";
 import { useDispatch, useSelector } from "react-redux";
 import Feed from "./feed";
@@ -20,21 +20,36 @@ import {
   AiFillDelete,
   AiOutlineSwap,
   AiFillFlag,
+  AiFillExclamationCircle
 } from "react-icons/ai";
 import { getdeletePost } from "../../redux/actions/postactions";
 import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
   const dispatch = useDispatch();
+  const { confirm } = Modal;
   const [showComments, setShowComments] = useState(false);
   const userId = useSelector((state) => state.auth.user._id);
   const userAvatar = useSelector((state) => state.auth.user.avatar);
 
   const handleDelete = ({ key }) => {
     if (key == 1) {
-      dispatch(getdeletePost(post._id));
+      //dispatch(getdeletePost(post._id));
+      showPromiseConfirm(post._id)
     }
   };
+
+  function showPromiseConfirm(id) {
+    confirm({
+      title: 'Do you want to delete these post?',
+      //icon: <AiFillExclamationCircle style={{color:"red", fontSize:"20px"}} />,
+      onOk() {
+        dispatch(getdeletePost(post._id));
+      },
+      onCancel() {},
+    });
+  }
+  
 
   const menu = (
     <Menu onClick={handleDelete}>

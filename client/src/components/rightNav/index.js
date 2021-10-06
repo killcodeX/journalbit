@@ -76,7 +76,7 @@ export default function RightNav() {
               {` `}Popular
             </TitleWrapper>
             <CardToolBar>
-              <ButtonWrapper>View More</ButtonWrapper>
+              {/* <ButtonWrapper>View More</ButtonWrapper> */}
             </CardToolBar>
           </CardHeader>
           {news.slice(0, 10).map((item, index) => {

@@ -6,8 +6,10 @@ import { CardWrapper } from "../../../components/UI/cards/style";
 import { ProfileImageWrapper, OnlineIndicator, UserName } from "./style";
 import { Followers } from "../../UserProfile/style";
 import { Progress } from "antd";
+import { useSelector } from "react-redux";
 
 export default function DisplayUser({ user }) {
+  const totalPost = useSelector((state) => state.post.userPost);
   return (
     <CardWrapper>
       <div className="d-flex flex-wrap flex-sm-nowrap">
@@ -49,19 +51,19 @@ export default function DisplayUser({ user }) {
           <div className="d-flex flex-wrap justify-content-between align-items-center">
             <div className="d-flex">
               <Followers className="py-2 px-2 me-2 mb-3">
-                <HeadingWrapper>0</HeadingWrapper>
+                <HeadingWrapper>{totalPost.length}</HeadingWrapper>
                 <HeadingWrapper>Post</HeadingWrapper>
               </Followers>
               <Followers className="py-2 px-2 me-2 mb-3">
-                <HeadingWrapper>0</HeadingWrapper>
+                <HeadingWrapper>{user?.followers?.length}</HeadingWrapper>
                 <HeadingWrapper>Followers</HeadingWrapper>
               </Followers>
               <Followers className="py-2 px-2 me-2 mb-3">
-                <HeadingWrapper>0</HeadingWrapper>
+                <HeadingWrapper>{user?.following?.length}</HeadingWrapper>
                 <HeadingWrapper>Following</HeadingWrapper>
               </Followers>
             </div>
-            <div
+            {/* <div
               style={{ width: "200px", marginTop: "-30px" }}
               className="d-flex align-items-center flex-column"
             >
@@ -69,7 +71,7 @@ export default function DisplayUser({ user }) {
                 <span className="fs-6">Profile Completion</span>
               </div>
               <Progress percent={50} />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
