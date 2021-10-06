@@ -58,14 +58,14 @@ Final Backend Code -> [https://github.com/killcodeX/journalBit-back](https://git
 <br>
 
 ## Overall Functionlity
-- User can Add new code snippet with title, little description, language and code. 
-- Display page with syntax higlighter for better view.
-- Edit page if user wants to update the previous snippet
-- Delete snippet
-- Night mode
-- Search bar with autosuggest functionality
-- You can filter by language the snippets
-- If you find any desired language is not present in predefined language list, you can add it
+- User can share link and attach topic, and then it is shared as a metdata. 
+- Others users can like and unlike, comment to the posts.
+- Users can follow and unfollow other people. 
+- User can see other peoples and folowers lists.
+- User can filter posts by specific topics.
+- Users can update and edit their profile.
+- Users can delete their own posts.
+- User can delete his own profile.
 - Fully Mobile optimized
 
 
